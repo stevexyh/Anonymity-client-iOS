@@ -104,7 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				AA22B54C285D93C500E1DD29 /* AnonymityApp.swift */,
-				AA22B54D285D93C500E1DD29 /* ContentView.swift */,
+				AA44B77C286524BD001691A3 /* Models */,
+				AA44B77E286524D1001691A3 /* ViewModels */,
+				AA44B77D286524CA001691A3 /* Views */,
 				AA22B54E285D93C500E1DD29 /* Persistence.swift */,
 				AA22B54F285D93C600E1DD29 /* Assets.xcassets */,
 				AA22B54A285D93C500E1DD29 /* Anonymity.xcdatamodeld */,
@@ -147,6 +149,28 @@
 				AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		AA44B77C286524BD001691A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA44B77D286524CA001691A3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA22B54D285D93C500E1DD29 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA44B77E286524D1001691A3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
