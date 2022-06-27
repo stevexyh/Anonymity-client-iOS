@@ -18,4 +18,7 @@ struct Message {
     let sender: User
     let receiver: User
     let content: String
+    let timestamp: Date
+    let isReceived: Bool
+    let digest: String
 }
