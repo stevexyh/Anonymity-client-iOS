@@ -23,6 +23,7 @@
 		AA22B57E285D93C600E1DD29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA22B54F285D93C600E1DD29 /* Assets.xcassets */; };
 		AA44B780286527CA001691A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B77F286527CA001691A3 /* User.swift */; };
 		AA44B78228677AA9001691A3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B78128677AA9001691A3 /* Message.swift */; };
+		AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B783286A65BE001691A3 /* MessageListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AA44B78128677AA9001691A3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		AA44B783286A65BE001691A3 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				AA22B54D285D93C500E1DD29 /* ContentView.swift */,
+				AA44B783286A65BE001691A3 /* MessageListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA22B577285D93C600E1DD29 /* AnonymityApp.swift in Sources */,
+				AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */,
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
 				AA44B78228677AA9001691A3 /* Message.swift in Sources */,
