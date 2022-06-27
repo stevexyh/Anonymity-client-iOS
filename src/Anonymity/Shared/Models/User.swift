@@ -18,5 +18,14 @@ struct User {
     let id: String = UUID().uuidString
     let username: String
     let password: String
-    let avatar_url: String
+    let avatarURL: String
+    let onlineStatus: OnlineStatus
+}
+
+extension User {
+    enum OnlineStatus {
+        case online
+        case offline
+        case busy
+    }
 }
