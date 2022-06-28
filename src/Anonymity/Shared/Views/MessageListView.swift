@@ -46,25 +46,32 @@ struct MessageListView: View {
                     // Message list
                     List {
                         ForEach(0 ..< 15) { id in
-                            HStack {
-                                Image(systemName: "person.circle")
-                                    .font(.system(size: 40))
+                            ZStack {
+                                HStack {
+                                    Image(systemName: "person.circle")
+                                        .font(.system(size: 40))
 
-                                VStack(alignment: .leading) {
-                                    Text("friend \(id)")
-                                    Text("This is a piece of message...")
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.gray)
-                                }
-
-                                Spacer()
-
-                                VStack {
-                                    Text("\(Date().formatted(date: .omitted, time: .shortened))")
-                                        .font(.system(size: 10))
-                                        .foregroundColor(.gray)
+                                    VStack(alignment: .leading) {
+                                        Text("friend \(id)")
+                                        Text("This is a piece of message...")
+                                            .font(.system(size: 14))
+                                            .foregroundColor(.gray)
+                                    }
 
                                     Spacer()
+
+                                    VStack {
+                                        Text("\(Date().formatted(date: .omitted, time: .shortened))")
+                                            .font(.system(size: 10))
+                                            .foregroundColor(.gray)
+
+                                        Spacer()
+                                    }
+                                }
+                                NavigationLink(destination: {
+                                    ChatView(name: "friend \(id)")
+                                }) {
+                                    EmptyView()
                                 }
                             }
                         }

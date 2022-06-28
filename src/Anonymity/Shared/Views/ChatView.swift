@@ -1,7 +1,7 @@
 //
 //  File Name     : ChatView.swift
 //  Project Name  : Anonymity
-//  Description   : 
+//  Description   :
 //
 //  Swift Version : Using Swift 5.0
 //  macOS Version : Developed on macOS 12.4
@@ -14,13 +14,16 @@
 import SwiftUI
 
 struct ChatView: View {
+    // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
+    let name: String
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Chat with \(name)")
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ChatView(name: "Alice")
     }
 }
