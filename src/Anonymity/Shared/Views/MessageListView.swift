@@ -47,8 +47,8 @@ struct MessageListView: View {
                     List {
                         ForEach(0 ..< 15) { id in
                             HStack {
-                                Image(systemName: "person.fill")
-                                    .font(.system(size: 30))
+                                Image(systemName: "person.circle")
+                                    .font(.system(size: 40))
 
                                 VStack(alignment: .leading) {
                                     Text("friend \(id)")
