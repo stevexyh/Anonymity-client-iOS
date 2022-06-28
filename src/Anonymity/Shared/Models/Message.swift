@@ -15,10 +15,18 @@ import Foundation
 
 struct Message {
     let id: String = UUID().uuidString
+    let type: MessageType
     let sender: User
     let receiver: User
     let content: String
     let timestamp: Date
     let isReceived: Bool
     let digest: String
+}
+
+extension Message {
+    enum MessageType {
+        case sent
+        case received
+    }
 }
