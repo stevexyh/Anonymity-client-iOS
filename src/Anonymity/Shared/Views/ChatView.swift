@@ -25,22 +25,12 @@ struct ChatView: View {
             GeometryReader { geometry in
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 0) {
-                        HStack {
-                            Image(systemName: "lock.open.fill")
-                            Text("Chat with \(name) has not been encrypted yet")
-                        }
-                        .font(.system(size: 14))
-                        .padding(.horizontal)
-                        .padding(.vertical, 10)
-                        .background(.orange.opacity(0.3))
-                        .foregroundColor(.black.opacity(0.7))
-                        .cornerRadius(20)
-                        .padding()
+                        EncryptionInfoSubView(name: name)
 
                         ForEach(0 ..< 10) { id in
                             HStack {
                                 ZStack {
-                                    MessageBubbleView(id: id, maxWidth: geometry.size.width * 0.8)
+                                    MessageBubbleSubView(id: id, maxWidth: geometry.size.width * 0.8)
                                         .padding()
                                 }
                             }
@@ -60,7 +50,7 @@ struct ChatView_Previews: PreviewProvider {
     }
 }
 
-struct MessageBubbleView: View {
+struct MessageBubbleSubView: View {
     let id: Int
     let maxWidth: CGFloat?
 
@@ -71,5 +61,23 @@ struct MessageBubbleView: View {
             .background(((id % 2) != 0) ? .gray.opacity(0.3) : .green.opacity(0.6))
             .cornerRadius(10)
             .frame(maxWidth: maxWidth, alignment: ((id % 2) != 0) ? .leading : .trailing)
+    }
+}
+
+struct EncryptionInfoSubView: View {
+    let name: String
+
+    var body: some View {
+        HStack {
+            Image(systemName: "lock.open.fill")
+            Text("Chat with \(name) has not been encrypted yet")
+        }
+        .font(.system(size: 14))
+        .padding(.horizontal)
+        .padding(.vertical, 10)
+        .background(.orange.opacity(0.3))
+        .foregroundColor(.black.opacity(0.7))
+        .cornerRadius(20)
+        .padding()
     }
 }
