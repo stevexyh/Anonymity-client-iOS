@@ -20,7 +20,7 @@ struct ChatView: View {
     @FocusState private var isFocused
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.clear)
                 .frame(height: 0)
@@ -86,6 +86,7 @@ extension ChatView {
                 }
             }
         }
+        .padding(.top)
         .padding(.horizontal)
     }
 }
