@@ -55,13 +55,14 @@ struct ChatView: View {
         }
         .toolbar {
             Button(action: {}) {
-                HStack(alignment: .center) {
+                HStack(alignment: .bottom, spacing: 80) {
                     Text("\(name)")
                         .font(.system(size: 30))
                     Image(systemName: "person.circle")
                         .font(.system(size: 30))
                 }
                 .padding()
+                .foregroundColor(.black)
             }
         }
     }
