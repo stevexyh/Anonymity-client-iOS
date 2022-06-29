@@ -21,6 +21,14 @@ struct ChatView: View {
 
     var body: some View {
         VStack {
+            Rectangle()
+                .fill(Color.clear)
+                .frame(height: 0)
+                .background(LinearGradient(
+                    colors: [.green.opacity(0.3), .blue.opacity(0.5)],
+                    startPoint: .topLeading, endPoint: .bottomTrailing
+                ))
+
             // TODO: (Steve X): add online status here
 
             let columns = [GridItem(.flexible(minimum: 10))]
