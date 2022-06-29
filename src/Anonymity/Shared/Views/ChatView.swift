@@ -21,7 +21,7 @@ struct ChatView: View {
 
     var body: some View {
         VStack {
-            Text("\(name)")
+            // TODO: (Steve X): add online status here
 
             let columns = [GridItem(.flexible(minimum: 10))]
             GeometryReader { geometry in
@@ -44,6 +44,17 @@ struct ChatView: View {
             .background(.gray.opacity(0.2))
 
             toolbarView
+        }
+        .toolbar {
+            Button(action: {}) {
+                HStack(alignment: .center) {
+                    Text("\(name)")
+                        .font(.system(size: 30))
+                    Image(systemName: "person.circle")
+                        .font(.system(size: 30))
+                }
+                .padding()
+            }
         }
     }
 }
@@ -105,6 +116,8 @@ struct EncryptionInfoSubView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(name: "Alice")
+        NavigationView {
+            ChatView(name: "Alice")
+        }
     }
 }
