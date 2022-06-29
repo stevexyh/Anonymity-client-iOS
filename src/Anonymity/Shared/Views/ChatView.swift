@@ -16,6 +16,8 @@ import SwiftUI
 struct ChatView: View {
     // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
     let name: String
+    @State private var text: String = ""
+    @FocusState private var isFocused
 
     var body: some View {
         VStack {
@@ -40,13 +42,32 @@ struct ChatView: View {
                 }
             }
             .background(.gray.opacity(0.2))
+
+            toolbarView
         }
     }
 }
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(name: "Alice")
+extension ChatView {
+    private var toolbarView: some View {
+        VStack {
+            let height: CGFloat = 37
+            HStack {
+                TextField("Text here...", text: $text)
+                    .padding(.horizontal)
+                    .frame(height: height)
+                    .background(.thickMaterial)
+                    .cornerRadius(height)
+                    .focused($isFocused)
+
+                Button(action: {}) {
+                    Image(systemName: "arrow.up.circle")
+                        .resizable()
+                        .frame(width: height, height: height)
+                }
+            }
+        }
+        .padding(.horizontal)
     }
 }
 
@@ -79,5 +100,11 @@ struct EncryptionInfoSubView: View {
         .foregroundColor(.black.opacity(0.7))
         .cornerRadius(20)
         .padding()
+    }
+}
+
+struct ChatView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatView(name: "Alice")
     }
 }
