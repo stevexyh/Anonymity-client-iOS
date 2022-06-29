@@ -17,68 +17,73 @@ struct MessageListView: View {
     var body: some View {
         TabView {
             NavigationView {
-                VStack {
-                    // Status bar
-                    HStack {
-                        Image(systemName: "circle")
-                            .font(.system(size: 50))
+                ZStack {
+                    Color.green.opacity(0.3)
+                        .ignoresSafeArea()
 
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("Steve")
-                                .font(.title)
-                            HStack {
-                                Circle()
-                                    .frame(width: 10, height: 10)
-                                    .foregroundColor(.green)
+                    VStack {
+                        // Status bar
+                        HStack {
+                            Image(systemName: "circle")
+                                .font(.system(size: 50))
 
-                                Text("online")
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.gray)
-                            }
-                        }
-
-                        Spacer()
-
-                        Image(systemName: "plus.circle")
-
-                    }.padding()
-
-                    // Message list
-                    List {
-                        ForEach(0 ..< 15) { id in
-                            ZStack {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Steve")
+                                    .font(.title)
                                 HStack {
-                                    Image(systemName: "person.circle")
-                                        .font(.system(size: 40))
+                                    Circle()
+                                        .frame(width: 10, height: 10)
+                                        .foregroundColor(.green)
 
-                                    VStack(alignment: .leading) {
-                                        Text("friend \(id)")
-                                        Text("This is a piece of message...")
-                                            .font(.system(size: 14))
-                                            .foregroundColor(.gray)
-                                    }
+                                    Text("online")
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.gray)
+                                }
+                            }
 
-                                    Spacer()
+                            Spacer()
 
-                                    VStack {
-                                        Text("\(Date().formatted(date: .omitted, time: .shortened))")
-                                            .font(.system(size: 10))
-                                            .foregroundColor(.gray)
+                            Image(systemName: "plus.circle")
+
+                        }.padding()
+
+                        // Message list
+                        List {
+                            ForEach(0 ..< 15) { id in
+                                ZStack {
+                                    HStack {
+                                        Image(systemName: "person.circle")
+                                            .font(.system(size: 40))
+
+                                        VStack(alignment: .leading) {
+                                            Text("friend \(id)")
+                                            Text("This is a piece of message...")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.gray)
+                                        }
 
                                         Spacer()
+
+                                        VStack {
+                                            Text("\(Date().formatted(date: .omitted, time: .shortened))")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.gray)
+
+                                            Spacer()
+                                        }
                                     }
-                                }
-                                NavigationLink(destination: {
-                                    ChatView(name: "friend \(id)")
-                                }) {
-                                    EmptyView()
+                                    NavigationLink(destination: {
+                                        ChatView(name: "friend \(id)")
+                                    }) {
+                                        EmptyView()
+                                    }
                                 }
                             }
                         }
+                        .listStyle(.plain)
                     }
-                    .listStyle(.plain)
+                    .navigationBarHidden(true)
                 }
-                .navigationBarHidden(true)
             }
             .tabItem {
                 Label("Chats", systemImage: "quote.bubble")
