@@ -87,8 +87,7 @@ extension ChatView {
                 }
             }
         }
-        .padding(.top)
-        .padding(.horizontal)
+        .padding()
     }
 }
 
