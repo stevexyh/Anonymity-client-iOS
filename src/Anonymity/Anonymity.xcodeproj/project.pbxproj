@@ -26,6 +26,7 @@
 		AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B783286A65BE001691A3 /* MessageListView.swift */; };
 		AA44B786286A845B001691A3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B785286A845B001691A3 /* ChatView.swift */; };
 		AA44B788286B65CB001691A3 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B787286B65CB001691A3 /* Chat.swift */; };
+		AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E32874940100C47765 /* MessageDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		AA44B783286A65BE001691A3 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		AA44B785286A845B001691A3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AA44B787286B65CB001691A3 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		AA5A43E32874940100C47765 /* MessageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				AA44B77C286524BD001691A3 /* Models */,
 				AA44B77E286524D1001691A3 /* ViewModels */,
 				AA44B77D286524CA001691A3 /* Views */,
+				AA5A43E22874922200C47765 /* DataServices */,
 				AA22B54E285D93C500E1DD29 /* Persistence.swift */,
 				AA22B54F285D93C600E1DD29 /* Assets.xcassets */,
 				AA22B54A285D93C500E1DD29 /* Anonymity.xcdatamodeld */,
@@ -186,6 +189,14 @@
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AA5A43E22874922200C47765 /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				AA5A43E32874940100C47765 /* MessageDataService.swift */,
+			);
+			path = DataServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +366,7 @@
 				AA44B78228677AA9001691A3 /* Message.swift in Sources */,
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
 				AA22B579285D93C600E1DD29 /* ContentView.swift in Sources */,
+				AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
