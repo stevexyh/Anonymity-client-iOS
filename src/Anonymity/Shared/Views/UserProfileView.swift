@@ -14,9 +14,12 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var isMuted = false
+    // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
+    var tmpName: String? = ""
+
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var isMuted: Bool = false
 
     var body: some View {
         VStack {
@@ -25,7 +28,7 @@ struct UserProfileView: View {
                     .font(.system(size: 80))
 
                 // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
-                Text("friend \(1)")
+                Text("\(tmpName ?? firstName)")
                     .font(.system(size: 40))
 
                 OnlineStatusView()
@@ -46,7 +49,7 @@ struct UserProfileView: View {
                     Toggle("Mute", isOn: $isMuted)
                     Button(action: {}) {
                         HStack {
-                            Text("Delete User")
+                            Text("Delete Contact")
                             Spacer()
                             Image(systemName: "trash")
                         }
@@ -61,6 +64,6 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView()
+        UserProfileView(tmpName: "Alice")
     }
 }

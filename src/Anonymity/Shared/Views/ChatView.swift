@@ -54,7 +54,9 @@ struct ChatView: View {
             toolbarView
         }
         .toolbar {
-            Button(action: {}) {
+            NavigationLink(destination: {
+                UserProfileView(tmpName: name)
+            }) {
                 HStack(alignment: .bottom, spacing: 80) {
                     Text("\(name)")
                         .font(.system(size: 30))
