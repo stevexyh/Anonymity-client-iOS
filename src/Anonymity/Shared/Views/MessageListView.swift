@@ -16,8 +16,15 @@ import SwiftUI
 struct MessageListView: View {
     var body: some View {
         ZStack {
-            Color.green.opacity(0.3)
+            VStack {
+                LinearGradient(
+                    colors: [.green.opacity(0.3), .blue.opacity(0.5)],
+                    startPoint: .topLeading, endPoint: .bottomTrailing
+                )
+                .frame(height: 150, alignment: .top)
                 .ignoresSafeArea()
+                Spacer()
+            }
 
             VStack {
                 // Status bar
