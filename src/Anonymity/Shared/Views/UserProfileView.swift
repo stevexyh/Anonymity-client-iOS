@@ -22,19 +22,35 @@ struct UserProfileView: View {
     @State private var isMuted: Bool = false
 
     var body: some View {
-        VStack {
-            VStack(alignment: .center, spacing: 0) {
-                Image(systemName: "person.circle")
-                    .font(.system(size: 80))
+        VStack(spacing: 0) {
+            ZStack {
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(height: 0)
 
-                // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
-                Text("\(tmpName ?? firstName)")
-                    .font(.system(size: 40))
+                VStack(alignment: .center, spacing: 0) {
+                    Image(systemName: "person.circle")
+                        .font(.system(size: 80))
 
-                OnlineStatusView()
-                    .font(.system(size: 14))
-                    .foregroundColor(.gray)
+                    // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
+                    Text("\(tmpName ?? firstName)")
+                        .font(.system(size: 40))
+
+                    OnlineStatusView(
+                        fontColor: .black.opacity(0.5),
+                        fontSize: 14
+                    )
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
+                    .background(.thinMaterial)
+                    .cornerRadius(20)
+                }
             }
+            .padding()
+            .background(LinearGradient(
+                colors: [.green.opacity(0.3), .blue.opacity(0.5)],
+                startPoint: .topLeading, endPoint: .bottomTrailing
+            ))
 
             Form {
                 Section(header: Text("Personal Information")) {
