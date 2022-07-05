@@ -105,7 +105,6 @@ struct SettingsView: View {
                 }
                 .tint(.red)
             }
-            Spacer()
         }
     }
 }
