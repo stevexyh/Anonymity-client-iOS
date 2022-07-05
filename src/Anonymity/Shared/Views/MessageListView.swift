@@ -83,8 +83,8 @@ struct MessageListView: View {
             }
 
             // Contacts View
-            HStack {
-                Text("Contacts Page")
+            NavigationView {
+                ContactsView()
             }
             .tabItem {
                 Label("Contacts", systemImage: "person.text.rectangle")
