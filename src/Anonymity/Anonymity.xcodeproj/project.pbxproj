@@ -27,6 +27,8 @@
 		AA44B786286A845B001691A3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B785286A845B001691A3 /* ChatView.swift */; };
 		AA44B788286B65CB001691A3 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B787286B65CB001691A3 /* Chat.swift */; };
 		AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E32874940100C47765 /* MessageDataService.swift */; };
+		AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E5287495D200C47765 /* ContactsView.swift */; };
+		AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		AA44B785286A845B001691A3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AA44B787286B65CB001691A3 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		AA5A43E32874940100C47765 /* MessageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataService.swift; sourceTree = "<group>"; };
+		AA5A43E5287495D200C47765 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,9 +181,11 @@
 		AA44B77D286524CA001691A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA5A43E72874976400C47765 /* Components */,
 				AA22B54D285D93C500E1DD29 /* ContentView.swift */,
 				AA44B783286A65BE001691A3 /* MessageListView.swift */,
 				AA44B785286A845B001691A3 /* ChatView.swift */,
+				AA5A43E5287495D200C47765 /* ContactsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +203,14 @@
 				AA5A43E32874940100C47765 /* MessageDataService.swift */,
 			);
 			path = DataServices;
+			sourceTree = "<group>";
+		};
+		AA5A43E72874976400C47765 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,10 +376,12 @@
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
 				AA44B788286B65CB001691A3 /* Chat.swift in Sources */,
+				AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */,
 				AA44B786286A845B001691A3 /* ChatView.swift in Sources */,
 				AA44B78228677AA9001691A3 /* Message.swift in Sources */,
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
 				AA22B579285D93C600E1DD29 /* ContentView.swift in Sources */,
+				AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */,
 				AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

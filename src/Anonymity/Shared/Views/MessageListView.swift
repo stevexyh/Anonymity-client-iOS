@@ -30,15 +30,8 @@ struct MessageListView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Steve")
                                     .font(.title)
-                                HStack {
-                                    Circle()
-                                        .frame(width: 10, height: 10)
-                                        .foregroundColor(.green)
 
-                                    Text("online")
-                                        .font(.system(size: 12))
-                                        .foregroundColor(.gray)
-                                }
+                                OnlineStatusView()
                             }
 
                             Spacer()
