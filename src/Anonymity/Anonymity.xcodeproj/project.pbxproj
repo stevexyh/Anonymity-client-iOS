@@ -29,6 +29,7 @@
 		AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E32874940100C47765 /* MessageDataService.swift */; };
 		AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E5287495D200C47765 /* ContactsView.swift */; };
 		AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */; };
+		AA5A43EB28749EAD00C47765 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EA28749EAD00C47765 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		AA5A43E32874940100C47765 /* MessageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataService.swift; sourceTree = "<group>"; };
 		AA5A43E5287495D200C47765 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatusView.swift; sourceTree = "<group>"; };
+		AA5A43EA28749EAD00C47765 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		AA44B77D286524CA001691A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA5A43EA28749EAD00C47765 /* HomePageView.swift */,
 				AA5A43E72874976400C47765 /* Components */,
 				AA22B54D285D93C500E1DD29 /* ContentView.swift */,
 				AA44B783286A65BE001691A3 /* MessageListView.swift */,
@@ -372,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA22B577285D93C600E1DD29 /* AnonymityApp.swift in Sources */,
+				AA5A43EB28749EAD00C47765 /* HomePageView.swift in Sources */,
 				AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */,
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,

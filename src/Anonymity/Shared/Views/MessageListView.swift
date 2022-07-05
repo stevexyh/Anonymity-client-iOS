@@ -15,88 +15,65 @@ import SwiftUI
 
 struct MessageListView: View {
     var body: some View {
-        TabView {
-            NavigationView {
-                ZStack {
-                    Color.green.opacity(0.3)
-                        .ignoresSafeArea()
+        ZStack {
+            Color.green.opacity(0.3)
+                .ignoresSafeArea()
 
-                    VStack {
-                        // Status bar
-                        HStack {
-                            Image(systemName: "circle")
-                                .font(.system(size: 50))
+            VStack {
+                // Status bar
+                HStack {
+                    Image(systemName: "circle")
+                        .font(.system(size: 50))
 
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("Steve")
-                                    .font(.title)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Steve")
+                            .font(.title)
 
-                                OnlineStatusView()
-                            }
+                        OnlineStatusView()
+                    }
 
-                            Spacer()
+                    Spacer()
 
-                            Image(systemName: "plus.circle")
+                    Image(systemName: "plus.circle")
 
-                        }.padding()
+                }.padding()
 
-                        // Message list
-                        List {
-                            ForEach(0 ..< 15) { id in
-                                ZStack {
-                                    HStack {
-                                        Image(systemName: "person.circle")
-                                            .font(.system(size: 40))
+                // Message list
+                List {
+                    ForEach(0 ..< 15) { id in
+                        ZStack {
+                            HStack {
+                                Image(systemName: "person.circle")
+                                    .font(.system(size: 40))
 
-                                        VStack(alignment: .leading) {
-                                            Text("friend \(id)")
-                                            Text("This is a piece of message...")
-                                                .font(.system(size: 14))
-                                                .foregroundColor(.gray)
-                                        }
+                                VStack(alignment: .leading) {
+                                    Text("friend \(id)")
+                                    Text("This is a piece of message...")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.gray)
+                                }
 
-                                        Spacer()
+                                Spacer()
 
-                                        VStack {
-                                            Text("\(Date().formatted(date: .omitted, time: .shortened))")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.gray)
+                                VStack {
+                                    Text("\(Date().formatted(date: .omitted, time: .shortened))")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(.gray)
 
-                                            Spacer()
-                                        }
-                                    }
-                                    NavigationLink(destination: {
-                                        ChatView(name: "friend \(id)")
-                                    }) {
-                                        EmptyView()
-                                    }
+                                    Spacer()
                                 }
                             }
+                            NavigationLink(destination: {
+                                ChatView(name: "friend \(id)")
+                            }) {
+                                EmptyView()
+                            }
                         }
-                        .listStyle(.plain)
                     }
-                    .navigationBarHidden(true)
                 }
+                .listStyle(.plain)
             }
-            .tabItem {
-                Label("Chats", systemImage: "quote.bubble")
-            }
-
-            // Contacts View
-            NavigationView {
-                ContactsView()
-            }
-            .tabItem {
-                Label("Contacts", systemImage: "person.text.rectangle")
-            }
-
-            // Contacts View
-            HStack {
-                Text("Settings Page")
-            }
-            .tabItem {
-                Label("Settings", systemImage: "gear")
-            }
+            .navigationBarHidden(true)
         }
     }
 }

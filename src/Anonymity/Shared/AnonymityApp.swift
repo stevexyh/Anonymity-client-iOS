@@ -1,7 +1,7 @@
 //
 //  File Name     : AnonymityApp.swift
 //  Project Name  : Anonymity
-//  Description   : 
+//  Description   :
 //
 //  Swift Version : Using Swift 5.0
 //  macOS Version : Developed on macOS 12.4
@@ -19,7 +19,7 @@ struct AnonymityApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MessageListView()
+            HomePageView()
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
