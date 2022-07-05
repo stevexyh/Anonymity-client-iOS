@@ -30,6 +30,7 @@
 		AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E5287495D200C47765 /* ContactsView.swift */; };
 		AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */; };
 		AA5A43EB28749EAD00C47765 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EA28749EAD00C47765 /* HomePageView.swift */; };
+		AA5A43ED2874A34900C47765 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EC2874A34900C47765 /* UserProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		AA5A43E5287495D200C47765 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatusView.swift; sourceTree = "<group>"; };
 		AA5A43EA28749EAD00C47765 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		AA5A43EC2874A34900C47765 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				AA44B783286A65BE001691A3 /* MessageListView.swift */,
 				AA44B785286A845B001691A3 /* ChatView.swift */,
 				AA5A43E5287495D200C47765 /* ContactsView.swift */,
+				AA5A43EC2874A34900C47765 /* UserProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
 				AA44B788286B65CB001691A3 /* Chat.swift in Sources */,
 				AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */,
+				AA5A43ED2874A34900C47765 /* UserProfileView.swift in Sources */,
 				AA44B786286A845B001691A3 /* ChatView.swift in Sources */,
 				AA44B78228677AA9001691A3 /* Message.swift in Sources */,
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
