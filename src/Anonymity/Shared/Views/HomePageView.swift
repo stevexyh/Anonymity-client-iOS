@@ -33,7 +33,7 @@ struct HomePageView: View {
 
             // Settings Page View
             HStack {
-                Text("Settings Page")
+                SettingsView(tmpName: "Steve")
             }
             .tabItem {
                 Label("Settings", systemImage: "gear")

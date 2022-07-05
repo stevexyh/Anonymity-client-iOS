@@ -31,6 +31,7 @@
 		AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */; };
 		AA5A43EB28749EAD00C47765 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EA28749EAD00C47765 /* HomePageView.swift */; };
 		AA5A43ED2874A34900C47765 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EC2874A34900C47765 /* UserProfileView.swift */; };
+		AA5A43EF2874D55300C47765 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EE2874D55300C47765 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatusView.swift; sourceTree = "<group>"; };
 		AA5A43EA28749EAD00C47765 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		AA5A43EC2874A34900C47765 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		AA5A43EE2874D55300C47765 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				AA44B785286A845B001691A3 /* ChatView.swift */,
 				AA5A43E5287495D200C47765 /* ContactsView.swift */,
 				AA5A43EC2874A34900C47765 /* UserProfileView.swift */,
+				AA5A43EE2874D55300C47765 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5A43EF2874D55300C47765 /* SettingsView.swift in Sources */,
 				AA22B577285D93C600E1DD29 /* AnonymityApp.swift in Sources */,
 				AA5A43EB28749EAD00C47765 /* HomePageView.swift in Sources */,
 				AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */,
