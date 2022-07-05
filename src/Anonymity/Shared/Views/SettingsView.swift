@@ -20,6 +20,7 @@ struct SettingsView: View {
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var isNotificationOn: Bool = true
+    @State private var languageSelected: String = "English"
 
     var body: some View {
         VStack(spacing: 0) {
@@ -68,6 +69,7 @@ struct SettingsView: View {
                             .foregroundColor(.red)
                         Toggle("Notifications", isOn: $isNotificationOn)
                     }
+
                     HStack {
                         NavigationLink(destination: {}) {
                             Image(systemName: "circle.hexagongrid.circle")
@@ -76,12 +78,19 @@ struct SettingsView: View {
                             Text("Appearance")
                         }
                     }
+
                     HStack {
-                        NavigationLink(destination: {}) {
-                            Image(systemName: "globe")
-                                .font(.system(size: 26))
-                                .foregroundColor(.blue)
-                            Text("Language")
+                        Picker(
+                            selection: $languageSelected,
+                            label: HStack {
+                                Image(systemName: "globe")
+                                    .font(.system(size: 26))
+                                    .foregroundColor(.blue)
+                                Text("Language")
+                            }
+                        ) {
+                            Text("English").tag("English")
+                            Text("-").tag("-")
                         }
                     }
                 }
