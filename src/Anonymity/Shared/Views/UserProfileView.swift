@@ -67,7 +67,8 @@ struct UserProfileView: View {
                         HStack {
                             Text("Delete Contact")
                             Spacer()
-                            Image(systemName: "trash")
+                            Image(systemName: "person.crop.circle.badge.xmark")
+                                .font(.system(size: 24))
                         }
                     }
                 }
