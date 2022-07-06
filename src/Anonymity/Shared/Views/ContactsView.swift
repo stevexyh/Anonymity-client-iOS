@@ -20,13 +20,19 @@ struct ContactsView: View {
                 ZStack {
                     HStack {
                         Image(systemName: "person.circle")
-                            .font(.system(size: 40))
+                            .font(.system(size: 50))
 
                         VStack(alignment: .leading) {
                             Text("friend \(id)")
-                            OnlineStatusView()
-                                .font(.system(size: 14))
-                                .foregroundColor(.gray)
+
+                            OnlineStatusView(
+                                fontColor: .black.opacity(0.5),
+                                fontSize: 14
+                            )
+                            .padding(.horizontal, 7)
+                            .padding(.vertical, 2)
+                            .background(.thinMaterial)
+                            .cornerRadius(20)
                         }
 
                         Spacer()
