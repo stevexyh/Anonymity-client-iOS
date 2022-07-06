@@ -15,7 +15,6 @@ import SwiftUI
 
 struct ContactsView: View {
     var body: some View {
-        // Message list
         List {
             ForEach(0 ..< 15) { id in
                 ZStack {
