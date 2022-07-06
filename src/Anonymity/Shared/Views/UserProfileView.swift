@@ -29,8 +29,11 @@ struct UserProfileView: View {
                     .frame(height: 0)
 
                 VStack(alignment: .center, spacing: 0) {
-                    Image(systemName: "person.circle")
-                        .font(.system(size: 80))
+                    AvatarView(
+                        avatarType: .nameCapital,
+                        maxSize: 80,
+                        firstName: tmpName
+                    )
 
                     // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
                     Text("\(tmpName ?? firstName)")

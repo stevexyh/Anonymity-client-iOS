@@ -29,8 +29,11 @@ struct MessageListView: View {
             VStack {
                 // Status bar
                 HStack {
-                    Image(systemName: "circle")
-                        .font(.system(size: 50))
+                    AvatarView(
+                        avatarType: .nameCapital,
+                        maxSize: 60,
+                        firstName: "Steve"
+                    )
 
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Steve")
@@ -50,8 +53,12 @@ struct MessageListView: View {
                     ForEach(0 ..< 15) { id in
                         ZStack {
                             HStack {
-                                Image(systemName: "person.circle")
-                                    .font(.system(size: 40))
+                                AvatarView(
+                                    avatarType: .nameCapital,
+                                    maxSize: 40,
+                                    firstName: "friend",
+                                    lastName: "\(id)"
+                                )
 
                                 VStack(alignment: .leading) {
                                     Text("friend \(id)")

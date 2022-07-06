@@ -19,8 +19,12 @@ struct ContactsView: View {
             ForEach(0 ..< 15) { id in
                 ZStack {
                     HStack {
-                        Image(systemName: "person.circle")
-                            .font(.system(size: 50))
+                        AvatarView(
+                            avatarType: .nameCapital,
+                            maxSize: 50,
+                            firstName: "friend",
+                            lastName: "\(id)"
+                        )
 
                         VStack(alignment: .leading) {
                             Text("friend \(id)")
