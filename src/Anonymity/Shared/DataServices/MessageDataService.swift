@@ -14,10 +14,12 @@
 import Foundation
 
 class MessageDataService {
+    static let users: [User] = UserDataService.users
     static let messages: [Message] = [
-//        Message(type: <#T##Message.MessageType#>, sender: <#T##User#>, receiver: <#T##User#>, content: <#T##String#>, timestamp: <#T##Date#>, isReceived: <#T##Bool#>, digest: <#T##String#>),
-//        Message(type: <#T##Message.MessageType#>, sender: <#T##User#>, receiver: <#T##User#>, content: <#T##String#>, timestamp: <#T##Date#>, isReceived: <#T##Bool#>, digest: <#T##String#>),
-//        Message(type: <#T##Message.MessageType#>, sender: <#T##User#>, receiver: <#T##User#>, content: <#T##String#>, timestamp: <#T##Date#>, isReceived: <#T##Bool#>, digest: <#T##String#>),
-//        Message(type: <#T##Message.MessageType#>, sender: <#T##User#>, receiver: <#T##User#>, content: <#T##String#>, timestamp: <#T##Date#>, isReceived: <#T##Bool#>, digest: <#T##String#>),
+        Message(type: .received, sender: users[1], receiver: users[0], content: "test message", timestamp: .now, isReceived: true, digest: "abcabc"),
+        Message(type: .sent, sender: users[0], receiver: users[1], content: "test message", timestamp: .now, isReceived: true, digest: "abcabc"),
+        Message(type: .received, sender: users[1], receiver: users[0], content: "test message", timestamp: .now, isReceived: true, digest: "abcabc"),
+        Message(type: .received, sender: users[1], receiver: users[0], content: "test message", timestamp: .now, isReceived: true, digest: "abcabc"),
+        Message(type: .sent, sender: users[0], receiver: users[1], content: "test message", timestamp: .now, isReceived: true, digest: "abcabc"),
     ]
 }
