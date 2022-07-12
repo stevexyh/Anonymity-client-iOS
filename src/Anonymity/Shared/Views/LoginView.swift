@@ -14,9 +14,19 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var username: String = ""
-    @State var password: String = ""
-    @State var authSuccess: Bool = false
+    @Binding var username: String
+    @Binding var password: String
+    @Binding var showLoginPage: Bool
+
+    init(
+        username: Binding<String> = .constant(""),
+        password: Binding<String> = .constant(""),
+        showLoginPage: Binding<Bool> = .constant(true)
+    ) {
+        _username = username
+        _password = password
+        _showLoginPage = showLoginPage
+    }
 
     var body: some View {
         NavigationView {
@@ -53,7 +63,7 @@ struct LoginView: View {
                     Spacer()
 
                     Button(action: {
-                        authSuccess = true
+                        showLoginPage = false
                     }) {
                         HStack {
                             Text("LOGIN")
@@ -66,10 +76,6 @@ struct LoginView: View {
                     .background(Color.accentColor)
                     .foregroundColor(.white)
                     .cornerRadius(20)
-
-                    NavigationLink(destination: HomePageView(currentUserName: username), isActive: $authSuccess) {
-                        EmptyView()
-                    }
 
                     Spacer()
                 }

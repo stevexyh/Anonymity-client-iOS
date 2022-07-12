@@ -14,12 +14,14 @@
 import SwiftUI
 
 struct HomePageView: View {
-    var currentUserName: String?
+    @State var username: String = ""
+    @State var password: String = ""
+    @State var showLoginPage: Bool = true
 
     var body: some View {
         TabView {
             NavigationView {
-                MessageListView(currentUserName: currentUserName)
+                MessageListView(currentUserName: username)
             }
             .tabItem {
                 Label("Chats", systemImage: "quote.bubble")
@@ -35,11 +37,14 @@ struct HomePageView: View {
 
             // Settings Page View
             HStack {
-                SettingsView(tmpName: "Steve")
+                SettingsView(tmpName: username)
             }
             .tabItem {
                 Label("Settings", systemImage: "gear")
             }
+        }
+        .fullScreenCover(isPresented: $showLoginPage) {
+            LoginView(username: $username, password: $password, showLoginPage: $showLoginPage)
         }
     }
 }
