@@ -67,7 +67,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .cornerRadius(20)
 
-                    NavigationLink(destination: Text("Logged in as \(username)"), isActive: $authSuccess) {
+                    NavigationLink(destination: HomePageView(currentUserName: username), isActive: $authSuccess) {
                         EmptyView()
                     }
 

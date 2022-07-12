@@ -14,10 +14,12 @@
 import SwiftUI
 
 struct HomePageView: View {
+    var currentUserName: String?
+
     var body: some View {
         TabView {
             NavigationView {
-                MessageListView()
+                MessageListView(currentUserName: currentUserName)
             }
             .tabItem {
                 Label("Chats", systemImage: "quote.bubble")

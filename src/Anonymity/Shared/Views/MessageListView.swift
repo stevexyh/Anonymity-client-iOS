@@ -14,6 +14,8 @@
 import SwiftUI
 
 struct MessageListView: View {
+    var currentUserName: String?
+
     var body: some View {
         ZStack {
             VStack {
@@ -32,11 +34,11 @@ struct MessageListView: View {
                     AvatarView(
                         avatarType: .nameCapital,
                         maxSize: 60,
-                        firstName: "Steve"
+                        firstName: currentUserName
                     )
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Steve")
+                        Text(currentUserName ?? "Please log in first")
                             .font(.title)
 
                         OnlineStatusView()
