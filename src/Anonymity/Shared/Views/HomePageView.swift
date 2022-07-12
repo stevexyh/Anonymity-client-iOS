@@ -32,7 +32,10 @@ struct HomePageView: View {
 
             // Contacts Page View
             NavigationView {
-                ContactsView()
+                ContactsView(
+                    username: username != "" ? username : nil,
+                    showLoginPage: $showLoginPage
+                )
             }
             .tabItem {
                 Label("Contacts", systemImage: "person.text.rectangle")
