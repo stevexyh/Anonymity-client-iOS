@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA1F16CA287C860000842168 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16C9287C860000842168 /* UserDataService.swift */; };
+		AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CB287DC36D00842168 /* LoginView.swift */; };
 		AA22B566285D93C600E1DD29 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B565285D93C600E1DD29 /* Tests_iOS.swift */; };
 		AA22B568285D93C600E1DD29 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B567285D93C600E1DD29 /* Tests_iOSLaunchTests.swift */; };
 		AA22B572285D93C600E1DD29 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B571285D93C600E1DD29 /* Tests_macOS.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		AA1F16C9287C860000842168 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		AA1F16CB287DC36D00842168 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AA22B54B285D93C500E1DD29 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		AA22B54C285D93C500E1DD29 /* AnonymityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymityApp.swift; sourceTree = "<group>"; };
 		AA22B54D285D93C500E1DD29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				AA5A43E5287495D200C47765 /* ContactsView.swift */,
 				AA5A43EC2874A34900C47765 /* UserProfileView.swift */,
 				AA5A43EE2874D55300C47765 /* SettingsView.swift */,
+				AA1F16CB287DC36D00842168 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				AA5A43ED2874A34900C47765 /* UserProfileView.swift in Sources */,
 				AA44B786286A845B001691A3 /* ChatView.swift in Sources */,
 				AA44B78228677AA9001691A3 /* Message.swift in Sources */,
+				AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */,
 				AA1F16CA287C860000842168 /* UserDataService.swift in Sources */,
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
 				AA22B579285D93C600E1DD29 /* ContentView.swift in Sources */,
