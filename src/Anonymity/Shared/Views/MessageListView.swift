@@ -38,7 +38,7 @@ struct MessageListView: View {
                     )
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(username ?? "Please log in first")
+                        Text(username ?? "(null)")
                             .font(.title)
 
                         OnlineStatusView()
@@ -50,7 +50,13 @@ struct MessageListView: View {
 
                 }.padding()
 
-                chatListView
+                if username != nil {
+                    chatListView
+                } else {
+                    Spacer()
+                    Text("Please log in first")
+                    Spacer()
+                }
             }
             .navigationBarHidden(true)
         }
