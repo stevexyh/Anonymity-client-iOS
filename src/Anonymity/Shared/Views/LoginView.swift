@@ -18,6 +18,8 @@ struct LoginView: View {
     @Binding var password: String
     @Binding var showLoginPage: Bool
 
+    @State var createMode: Bool = false
+
     init(
         username: Binding<String> = .constant(""),
         password: Binding<String> = .constant(""),
@@ -59,6 +61,12 @@ struct LoginView: View {
                     .background(.black.opacity(0.1))
                     .cornerRadius(20)
 
+                SecureField(createMode ? "PASSWORD AGAIN" : "", text: $password)
+                    .frame(width: 200, height: 10, alignment: .center)
+                    .padding()
+                    .background(.black.opacity(createMode ? 0.1 : 0))
+                    .cornerRadius(20)
+
                 Spacer()
 
                 Button(action: {
@@ -66,13 +74,32 @@ struct LoginView: View {
                 }) {
                     HStack {
                         Text("LOGIN")
+                            .fontWeight(.bold)
+                        Spacer()
                         Image(systemName: "arrow.right.circle.fill")
                             .font(.system(size: 20))
                     }
                 }
-                .frame(height: 10)
+                .frame(width: 200, height: 10)
                 .padding()
                 .background(Color.accentColor)
+                .foregroundColor(.white)
+                .cornerRadius(20)
+
+                Button(action: {
+                    createMode.toggle()
+                }) {
+                    HStack {
+                        Text("Create an account")
+                            .fontWeight(.bold)
+                        Spacer()
+                        Image(systemName: "person.circle.fill")
+                            .font(.system(size: 20))
+                    }
+                }
+                .frame(width: 200, height: 10)
+                .padding()
+                .background(.red)
                 .foregroundColor(.white)
                 .cornerRadius(20)
 

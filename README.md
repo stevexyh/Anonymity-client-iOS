@@ -66,7 +66,7 @@ Anonymity Client side
 - [x] user profile page
 - [x] settings page
 - [x] contacts page
-- [ ] sign in page
+- [x] sign in page
 
 ### Logic
 - [ ] sign in
