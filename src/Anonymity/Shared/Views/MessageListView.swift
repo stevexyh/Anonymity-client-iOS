@@ -50,52 +50,60 @@ struct MessageListView: View {
 
                 }.padding()
 
-                // Message list
-                List {
-                    ForEach(0 ..< 15) { id in
-                        ZStack {
-                            HStack {
-                                AvatarView(
-                                    avatarType: .nameCapital,
-                                    maxSize: 40,
-                                    firstName: "friend",
-                                    lastName: "\(id)"
-                                )
-
-                                VStack(alignment: .leading) {
-                                    Text("friend \(id)")
-                                    Text("This is a piece of message...")
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.gray)
-                                }
-
-                                Spacer()
-
-                                VStack {
-                                    Text("\(Date().formatted(date: .omitted, time: .shortened))")
-                                        .font(.system(size: 10))
-                                        .foregroundColor(.gray)
-
-                                    Spacer()
-                                }
-                            }
-                            NavigationLink(destination: {
-                                ChatView(name: "friend \(id)")
-                            }) {
-                                EmptyView()
-                            }
-                        }
-                    }
-                }
-                .listStyle(.plain)
+                chatListView
             }
             .navigationBarHidden(true)
         }
     }
 }
 
+extension MessageListView {
+    // Message list
+    private var chatListView: some View {
+        List {
+            ForEach(0 ..< 15) { id in
+                ZStack {
+                    HStack {
+                        AvatarView(
+                            avatarType: .nameCapital,
+                            maxSize: 40,
+                            firstName: "friend",
+                            lastName: "\(id)"
+                        )
+
+                        VStack(alignment: .leading) {
+                            Text("friend \(id)")
+                            Text("This is a piece of message...")
+                                .font(.system(size: 14))
+                                .foregroundColor(.gray)
+                        }
+
+                        Spacer()
+
+                        VStack {
+                            Text("\(Date().formatted(date: .omitted, time: .shortened))")
+                                .font(.system(size: 10))
+                                .foregroundColor(.gray)
+
+                            Spacer()
+                        }
+                    }
+                    NavigationLink(destination: {
+                        ChatView(name: "friend \(id)")
+                    }) {
+                        EmptyView()
+                    }
+                }
+            }
+        }
+        .listStyle(.plain)
+    }
+}
+
 struct MessageListView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageListView()
+        NavigationView {
+            MessageListView()
+        }
     }
 }
