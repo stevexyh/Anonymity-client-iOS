@@ -21,7 +21,10 @@ struct HomePageView: View {
     var body: some View {
         TabView {
             NavigationView {
-                MessageListView(username: username)
+                MessageListView(
+                    username: username != "" ? username : nil,
+                    showLoginPage: $showLoginPage
+                )
             }
             .tabItem {
                 Label("Chats", systemImage: "quote.bubble")
@@ -37,7 +40,7 @@ struct HomePageView: View {
 
             // Settings Page View
             NavigationView {
-                SettingsView(tmpName: username)
+                SettingsView(tmpName: username != "" ? username : nil)
             }
             .tabItem {
                 Label("Settings", systemImage: "gear")

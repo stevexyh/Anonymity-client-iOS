@@ -37,7 +37,7 @@ struct SettingsView: View {
                     )
 
                     // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
-                    Text("\(tmpName ?? firstName)")
+                    Text("\(tmpName ?? "(null)")")
                         .font(.system(size: 40))
 
                     OnlineStatusView(

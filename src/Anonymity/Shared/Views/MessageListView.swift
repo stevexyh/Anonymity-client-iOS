@@ -15,6 +15,7 @@ import SwiftUI
 
 struct MessageListView: View {
     var username: String?
+    @Binding var showLoginPage: Bool
 
     var body: some View {
         ZStack {
@@ -54,7 +55,22 @@ struct MessageListView: View {
                     chatListView
                 } else {
                     Spacer()
-                    Text("Please log in first")
+
+                    Button(action: {
+                        showLoginPage = true
+                    }) {
+                        HStack {
+                            Text("Please log in first")
+                            Image(systemName: "arrow.right.circle.fill")
+                                .font(.system(size: 20))
+                        }
+                    }
+                    .frame(height: 10)
+                    .padding()
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
+                    .cornerRadius(20)
+
                     Spacer()
                 }
             }
@@ -109,7 +125,7 @@ extension MessageListView {
 struct MessageListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MessageListView()
+            MessageListView(showLoginPage: Binding.constant(false))
         }
     }
 }
