@@ -21,7 +21,7 @@ struct HomePageView: View {
     var body: some View {
         TabView {
             NavigationView {
-                MessageListView(currentUserName: username)
+                MessageListView(username: username)
             }
             .tabItem {
                 Label("Chats", systemImage: "quote.bubble")
@@ -36,7 +36,7 @@ struct HomePageView: View {
             }
 
             // Settings Page View
-            HStack {
+            NavigationView {
                 SettingsView(tmpName: username)
             }
             .tabItem {

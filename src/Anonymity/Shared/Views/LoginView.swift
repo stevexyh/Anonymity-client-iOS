@@ -29,59 +29,57 @@ struct LoginView: View {
     }
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                Rectangle()
-                    .fill(Color.clear)
-                    .background(LinearGradient(
-                        colors: [.green.opacity(0.3), .blue.opacity(0.5)],
-                        startPoint: .topLeading, endPoint: .bottomTrailing
-                    ))
+        ZStack {
+            Rectangle()
+                .fill(Color.clear)
+                .background(LinearGradient(
+                    colors: [.green.opacity(0.3), .blue.opacity(0.5)],
+                    startPoint: .topLeading, endPoint: .bottomTrailing
+                ))
 
-                VStack {
-                    Spacer()
+            VStack {
+                Spacer()
 
-                    AvatarView(
-                        avatarType: .nameCapital,
-                        maxSize: 100,
-                        firstName: username
-                    )
+                AvatarView(
+                    avatarType: .nameCapital,
+                    maxSize: 100,
+                    firstName: username
+                )
+                .padding()
+
+                TextField("USERNAME", text: $username)
+                    .frame(width: 200, height: 10, alignment: .center)
                     .padding()
-
-                    TextField("USERNAME", text: $username)
-                        .frame(width: 200, height: 10, alignment: .center)
-                        .padding()
-                        .background(.black.opacity(0.1))
-                        .cornerRadius(20)
-
-                    SecureField("PASSWORD", text: $password)
-                        .frame(width: 200, height: 10, alignment: .center)
-                        .padding()
-                        .background(.black.opacity(0.1))
-                        .cornerRadius(20)
-
-                    Spacer()
-
-                    Button(action: {
-                        showLoginPage = false
-                    }) {
-                        HStack {
-                            Text("LOGIN")
-                            Image(systemName: "arrow.right.circle.fill")
-                                .font(.system(size: 20))
-                        }
-                    }
-                    .frame(height: 10)
-                    .padding()
-                    .background(Color.accentColor)
-                    .foregroundColor(.white)
+                    .background(.black.opacity(0.1))
                     .cornerRadius(20)
 
-                    Spacer()
+                SecureField("PASSWORD", text: $password)
+                    .frame(width: 200, height: 10, alignment: .center)
+                    .padding()
+                    .background(.black.opacity(0.1))
+                    .cornerRadius(20)
+
+                Spacer()
+
+                Button(action: {
+                    showLoginPage = false
+                }) {
+                    HStack {
+                        Text("LOGIN")
+                        Image(systemName: "arrow.right.circle.fill")
+                            .font(.system(size: 20))
+                    }
                 }
+                .frame(height: 10)
+                .padding()
+                .background(Color.accentColor)
+                .foregroundColor(.white)
+                .cornerRadius(20)
+
+                Spacer()
             }
-            .navigationTitle("Login")
         }
+        .navigationTitle("Login")
     }
 }
 
