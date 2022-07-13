@@ -11,6 +11,7 @@
 		AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CB287DC36D00842168 /* LoginView.swift */; };
 		AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CD287E296F00842168 /* ContactsViewModel.swift */; };
 		AA1F16D0287E419F00842168 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CF287E419F00842168 /* Contact.swift */; };
+		AA1F16D2287E45B000842168 /* ContactDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16D1287E45B000842168 /* ContactDataService.swift */; };
 		AA22B566285D93C600E1DD29 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B565285D93C600E1DD29 /* Tests_iOS.swift */; };
 		AA22B568285D93C600E1DD29 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B567285D93C600E1DD29 /* Tests_iOSLaunchTests.swift */; };
 		AA22B572285D93C600E1DD29 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B571285D93C600E1DD29 /* Tests_macOS.swift */; };
@@ -61,6 +62,7 @@
 		AA1F16CB287DC36D00842168 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AA1F16CD287E296F00842168 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		AA1F16CF287E419F00842168 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		AA1F16D1287E45B000842168 /* ContactDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDataService.swift; sourceTree = "<group>"; };
 		AA22B54B285D93C500E1DD29 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		AA22B54C285D93C500E1DD29 /* AnonymityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymityApp.swift; sourceTree = "<group>"; };
 		AA22B54D285D93C500E1DD29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				AA5A43E32874940100C47765 /* MessageDataService.swift */,
 				AA1F16C9287C860000842168 /* UserDataService.swift */,
+				AA1F16D1287E45B000842168 /* ContactDataService.swift */,
 			);
 			path = DataServices;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
 				AA22B579285D93C600E1DD29 /* ContentView.swift in Sources */,
 				AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */,
+				AA1F16D2287E45B000842168 /* ContactDataService.swift in Sources */,
 				AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
