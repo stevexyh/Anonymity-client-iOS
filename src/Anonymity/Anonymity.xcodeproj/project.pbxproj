@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA1F16CA287C860000842168 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16C9287C860000842168 /* UserDataService.swift */; };
 		AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CB287DC36D00842168 /* LoginView.swift */; };
+		AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CD287E296F00842168 /* ContactsViewModel.swift */; };
+		AA1F16D0287E419F00842168 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CF287E419F00842168 /* Contact.swift */; };
 		AA22B566285D93C600E1DD29 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B565285D93C600E1DD29 /* Tests_iOS.swift */; };
 		AA22B568285D93C600E1DD29 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B567285D93C600E1DD29 /* Tests_iOSLaunchTests.swift */; };
 		AA22B572285D93C600E1DD29 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B571285D93C600E1DD29 /* Tests_macOS.swift */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		AA1F16C9287C860000842168 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		AA1F16CB287DC36D00842168 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AA1F16CD287E296F00842168 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		AA1F16CF287E419F00842168 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		AA22B54B285D93C500E1DD29 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		AA22B54C285D93C500E1DD29 /* AnonymityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymityApp.swift; sourceTree = "<group>"; };
 		AA22B54D285D93C500E1DD29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				AA44B77F286527CA001691A3 /* User.swift */,
 				AA44B78128677AA9001691A3 /* Message.swift */,
 				AA44B787286B65CB001691A3 /* Chat.swift */,
+				AA1F16CF287E419F00842168 /* Contact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 		AA44B77E286524D1001691A3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AA1F16CD287E296F00842168 /* ContactsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -394,12 +400,14 @@
 				AA5A43EB28749EAD00C47765 /* HomePageView.swift in Sources */,
 				AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */,
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
+				AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */,
 				AA5A43F128750B5400C47765 /* AvatarView.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
 				AA44B788286B65CB001691A3 /* Chat.swift in Sources */,
 				AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */,
 				AA5A43ED2874A34900C47765 /* UserProfileView.swift in Sources */,
 				AA44B786286A845B001691A3 /* ChatView.swift in Sources */,
+				AA1F16D0287E419F00842168 /* Contact.swift in Sources */,
 				AA44B78228677AA9001691A3 /* Message.swift in Sources */,
 				AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */,
 				AA1F16CA287C860000842168 /* UserDataService.swift in Sources */,
