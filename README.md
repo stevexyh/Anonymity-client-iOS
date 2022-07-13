@@ -69,9 +69,9 @@ Anonymity Client side
 - [x] sign in page
 
 ### Logic
-- [ ] sign in
-- [ ] add contacts
-- [ ] Database
+- [x] sign in
+- [x] add contacts
+- [x] tmp VM Database
 
 ---
 ## Screenshots
