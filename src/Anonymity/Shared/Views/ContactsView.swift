@@ -14,6 +14,8 @@
 import SwiftUI
 
 struct ContactsView: View {
+    @EnvironmentObject private var vm: ContactsViewModel
+
     var username: String? = ""
     @Binding var showLoginPage: Bool
     @State var showAddSheet: Bool = false
@@ -22,18 +24,18 @@ struct ContactsView: View {
         VStack {
             if username != nil {
                 List {
-                    ForEach(0 ..< 15) { id in
+                    ForEach(vm.contacts) { contact in
                         ZStack {
                             HStack {
                                 AvatarView(
                                     avatarType: .nameCapital,
                                     maxSize: 50,
-                                    firstName: "friend",
-                                    lastName: "\(id)"
+                                    firstName: "\(contact.firstName ?? "")",
+                                    lastName: "\(contact.lastName ?? "")"
                                 )
 
                                 VStack(alignment: .leading) {
-                                    Text("friend \(id)")
+                                    Text(contact.fullName)
 
                                     OnlineStatusView(
                                         fontColor: .black.opacity(0.5),
@@ -48,7 +50,7 @@ struct ContactsView: View {
                                 Spacer()
                             }
                             NavigationLink(destination: {
-                                ChatView(name: "friend \(id)")
+                                ChatView(name: contact.fullName)
                             }) {
                                 EmptyView()
                             }
@@ -97,6 +99,7 @@ struct ContactsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ContactsView(showLoginPage: Binding.constant(false))
+                .environmentObject(ContactsViewModel())
         }
     }
 }

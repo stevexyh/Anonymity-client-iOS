@@ -13,8 +13,13 @@
 
 import Foundation
 
-struct Contact {
+struct Contact: Identifiable {
+    let id = UUID()
     let uid: String?
     let firstName: String?
     let lastName: String?
+
+    var fullName: String {
+        "\(firstName ?? "") \(lastName ?? "")"
+    }
 }

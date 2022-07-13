@@ -15,11 +15,13 @@ import SwiftUI
 
 @main
 struct AnonymityApp: App {
+    @StateObject private var vm = ContactsViewModel()
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             HomePageView()
+                .environmentObject(vm)
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
