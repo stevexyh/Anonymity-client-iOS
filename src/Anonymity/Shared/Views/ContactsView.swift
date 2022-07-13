@@ -16,6 +16,7 @@ import SwiftUI
 struct ContactsView: View {
     var username: String? = ""
     @Binding var showLoginPage: Bool
+    @State var showAddSheet: Bool = false
 
     var body: some View {
         VStack {
@@ -73,6 +74,22 @@ struct ContactsView: View {
             }
         }
         .navigationTitle("Contacts")
+        .toolbar {
+            Button(action: {
+                showAddSheet = true
+            }) {
+                Image(systemName: "plus")
+            }
+            .sheet(isPresented: $showAddSheet) {
+                ContactsAddSheet()
+            }
+        }
+    }
+}
+
+struct ContactsAddSheet: View {
+    var body: some View {
+        Text("Add")
     }
 }
 
