@@ -11,6 +11,7 @@
 		AA023BEB288768B50095C6B1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA023BEA288768B50095C6B1 /* FirebaseFirestore */; };
 		AA023BED288768B50095C6B1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA023BEC288768B50095C6B1 /* FirebaseStorage */; };
 		AA023BEF2887770E0095C6B1 /* ChatDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA023BEE2887770E0095C6B1 /* ChatDataService.swift */; };
+		AA023BF128877A190095C6B1 /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA023BF028877A190095C6B1 /* MessageListViewModel.swift */; };
 		AA1F16CA287C860000842168 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16C9287C860000842168 /* UserDataService.swift */; };
 		AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CB287DC36D00842168 /* LoginView.swift */; };
 		AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1F16CD287E296F00842168 /* ContactsViewModel.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		AA023BEE2887770E0095C6B1 /* ChatDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataService.swift; sourceTree = "<group>"; };
+		AA023BF028877A190095C6B1 /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
 		AA1F16C9287C860000842168 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		AA1F16CB287DC36D00842168 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AA1F16CD287E296F00842168 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				AA1F16CD287E296F00842168 /* ContactsViewModel.swift */,
+				AA023BF028877A190095C6B1 /* MessageListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
 				AA1F16D4287ED6D100842168 /* ContactsAddSheetView.swift in Sources */,
 				AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */,
+				AA023BF128877A190095C6B1 /* MessageListViewModel.swift in Sources */,
 				AA5A43F128750B5400C47765 /* AvatarView.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
 				AA44B788286B65CB001691A3 /* Chat.swift in Sources */,
