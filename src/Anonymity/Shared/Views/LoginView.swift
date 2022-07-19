@@ -11,6 +11,7 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import Firebase
 import SwiftUI
 
 struct LoginView: View {
@@ -18,7 +19,7 @@ struct LoginView: View {
     @Binding var password: String
     @Binding var showLoginPage: Bool
 
-    @State var createMode: Bool = false
+//    @State var createMode: Bool = false
 
     init(
         username: Binding<String> = .constant(""),
@@ -61,11 +62,11 @@ struct LoginView: View {
                     .background(.black.opacity(0.1))
                     .cornerRadius(20)
 
-                SecureField(createMode ? "PASSWORD AGAIN" : "", text: $password)
-                    .frame(width: 200, height: 10, alignment: .center)
-                    .padding()
-                    .background(.black.opacity(createMode ? 0.1 : 0))
-                    .cornerRadius(20)
+//                SecureField(createMode ? "PASSWORD AGAIN" : "", text: $password)
+//                    .frame(width: 200, height: 10, alignment: .center)
+//                    .padding()
+//                    .background(.black.opacity(createMode ? 0.1 : 0))
+//                    .cornerRadius(20)
 
                 Spacer()
 
@@ -87,7 +88,8 @@ struct LoginView: View {
                 .cornerRadius(20)
 
                 Button(action: {
-                    createMode.toggle()
+//                    createMode.toggle()
+                    createNewUser()
                 }) {
                     HStack {
                         Text("Create an account")
@@ -107,6 +109,19 @@ struct LoginView: View {
             }
         }
         .navigationTitle("Login")
+    }
+}
+
+extension LoginView {
+    private func createNewUser() {
+        Auth.auth().createUser(withEmail: username, password: password) { result, err in
+            if let err = err {
+                print("Failed to create new user:", err)
+                return
+            }
+
+            print("User created successfully: \(result?.user.uid ?? "")")
+        }
     }
 }
 
