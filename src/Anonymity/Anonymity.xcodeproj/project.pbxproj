@@ -39,6 +39,8 @@
 		AA5A43ED2874A34900C47765 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EC2874A34900C47765 /* UserProfileView.swift */; };
 		AA5A43EF2874D55300C47765 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43EE2874D55300C47765 /* SettingsView.swift */; };
 		AA5A43F128750B5400C47765 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43F028750B5400C47765 /* AvatarView.swift */; };
+		AA883728288725A3000C19FA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA883727288725A3000C19FA /* FirebaseAuth */; };
+		AA88372A288725A3000C19FA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA883729288725A3000C19FA /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA883728288725A3000C19FA /* FirebaseAuth in Frameworks */,
+				AA88372A288725A3000C19FA /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +263,10 @@
 			dependencies = (
 			);
 			name = "Anonymity (iOS)";
+			packageProductDependencies = (
+				AA883727288725A3000C19FA /* FirebaseAuth */,
+				AA883729288725A3000C19FA /* FirebaseStorage */,
+			);
 			productName = "Anonymity (iOS)";
 			productReference = AA22B554285D93C600E1DD29 /* Anonymity.app */;
 			productType = "com.apple.product-type.application";
@@ -351,6 +359,9 @@
 				Base,
 			);
 			mainGroup = AA22B544285D93C500E1DD29;
+			packageReferences = (
+				AA883726288725A3000C19FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = AA22B555285D93C600E1DD29 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -825,6 +836,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA883726288725A3000C19FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA883727288725A3000C19FA /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA883726288725A3000C19FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AA883729288725A3000C19FA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA883726288725A3000C19FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AA22B54A285D93C500E1DD29 /* Anonymity.xcdatamodeld */ = {
