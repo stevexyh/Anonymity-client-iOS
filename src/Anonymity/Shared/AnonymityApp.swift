@@ -11,10 +11,23 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import FirebaseCore
 import SwiftUI
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+
+        return true
+    }
+}
 
 @main
 struct AnonymityApp: App {
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     @StateObject private var vm = ContactsViewModel()
     let persistenceController = PersistenceController.shared
 
