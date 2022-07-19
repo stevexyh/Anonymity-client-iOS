@@ -18,6 +18,7 @@ struct LoginView: View {
     @Binding var username: String
     @Binding var password: String
     @Binding var showLoginPage: Bool
+    @State var statusMessage = ""
 
 //    @State var createMode: Bool = false
 
@@ -70,6 +71,9 @@ struct LoginView: View {
 
                 Spacer()
 
+                Text(statusMessage)
+                    .foregroundColor(.red)
+
                 Button(action: {
                     showLoginPage = false
                 }) {
@@ -116,11 +120,13 @@ extension LoginView {
     private func createNewUser() {
         Auth.auth().createUser(withEmail: username, password: password) { result, err in
             if let err = err {
-                print("Failed to create new user:", err)
+                statusMessage = "Failed to create new user: \(err.localizedDescription)"
+                print(statusMessage)
                 return
             }
 
-            print("User created successfully: \(result?.user.uid ?? "")")
+            statusMessage = "User created successfully: \(result?.user.uid ?? "")"
+            print(statusMessage)
         }
     }
 }
