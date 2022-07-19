@@ -75,7 +75,7 @@ struct LoginView: View {
                     .foregroundColor(.red)
 
                 Button(action: {
-                    showLoginPage = false
+                    loginUser()
                 }) {
                     HStack {
                         Text("LOGIN")
@@ -126,6 +126,20 @@ extension LoginView {
             }
 
             statusMessage = "User created successfully: \(result?.user.uid ?? "")"
+            print(statusMessage)
+        }
+    }
+
+    private func loginUser() {
+        Auth.auth().signIn(withEmail: username, password: password) { result, err in
+            if let err = err {
+                statusMessage = "Failed to login user: \(err.localizedDescription)"
+                print(statusMessage)
+                return
+            }
+
+            statusMessage = "User login successfully: \(result?.user.uid ?? "")"
+            showLoginPage = false
             print(statusMessage)
         }
     }
