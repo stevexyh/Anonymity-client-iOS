@@ -62,13 +62,16 @@ struct ContactsAddSheetView: View {
                     Text("Cancel")
                 })
             }
-        }.navigationBarTitle("Add New Contact")
+        }
+        .navigationTitle("Add New Contact")
     }
 }
 
 struct ContactsAddSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactsAddSheetView()
-            .environmentObject(ContactsViewModel())
+        NavigationView {
+            ContactsAddSheetView()
+                .environmentObject(ContactsViewModel())
+        }
     }
 }

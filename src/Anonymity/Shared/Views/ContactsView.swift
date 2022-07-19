@@ -83,7 +83,9 @@ struct ContactsView: View {
                 Image(systemName: "plus")
             }
             .sheet(isPresented: $showAddSheet) {
-                ContactsAddSheetView()
+                NavigationView {
+                    ContactsAddSheetView()
+                }
             }
         }
     }
