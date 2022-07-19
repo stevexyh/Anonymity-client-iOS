@@ -118,7 +118,7 @@ struct LoginView: View {
 
 extension LoginView {
     private func createNewUser() {
-        Auth.auth().createUser(withEmail: username, password: password) { result, err in
+        FirebaseManager.shared.auth.createUser(withEmail: username, password: password) { result, err in
             if let err = err {
                 statusMessage = "Failed to create new user: \(err.localizedDescription)"
                 print(statusMessage)
@@ -131,7 +131,7 @@ extension LoginView {
     }
 
     private func loginUser() {
-        Auth.auth().signIn(withEmail: username, password: password) { result, err in
+        FirebaseManager.shared.auth.signIn(withEmail: username, password: password) { result, err in
             if let err = err {
                 statusMessage = "Failed to login user: \(err.localizedDescription)"
                 print(statusMessage)

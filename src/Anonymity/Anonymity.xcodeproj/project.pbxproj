@@ -43,6 +43,8 @@
 		AA88372A288725A3000C19FA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA883729288725A3000C19FA /* FirebaseStorage */; };
 		AA88372C28872B7F000C19FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA88372B28872B7F000C19FA /* GoogleService-Info.plist */; };
 		AA88372D28872B7F000C19FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA88372B28872B7F000C19FA /* GoogleService-Info.plist */; };
+		AA883730288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
+		AA883731288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,7 @@
 		AA5A43EE2874D55300C47765 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AA5A43F028750B5400C47765 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		AA88372B28872B7F000C19FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA88372F288745B2000C19FA /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,7 @@
 				AA44B77E286524D1001691A3 /* ViewModels */,
 				AA44B77D286524CA001691A3 /* Views */,
 				AA5A43E22874922200C47765 /* DataServices */,
+				AA88372E2887457A000C19FA /* Managers */,
 				AA22B54E285D93C500E1DD29 /* Persistence.swift */,
 				AA22B54F285D93C600E1DD29 /* Assets.xcassets */,
 				AA22B54A285D93C500E1DD29 /* Anonymity.xcdatamodeld */,
@@ -249,6 +253,14 @@
 				AA1F16D3287ED6D100842168 /* ContactsAddSheetView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		AA88372E2887457A000C19FA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AA88372F288745B2000C19FA /* FirebaseManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +450,7 @@
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
 				AA22B579285D93C600E1DD29 /* ContentView.swift in Sources */,
 				AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */,
+				AA883730288745B2000C19FA /* FirebaseManager.swift in Sources */,
 				AA1F16D2287E45B000842168 /* ContactDataService.swift in Sources */,
 				AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */,
 			);
@@ -449,6 +462,7 @@
 			files = (
 				AA22B578285D93C600E1DD29 /* AnonymityApp.swift in Sources */,
 				AA22B57C285D93C600E1DD29 /* Persistence.swift in Sources */,
+				AA883731288745B2000C19FA /* FirebaseManager.swift in Sources */,
 				AA22B576285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
 				AA22B57A285D93C600E1DD29 /* ContentView.swift in Sources */,
 			);
