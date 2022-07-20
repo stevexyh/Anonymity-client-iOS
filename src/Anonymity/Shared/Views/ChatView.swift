@@ -42,7 +42,7 @@ struct ChatView: View {
                         ForEach(vm.chats[0].messages) { msg in
                             HStack {
                                 ZStack {
-                                    MessageBubbleSubView(id: msg.id, maxWidth: geometry.size.width * 0.8, type: msg.type, content: "\(msg.id): test sample message test sample message test sample message test sample message ------------------------------------------ \(msg.content)")
+                                    MessageBubbleSubView(id: msg.id, maxWidth: geometry.size.width * 0.8, type: msg.type, content: "\(msg.id): \(msg.content)")
                                         .padding()
                                 }
                             }
@@ -117,7 +117,7 @@ struct MessageBubbleSubView: View {
             .padding(.vertical, 5)
             .background((type == .received) ? .gray.opacity(0.3) : .green.opacity(0.6))
             .cornerRadius(10)
-            .frame(maxWidth: maxWidth)
+            .frame(maxWidth: maxWidth, alignment: (type == .received) ? .leading : .trailing)
     }
 }
 
