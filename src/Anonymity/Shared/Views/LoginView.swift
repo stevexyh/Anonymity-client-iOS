@@ -95,7 +95,9 @@ struct LoginView: View {
 
                 Button(action: {
 //                    createMode.toggle()
-                    createNewUser()
+                    Task {
+                        await createNewUser()
+                    }
                 }) {
                     HStack {
                         Text("Create an account")
@@ -119,19 +121,23 @@ struct LoginView: View {
 }
 
 extension LoginView {
-    private func createNewUser() {
-        FirebaseManager.shared.auth.createUser(withEmail: username, password: password) { result, err in
-            if let err = err {
-                statusMessage = "Failed to create new user: \(err.localizedDescription)"
-                print(statusMessage)
-                return
-            }
+    // TODO: (Steve X): add error message
+    private func createNewUser() async {
+        _ = await UserAuthManager.userCreate(username: username, password: password)
 
-            statusMessage = "User created successfully: \(result?.user.uid ?? "")"
-            print(statusMessage)
-        }
+//        FirebaseManager.shared.auth.createUser(withEmail: username, password: password) { result, err in
+//            if let err = err {
+//                statusMessage = "Failed to create new user: \(err.localizedDescription)"
+//                print(statusMessage)
+//                return
+//            }
+//
+//            statusMessage = "User created successfully: \(result?.user.uid ?? "")"
+//            print(statusMessage)
+//        }
     }
 
+    // TODO: (Steve X): add error message
     private func loginUser() async {
         let res = await UserAuthManager.userLogin(username: username, password: password)
         showLoginPage = !res

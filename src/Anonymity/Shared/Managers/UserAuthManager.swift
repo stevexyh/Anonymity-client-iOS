@@ -42,4 +42,18 @@ class UserAuthManager {
 
         return false
     }
+
+    /// Create a new user with Firebase and return the boolean result
+    /// - Parameters:
+    ///   - username: Currently using email
+    ///   - password:
+    /// - Returns: boolean user creation result
+    @MainActor
+    static func userCreate(username: String, password: String) async -> Bool {
+        if let _ = try? await FirebaseManager.shared.auth.createUser(withEmail: username, password: password) {
+            return true
+        }
+
+        return false
+    }
 }
