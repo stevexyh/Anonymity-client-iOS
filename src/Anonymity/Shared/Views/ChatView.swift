@@ -42,7 +42,7 @@ struct ChatView: View {
                         ForEach(vm.chats[0].messages) { msg in
                             HStack {
                                 ZStack {
-                                    MessageBubbleSubView(id: msg.id, maxWidth: geometry.size.width * 0.8, type: msg.type, content: "\(msg.id): test sample message test sample message test sample message test sample message ------------------------------------------")
+                                    MessageBubbleSubView(id: msg.id, maxWidth: geometry.size.width * 0.8, type: msg.type, content: "\(msg.id): test sample message test sample message test sample message test sample message ------------------------------------------ \(msg.content)")
                                         .padding()
                                 }
                             }
