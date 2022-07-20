@@ -72,9 +72,9 @@ Anonymity Client side
 - [x] sign in
 - [x] add contacts
 - [x] tmp VM Database
-- [ ] firebase
+- [x] firebase
+- [x] auth
 - [ ] communication
-- [ ] auth
 
 ---
 ## Screenshots
