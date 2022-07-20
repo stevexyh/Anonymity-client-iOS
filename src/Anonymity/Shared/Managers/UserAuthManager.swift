@@ -14,12 +14,27 @@
 import Foundation
 
 class UserAuthManager {
-//    static var loginStatus: Bool = false
-//    static var loginStatusMessage: String?
-//    static var createStatus: Bool = false
-//    static var createStatusMessage: String?
+    // MARK: - (Steve X): HIGHLIGHT: async Login -
 
-    // FIXME: (Steve X): Runtime issue: -[UIApplication setDelegate:] must be used from main thread only
+    /// Login user with Firebase and return the boolean auth result
+    ///
+    /// Ref: [](https://peterfriese.dev/posts/firebase-async-calls-swift/)
+    ///
+    /// Async events with `async` & `await` should be used to make sure return value is changed after Firebase signIn completed.
+    /// Also, these async events should be executed on main thread.
+    ///
+    /// Fixed Runtime issue by @MainActor:
+    /// ```
+    /// -[UIApplication setDelegate:] must be used from main thread only
+    /// ```
+    ///
+    /// It really took me a long time to figure these out...😫
+    ///
+    /// - Parameters:
+    ///   - username: Currently using email
+    ///   - password:
+    /// - Returns: boolean auth result
+    @MainActor
     static func userLogin(username: String, password: String) async -> Bool {
         if let _ = try? await FirebaseManager.shared.auth.signIn(withEmail: username, password: password) {
             return true
