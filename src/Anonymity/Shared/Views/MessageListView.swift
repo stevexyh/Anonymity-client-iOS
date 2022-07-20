@@ -14,6 +14,8 @@
 import SwiftUI
 
 struct MessageListView: View {
+    @EnvironmentObject private var vm: MessageListViewModel
+
     var username: String?
     @Binding var showLoginPage: Bool
 
@@ -83,18 +85,21 @@ extension MessageListView {
     // Message list
     private var chatListView: some View {
         List {
-            ForEach(0 ..< 15) { id in
+            ForEach(vm.chats) { chat in
+                let contact = chat.person[0]
+                let chatName = contact.username
+
                 ZStack {
                     HStack {
                         AvatarView(
                             avatarType: .nameCapital,
                             maxSize: 40,
-                            firstName: "friend",
-                            lastName: "\(id)"
+                            firstName: chatName,
+                            lastName: ""
                         )
 
                         VStack(alignment: .leading) {
-                            Text("friend \(id)")
+                            Text(chatName)
                             Text("This is a piece of message...")
                                 .font(.system(size: 14))
                                 .foregroundColor(.gray)
@@ -111,7 +116,7 @@ extension MessageListView {
                         }
                     }
                     NavigationLink(destination: {
-                        ChatView(name: "friend \(id)")
+                        ChatView(name: chatName)
                     }) {
                         EmptyView()
                     }
@@ -126,6 +131,7 @@ struct MessageListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MessageListView(showLoginPage: Binding.constant(false))
+                .environmentObject(MessageListViewModel())
         }
     }
 }
