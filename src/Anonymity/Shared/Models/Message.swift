@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct Message {
+struct Message: Identifiable {
     let id: String = UUID().uuidString
     let type: MessageType
     let sender: User

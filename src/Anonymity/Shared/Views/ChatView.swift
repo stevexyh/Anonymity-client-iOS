@@ -14,6 +14,8 @@
 import SwiftUI
 
 struct ChatView: View {
+    @StateObject private var vm = MessageListViewModel()
+
     // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
     let name: String
     @State private var text: String = ""
@@ -37,14 +39,14 @@ struct ChatView: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         EncryptionInfoSubView(name: name)
 
-                        ForEach(0 ..< 10) { id in
+                        ForEach(vm.chats[0].messages) { msg in
                             HStack {
                                 ZStack {
-                                    MessageBubbleSubView(id: id, maxWidth: geometry.size.width * 0.8)
+                                    MessageBubbleSubView(id: msg.id, maxWidth: geometry.size.width * 0.8, type: msg.type, content: "\(msg.id): test sample message test sample message test sample message test sample message ------------------------------------------")
                                         .padding()
                                 }
                             }
-                            .frame(maxWidth: .infinity, alignment: ((id % 2) != 0) ? .leading : .trailing)
+                            .frame(maxWidth: .infinity, alignment: (msg.type == .received) ? .leading : .trailing)
                         }
                     }
                 }
@@ -94,16 +96,18 @@ extension ChatView {
 }
 
 struct MessageBubbleSubView: View {
-    let id: Int
+    let id: String
     let maxWidth: CGFloat?
+    let type: Message.MessageType
+    let content: String
 
     var body: some View {
-        Text("\(id): test sample message test sample message test sample message test sample message ------------------------------------------")
+        Text(content)
             .padding(.horizontal)
             .padding(.vertical, 5)
-            .background(((id % 2) != 0) ? .gray.opacity(0.3) : .green.opacity(0.6))
+            .background((type == .received) ? .gray.opacity(0.3) : .green.opacity(0.6))
             .cornerRadius(10)
-            .frame(maxWidth: maxWidth, alignment: ((id % 2) != 0) ? .leading : .trailing)
+            .frame(maxWidth: maxWidth)
     }
 }
 
@@ -129,6 +133,7 @@ struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ChatView(name: "Alice")
+                .environmentObject(MessageListViewModel())
         }
     }
 }
