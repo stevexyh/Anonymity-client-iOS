@@ -84,7 +84,17 @@ extension ChatView {
                     .cornerRadius(height)
                     .focused($isFocused)
 
-                Button(action: {}) {
+                Button(action: {
+                    vm.addMessage(
+                        // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to dynamic chatID
+                        chatId: 0,
+                        type: .sent,
+                        sender: vm.chats[0].person[0],
+                        receiver: vm.chats[0].person[1],
+                        content: text,
+                        digest: "abcde"
+                    )
+                }) {
                     Image(systemName: "arrow.up.circle")
                         .resizable()
                         .frame(width: height, height: height)
