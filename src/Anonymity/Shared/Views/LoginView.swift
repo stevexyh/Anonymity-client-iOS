@@ -75,7 +75,9 @@ struct LoginView: View {
                     .foregroundColor(.red)
 
                 Button(action: {
-                    loginUser()
+                    Task {
+                        await loginUser()
+                    }
                 }) {
                     HStack {
                         Text("LOGIN")
@@ -130,18 +132,22 @@ extension LoginView {
         }
     }
 
-    private func loginUser() {
-        FirebaseManager.shared.auth.signIn(withEmail: username, password: password) { result, err in
-            if let err = err {
-                statusMessage = "Failed to login user: \(err.localizedDescription)"
-                print(statusMessage)
-                return
-            }
+    private func loginUser() async {
+        let res = await UserAuthManager.userLogin(username: username, password: password)
+        showLoginPage = !res
+        print("static:", res)
 
-            statusMessage = "User login successfully: \(result?.user.uid ?? "")"
-            showLoginPage = false
-            print(statusMessage)
-        }
+//        FirebaseManager.shared.auth.signIn(withEmail: username, password: password) { result, err in
+//            if let err = err {
+//                statusMessage = "Failed to login user: \(err.localizedDescription)"
+//                print(statusMessage)
+//                return
+//            }
+//
+//            statusMessage = "User login successfully: \(result?.user.uid ?? "")"
+//            showLoginPage = false
+//            print(statusMessage)
+//        }
     }
 }
 
