@@ -14,7 +14,7 @@
 import Foundation
 
 struct Contact: Identifiable {
-    let id = UUID()
+    var id: String? { uid }
     let uid: String?
     let firstName: String?
     let lastName: String?
