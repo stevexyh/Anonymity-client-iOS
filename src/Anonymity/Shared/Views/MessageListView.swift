@@ -130,7 +130,7 @@ extension MessageListView {
 struct MessageListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MessageListView(showLoginPage: Binding.constant(false))
+            MessageListView(username: "<DEBUG>", showLoginPage: Binding.constant(false))
                 .environmentObject(MessageListViewModel())
         }
     }
