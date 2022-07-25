@@ -14,15 +14,33 @@
 import Foundation
 
 struct Chat: Identifiable {
-    let id = UUID()
-    let type: ChatType
+    var id: String = UUID().uuidString
     var person: [User]
     var messages: [Message]
+    var type: ChatType {
+        if person.count == 2 {
+            return .single
+        } else {
+            return .group
+        }
+    }
 }
 
 extension Chat {
     enum ChatType {
         case single
         case group
+    }
+
+    init(person: [User], messages: [Message]) {
+        self.person = person
+        self.messages = messages
+    }
+
+    /// Fetch Chat instance from database in DataService
+    /// - Parameter id: Chat ID
+    init?(for id: Chat.ID) {
+        guard let chat = ChatDataService.chats.first(where: { $0.id == id }) else { return nil }
+        self = chat
     }
 }
