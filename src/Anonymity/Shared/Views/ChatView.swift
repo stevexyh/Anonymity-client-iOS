@@ -95,7 +95,7 @@ extension ChatView {
                         digest: "abcde"
                     )
 
-                    self.text = ""
+                    self.text.removeAll()
                 }) {
                     Image(systemName: "arrow.up.circle")
                         .resizable()
