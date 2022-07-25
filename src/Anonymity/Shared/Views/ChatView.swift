@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct ChatView: View {
-    @StateObject private var vm = MessageListViewModel()
+    @StateObject private var vm = ChatViewModel()
 
     // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
     let name: String
@@ -39,7 +39,7 @@ struct ChatView: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         EncryptionInfoSubView(name: name)
 
-                        ForEach(vm.chats[0].messages) { msg in
+                        ForEach(vm.chat.messages) { msg in
                             HStack {
                                 ZStack {
                                     MessageBubbleSubView(id: msg.id, maxWidth: geometry.size.width * 0.8, type: msg.type, content: "\(msg.id): \(msg.content)")
@@ -85,12 +85,13 @@ extension ChatView {
                     .focused($isFocused)
 
                 Button(action: {
-                    vm.addMessage(
+                    vm.sendMessage(
                         // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to dynamic chatID
                         chatId: 0,
                         type: .sent,
-                        sender: vm.chats[0].person[0],
-                        receiver: vm.chats[0].person[1],
+
+                        // TODO: (Steve X): REMOVE BEFORE FLIGHT: set default value
+                        senderID: UserAuthManager.currentUser?.uid ?? "",
                         content: self.text,
                         digest: "abcde"
                     )

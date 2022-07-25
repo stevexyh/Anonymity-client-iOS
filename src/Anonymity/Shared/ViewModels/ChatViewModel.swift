@@ -14,16 +14,17 @@
 import Foundation
 
 class ChatViewModel: ObservableObject {
-    @Published var chats: [Chat]
+    @Published var chat: Chat
 
     init() {
-        chats = ChatDataService.chats
+        // TODO: (Steve X): REMOVE BEFORE FLIGHT: set custom id
+        chat = ChatDataService.chats[0]
     }
 
-    func addMessage(
+    func sendMessage(
         chatId: Int,
         type: Message.MessageType,
-        sender: User, receiver: User,
+        senderID: String,
         content: String,
         timestamp: Date = .now,
         isReceived: Bool = false,
@@ -31,12 +32,14 @@ class ChatViewModel: ObservableObject {
     ) {
         let new_message = Message(
             type: type,
-            sender: sender,
+
+            // TODO: (Steve X): REMOVE BEFORE FLIGHT: set default value
+            sender: UserDataService.users.first(where: { $0.id == senderID }) ?? UserDataService.users[0],
             content: content,
             timestamp: timestamp,
             isReceived: isReceived,
             digest: digest
         )
-        chats[chatId].messages.append(new_message)
+        chat.messages.append(new_message)
     }
 }
