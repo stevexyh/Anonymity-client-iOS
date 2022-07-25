@@ -15,7 +15,7 @@ import Firebase
 import Foundation
 
 class UserAuthManager {
-    var currentUser: Firebase.User? {
+    static var currentUser: Firebase.User? {
         return FirebaseManager.shared.auth.currentUser
     }
 
