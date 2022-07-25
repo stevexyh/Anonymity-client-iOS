@@ -49,6 +49,7 @@
 		AA88372D28872B7F000C19FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA88372B28872B7F000C19FA /* GoogleService-Info.plist */; };
 		AA883730288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
 		AA883731288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
+		AAD9A0D1288F2CA1008A1F30 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		AA5A43F028750B5400C47765 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		AA88372B28872B7F000C19FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA88372F288745B2000C19FA /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 			children = (
 				AA1F16CD287E296F00842168 /* ContactsViewModel.swift */,
 				AA023BF028877A190095C6B1 /* MessageListViewModel.swift */,
+				AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
 				AA1F16D4287ED6D100842168 /* ContactsAddSheetView.swift in Sources */,
 				AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */,
+				AAD9A0D1288F2CA1008A1F30 /* ChatViewModel.swift in Sources */,
 				AA023BF128877A190095C6B1 /* MessageListViewModel.swift in Sources */,
 				AA5A43F128750B5400C47765 /* AvatarView.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,

@@ -17,10 +17,11 @@ struct Message: Identifiable {
     let id: String = UUID().uuidString
     let type: MessageType
     let sender: User
-    let receiver: User
     let content: String
     let timestamp: Date
-    let isReceived: Bool
+
+    // TODO: (Steve X): add receive status & digest check
+    var isReceived: Bool = false
     let digest: String
 }
 

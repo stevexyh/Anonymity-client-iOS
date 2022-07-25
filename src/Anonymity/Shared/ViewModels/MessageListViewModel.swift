@@ -31,12 +31,12 @@ class MessageListViewModel: ObservableObject {
         sender: User, receiver: User,
         content: String,
         timestamp: Date = .now,
-        isReceived: Bool = true,
-        digest: String
+        isReceived: Bool = false,
+        digest: String = "<digest>"
     ) {
         let new_message = Message(
             type: type,
-            sender: sender, receiver: receiver,
+            sender: sender,
             content: content,
             timestamp: timestamp,
             isReceived: isReceived,
