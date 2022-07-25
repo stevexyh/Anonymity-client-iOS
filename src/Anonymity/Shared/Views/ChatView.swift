@@ -91,9 +91,11 @@ extension ChatView {
                         type: .sent,
                         sender: vm.chats[0].person[0],
                         receiver: vm.chats[0].person[1],
-                        content: text,
+                        content: self.text,
                         digest: "abcde"
                     )
+
+                    self.text = ""
                 }) {
                     Image(systemName: "arrow.up.circle")
                         .resizable()
