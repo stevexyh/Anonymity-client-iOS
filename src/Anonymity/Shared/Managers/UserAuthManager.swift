@@ -11,9 +11,14 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import Firebase
 import Foundation
 
 class UserAuthManager {
+    var currentUser: Firebase.User? {
+        return FirebaseManager.shared.auth.currentUser
+    }
+
     // MARK: - (Steve X): HIGHLIGHT: async Login -
 
     /// Login user with Firebase and return the boolean auth result
