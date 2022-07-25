@@ -161,9 +161,9 @@
 			children = (
 				AA22B54C285D93C500E1DD29 /* AnonymityApp.swift */,
 				AA44B77C286524BD001691A3 /* Models */,
+				AA5A43E22874922200C47765 /* DataServices */,
 				AA44B77E286524D1001691A3 /* ViewModels */,
 				AA44B77D286524CA001691A3 /* Views */,
-				AA5A43E22874922200C47765 /* DataServices */,
 				AA88372E2887457A000C19FA /* Managers */,
 				AA22B54E285D93C500E1DD29 /* Persistence.swift */,
 				AA22B54F285D93C600E1DD29 /* Assets.xcassets */,
