@@ -50,6 +50,11 @@ extension Chat {
             id = person.reduce("", { res, user in
                 res + user.id
             })
+
+            // Prevent repeated Chat creation
+            if let chat = Chat(for: id) {
+                self = chat
+            }
         }
     }
 
