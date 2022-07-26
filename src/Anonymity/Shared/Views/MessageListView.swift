@@ -86,8 +86,8 @@ extension MessageListView {
     private var chatListView: some View {
         List {
             ForEach(vm.chats) { chat in
-                let contact = chat.person[0]
-                let chatName = contact.username
+                let contact = chat.users[0]
+                let chatName = User(for: contact)?.username ?? "<null>"
 
                 ZStack {
                     HStack {
