@@ -22,7 +22,7 @@ struct Message: Identifiable {
 
     // TODO: (Steve X): add receive status & digest check
     var isReceived: Bool = false
-    let digest: String
+    let digest: String = "<digest>"
 }
 
 extension Message {

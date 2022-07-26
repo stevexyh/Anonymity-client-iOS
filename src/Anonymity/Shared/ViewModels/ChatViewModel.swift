@@ -27,8 +27,7 @@ class ChatViewModel: ObservableObject {
         senderID: String,
         content: String,
         timestamp: Date = .now,
-        isReceived: Bool = false,
-        digest: String = "<digest>"
+        isReceived: Bool = false
     ) {
         let new_message = Message(
             type: type,
@@ -37,8 +36,7 @@ class ChatViewModel: ObservableObject {
             sender: UserDataService.users.first(where: { $0.id == senderID }) ?? UserDataService.users[0],
             content: content,
             timestamp: timestamp,
-            isReceived: isReceived,
-            digest: digest
+            isReceived: isReceived
         )
         chat.messages.append(new_message)
     }

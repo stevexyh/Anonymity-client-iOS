@@ -92,8 +92,7 @@ extension ChatView {
 
                         // TODO: (Steve X): REMOVE BEFORE FLIGHT: set default value
                         senderID: UserAuthManager.currentUser?.uid ?? "",
-                        content: self.text,
-                        digest: "abcde"
+                        content: self.text
                     )
 
                     self.text.removeAll()
