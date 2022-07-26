@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct Chat: Identifiable {
+struct Chat: Identifiable, Equatable {
     var id: String = UUID().uuidString
     var person: [User]
     var messages: [Message]
@@ -30,6 +30,10 @@ extension Chat {
     enum ChatType {
         case single
         case group
+    }
+
+    static func == (lhs: Chat, rhs: Chat) -> Bool {
+        return lhs.id == rhs.id
     }
 
     init(person: [User], messages: [Message] = []) {
