@@ -17,7 +17,7 @@ class ChatDataService {
     static let users: [User] = UserDataService.users
     static let chats: [Chat] = [
         Chat(
-            person: [users[0], users[1]],
+            users: [users[0].id, users[1].id],
             messages: [
                 Message(type: .received, sender: users[1], content: "test message", timestamp: .now, isReceived: true, digest: "abcabc"),
                 Message(type: .sent, sender: users[0], content: "test message", timestamp: .now, isReceived: true, digest: "abcabc"),

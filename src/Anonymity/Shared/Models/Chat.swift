@@ -15,10 +15,10 @@ import Foundation
 
 struct Chat: Identifiable, Comparable {
     var id: String = UUID().uuidString
-    var person: [User]
+    var users: [User.ID]
     var messages: [Message]
     var type: ChatType {
-        if person.count == 2 {
+        if users.count == 2 {
             return .single
         } else {
             return .group
@@ -40,16 +40,14 @@ extension Chat {
         return lhs.id < rhs.id
     }
 
-    init(by creator: User, with person: [User], messages: [Message] = []) {
-        self.person = person
-        self.person.append(creator)
-        self.person.sort()
+    init(by creator: User.ID, with persons: [User.ID], messages: [Message] = []) {
+        users = persons
+        users.append(creator)
+        users.sort()
         self.messages = messages
 
-        if person.count == 2 {
-            id = person.reduce("", { res, user in
-                res + user.id
-            })
+        if users.count == 2 {
+            id = users.reduce("", +)
 
             // Prevent repeated Chat creation
             if let chat = Chat(for: id) {
