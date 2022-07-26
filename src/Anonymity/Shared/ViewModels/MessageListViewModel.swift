@@ -20,8 +20,8 @@ class MessageListViewModel: ObservableObject {
         chats = ChatDataService.chats
     }
 
-    func addChat(by creator: User, with person: [User]) {
-        let new_chat = Chat(by: creator, with: person)
+    func addChat(by creator: User.ID, with persons: [User.ID]) {
+        let new_chat = Chat(by: creator, with: persons)
         chats.append(new_chat)
     }
 }
