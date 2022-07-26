@@ -22,6 +22,10 @@ class MessageListViewModel: ObservableObject {
 
     func addChat(by creator: User.ID, with persons: [User.ID]) {
         let new_chat = Chat(by: creator, with: persons)
-        chats.append(new_chat)
+
+        // Create new chats only when it doesn't exist
+        if chats.first(where: { $0.id == new_chat.id }) == nil {
+            chats.append(new_chat)
+        }
     }
 }
