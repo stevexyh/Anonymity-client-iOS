@@ -15,6 +15,7 @@ import SwiftUI
 
 struct ContactsView: View {
     @EnvironmentObject private var vm: ContactsViewModel
+    @EnvironmentObject private var MessageListVM: MessageListViewModel
 
     var username: String? = ""
     @Binding var showLoginPage: Bool
@@ -87,6 +88,11 @@ extension ContactsView {
                     }
                     NavigationLink(destination: {
                         ChatView(name: contact.fullName)
+                            .onAppear {
+                                guard let myID = UserAuthManager.currentUser?.uid else { return }
+                                guard let withID = contact.id else { return }
+                                MessageListVM.addChat(by: myID, with: [withID])
+                            }
                     }) {
                         EmptyView()
                     }
