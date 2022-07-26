@@ -15,7 +15,7 @@ import Foundation
 
 struct User: Identifiable, Comparable {
     // TODO: (Steve X): change uuid to hash(username)
-    let id: String = UUID().uuidString
+    var id: String = UUID().uuidString
     let username: String
     let password: String
     let avatarURL: String
@@ -31,5 +31,12 @@ extension User {
 
     static func < (lhs: User, rhs: User) -> Bool {
         return lhs.id < rhs.id
+    }
+
+    /// Fetch User instance from database in DataService
+    /// - Parameter id: Chat ID
+    init?(for id: User.ID) {
+        guard let user = UserDataService.users.first(where: { $0.id == id }) else { return nil }
+        self = user
     }
 }
