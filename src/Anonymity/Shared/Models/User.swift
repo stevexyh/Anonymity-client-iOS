@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct User {
+struct User: Identifiable, Comparable {
     // TODO: (Steve X): change uuid to hash(username)
     let id: String = UUID().uuidString
     let username: String
@@ -27,5 +27,9 @@ extension User {
         case online
         case offline
         case busy
+    }
+
+    static func < (lhs: User, rhs: User) -> Bool {
+        return lhs.id < rhs.id
     }
 }
