@@ -23,41 +23,7 @@ struct ContactsView: View {
     var body: some View {
         VStack {
             if username != nil {
-                List {
-                    ForEach(vm.contacts) { contact in
-                        ZStack {
-                            HStack {
-                                AvatarView(
-                                    avatarType: .nameCapital,
-                                    maxSize: 50,
-                                    firstName: "\(contact.firstName ?? "")",
-                                    lastName: "\(contact.lastName ?? "")"
-                                )
-
-                                VStack(alignment: .leading) {
-                                    Text(contact.fullName)
-
-                                    OnlineStatusView(
-                                        fontColor: .black.opacity(0.5),
-                                        fontSize: 14
-                                    )
-                                    .padding(.horizontal, 7)
-                                    .padding(.vertical, 2)
-                                    .background(.thinMaterial)
-                                    .cornerRadius(20)
-                                }
-
-                                Spacer()
-                            }
-                            NavigationLink(destination: {
-                                ChatView(name: contact.fullName)
-                            }) {
-                                EmptyView()
-                            }
-                        }
-                    }
-                }
-                .listStyle(.sidebar)
+                contactsListView
             } else {
                 Button(action: {
                     showLoginPage = true
@@ -88,6 +54,46 @@ struct ContactsView: View {
                 }
             }
         }
+    }
+}
+
+extension ContactsView {
+    var contactsListView: some View {
+        List {
+            ForEach(vm.contacts) { contact in
+                ZStack {
+                    HStack {
+                        AvatarView(
+                            avatarType: .nameCapital,
+                            maxSize: 50,
+                            firstName: "\(contact.firstName ?? "")",
+                            lastName: "\(contact.lastName ?? "")"
+                        )
+
+                        VStack(alignment: .leading) {
+                            Text(contact.fullName)
+
+                            OnlineStatusView(
+                                fontColor: .black.opacity(0.5),
+                                fontSize: 14
+                            )
+                            .padding(.horizontal, 7)
+                            .padding(.vertical, 2)
+                            .background(.thinMaterial)
+                            .cornerRadius(20)
+                        }
+
+                        Spacer()
+                    }
+                    NavigationLink(destination: {
+                        ChatView(name: contact.fullName)
+                    }) {
+                        EmptyView()
+                    }
+                }
+            }
+        }
+        .listStyle(.sidebar)
     }
 }
 
