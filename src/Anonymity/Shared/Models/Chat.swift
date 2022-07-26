@@ -32,7 +32,7 @@ extension Chat {
         case group
     }
 
-    init(person: [User], messages: [Message]) {
+    init(person: [User], messages: [Message] = []) {
         self.person = person
         self.messages = messages
     }
