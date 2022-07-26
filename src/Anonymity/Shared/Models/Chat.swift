@@ -36,9 +36,15 @@ extension Chat {
         return lhs.id == rhs.id
     }
 
-    init(person: [User], messages: [Message] = []) {
+    init(by creator: User, with person: [User], messages: [Message] = []) {
         self.person = person
         self.messages = messages
+
+        if person.count == 1 {
+            id = creator.id + person[0].id
+        }
+
+        self.person.append(creator)
     }
 
     /// Fetch Chat instance from database in DataService
