@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct Chat: Identifiable, Equatable {
+struct Chat: Identifiable, Comparable {
     var id: String = UUID().uuidString
     var person: [User]
     var messages: [Message]
@@ -36,15 +36,21 @@ extension Chat {
         return lhs.id == rhs.id
     }
 
+    static func < (lhs: Chat, rhs: Chat) -> Bool {
+        return lhs.id < rhs.id
+    }
+
     init(by creator: User, with person: [User], messages: [Message] = []) {
         self.person = person
+        self.person.append(creator)
+        self.person.sort()
         self.messages = messages
 
-        if person.count == 1 {
-            id = creator.id + person[0].id
+        if person.count == 2 {
+            id = person.reduce("", { res, user in
+                res + user.id
+            })
         }
-
-        self.person.append(creator)
     }
 
     /// Fetch Chat instance from database in DataService
