@@ -18,8 +18,9 @@ import Foundation
 // This should be fixed in next version(https://github.com/firebase/firebase-ios-sdk/issues/9790)
 class FirebaseManager {
     /// FirebaseAuth for authentication
-    /// Firestore for database
     let auth: Auth
+
+    /// Firestore for database
     let firestore: Firestore
 
     /// Singleton instance
