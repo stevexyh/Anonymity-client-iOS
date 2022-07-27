@@ -19,6 +19,7 @@ import Foundation
 class FirebaseManager {
     /// FirebaseAuth for authentication
     let auth: Auth
+    let firestore: Firestore
 
     /// Singleton instance
     static let shared: FirebaseManager = {
@@ -31,5 +32,6 @@ class FirebaseManager {
 
     init() {
         auth = Auth.auth()
+        firestore = Firestore.firestore()
     }
 }
