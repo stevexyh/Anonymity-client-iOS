@@ -14,6 +14,7 @@
 import Foundation
 
 class ChatDataService {
+    static let db = FirebaseManager.shared.firestore.collection("chats")
     static let users: [User] = UserDataService.users
     static let chats: [Chat] = [
         Chat(
@@ -27,4 +28,19 @@ class ChatDataService {
             ]
         ),
     ]
+
+    static func addChat(for chat: Chat) {
+        let document = db.document(chat.id)
+        let data: [String: Any] = [
+            "id": chat.id,
+            "users": chat.users,
+            "messages": chat.messages,
+        ]
+
+        document.setData(data) { error in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
 }

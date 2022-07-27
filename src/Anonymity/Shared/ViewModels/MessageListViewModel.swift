@@ -26,6 +26,7 @@ class MessageListViewModel: ObservableObject {
         // Create new chats only when it doesn't exist
         if chats.first(where: { $0.id == new_chat.id }) == nil {
             chats.append(new_chat)
+            ChatDataService.addChat(for: new_chat)
         }
     }
 }
