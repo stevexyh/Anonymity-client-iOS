@@ -90,7 +90,7 @@ extension ContactsView {
                         ChatView(name: contact.fullName)
                             .onAppear {
                                 guard let myID = UserAuthManager.currentUser?.uid else { return }
-                                guard let withID = contact.id else { return }
+                                let withID = contact.id
                                 MessageListVM.addChat(by: myID, with: [withID])
                             }
                     }) {

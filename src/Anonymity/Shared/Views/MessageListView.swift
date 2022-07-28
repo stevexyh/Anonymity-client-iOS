@@ -87,7 +87,7 @@ extension MessageListView {
         List {
             ForEach(vm.chats) { chat in
                 let myID = UserAuthManager.currentUser?.uid ?? "<null myID>"
-                let contact = chat.users.first(where: { $0 != myID })
+                let contact = chat.users.first(where: { $0 != myID }) ?? "<null>"
                 let chatName = Contact(for: contact)?.fullName ?? "<null firendID: \(chat.users)\n myID: \(myID)>"
 
                 ZStack {

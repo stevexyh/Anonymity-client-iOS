@@ -48,8 +48,10 @@ struct ContactsAddSheetView: View {
                     if self.firstName.count > 0 {
                         self.showTextInvalidAlert = false
 
-                        self.vm.addContact(uid: uid, firstName: firstName, lastName: lastName)
-                        self.presentation.wrappedValue.dismiss()
+                        if let myID = UserAuthManager.currentUser?.uid {
+                            self.vm.addContact(from: myID, uid: uid, firstName: firstName, lastName: lastName)
+                            self.presentation.wrappedValue.dismiss()
+                        }
                     } else {
                         self.showTextInvalidAlert = true
                     }
