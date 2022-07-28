@@ -20,7 +20,7 @@ class ContactsViewModel: ObservableObject {
         contacts = ContactDataService.contacts
     }
 
-    func addContact(uid: String?, firstName: String?, lastName: String?) {
+    func addContact(uid: String, firstName: String?, lastName: String?) {
         let new_contact = Contact(uid: uid, firstName: firstName, lastName: lastName)
         contacts.append(new_contact)
     }
