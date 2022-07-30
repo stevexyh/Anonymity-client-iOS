@@ -29,14 +29,19 @@ class ChatDataService {
         ),
     ]
 
+    /// Write data into Firebase FireStore
+    /// - Parameter chat: Chat instance
     static func add(for chat: Chat) {
         let document = db.document(chat.id)
+
+        // Encode DicKeys into enum type
         let data: [DicKeyManager.ChatDicKey: Any] = [
             .id: chat.id,
             .users: chat.users,
             .messages: chat.messages,
         ]
 
+        // Decode DicKeys into rawValue String
         let decodedData = data.mapKeys { $0.rawValue }
 
         document.setData(decodedData) { error in
@@ -46,6 +51,8 @@ class ChatDataService {
         }
     }
 
+    /// Refresh chats from Firebase FireStore automatically at real time
+    /// - Parameter vm: MessageListViewModel
     static func fetchRealTime(vm: MessageListViewModel) {
         db.addSnapshotListener { query, error in
             if let error = error {
@@ -55,6 +62,7 @@ class ChatDataService {
             if let query = query {
                 query.documentChanges.forEach { change in
                     if change.type == .added {
+                        // Encode DicKeys into enum type
                         let data = change.document.data().mapKeys { DicKeyManager.ChatDicKey(rawValue: $0) }
                         let new_chat = Chat(
                             id: data[.id] as? String ?? "",

@@ -25,6 +25,10 @@ class MessageDataService {
         Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
     ]
 
+    /// Write data into Firebase FireStore
+    /// - Parameters:
+    ///   - chatID: ID of chat instance
+    ///   - message: message instance
     static func add(in chatID: Chat.ID, for message: Message) {
         let document = db.document(chatID).collection("messages").document(message.id)
         let data: [String: Any] = [
