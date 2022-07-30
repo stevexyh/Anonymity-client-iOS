@@ -24,20 +24,19 @@ class ChatViewModel: ObservableObject {
     func sendMessage(
         chatId: Chat.ID,
         type: Message.MessageType,
-        senderID: String,
+        senderID: String = UserAuthManager.currentUser?.uid ?? "",
         content: String,
         timestamp: Date = .now,
         isReceived: Bool = false
     ) {
         let new_message = Message(
             type: type,
-
-            // TODO: (Steve X): REMOVE BEFORE FLIGHT: set default value
-            sender: UserDataService.users.first(where: { $0.id == senderID }) ?? UserDataService.users[0],
+            senderID: senderID,
             content: content,
             timestamp: timestamp,
             isReceived: isReceived
         )
+
         chat.messages.append(new_message)
         MessageDataService.add(in: chatId, for: new_message)
     }
