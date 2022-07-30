@@ -24,17 +24,4 @@ struct DicKeyManager {
         case users
         case messages
     }
-
-    /// Decode DicKey to String (DicKey.rawValue)
-    /// - Parameter data: source dictionary
-    /// - Returns: [String: Any]
-    static func decodeKey<Key: DicKey>(for data: [Key: Any]) -> [String: Any] {
-        var rawDic: [String: Any] = [:]
-
-        for (K, V) in data {
-            rawDic[K.rawValue] = V
-        }
-
-        return rawDic
-    }
 }

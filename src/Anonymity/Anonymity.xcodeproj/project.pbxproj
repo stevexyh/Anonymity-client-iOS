@@ -34,6 +34,7 @@
 		AA2A828F2891E641001D4CDA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828E2891E641001D4CDA /* FirebaseFirestore */; };
 		AA2A82912891E641001D4CDA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A82902891E641001D4CDA /* FirebaseStorage */; };
 		AA2A82962895D911001D4CDA /* DicKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2A82952895D911001D4CDA /* DicKeyManager.swift */; };
+		AA2A82992895DFE6001D4CDA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2A82982895DFE6001D4CDA /* Dictionary.swift */; };
 		AA44B780286527CA001691A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B77F286527CA001691A3 /* User.swift */; };
 		AA44B78228677AA9001691A3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B78128677AA9001691A3 /* Message.swift */; };
 		AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B783286A65BE001691A3 /* MessageListView.swift */; };
@@ -95,6 +96,7 @@
 		AA22B571285D93C600E1DD29 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		AA2A82952895D911001D4CDA /* DicKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicKeyManager.swift; sourceTree = "<group>"; };
+		AA2A82982895DFE6001D4CDA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AA44B78128677AA9001691A3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AA44B783286A65BE001691A3 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				AA44B77E286524D1001691A3 /* ViewModels */,
 				AA44B77D286524CA001691A3 /* Views */,
 				AA88372E2887457A000C19FA /* Managers */,
+				AA2A82972895DFA3001D4CDA /* Extensions */,
 				AA22B54E285D93C500E1DD29 /* Persistence.swift */,
 				AA22B54F285D93C600E1DD29 /* Assets.xcassets */,
 				AA22B54A285D93C500E1DD29 /* Anonymity.xcdatamodeld */,
@@ -210,6 +213,14 @@
 				AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		AA2A82972895DFA3001D4CDA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA2A82982895DFE6001D4CDA /* Dictionary.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AA44B77C286524BD001691A3 /* Models */ = {
@@ -468,6 +479,7 @@
 				AA44B786286A845B001691A3 /* ChatView.swift in Sources */,
 				AA1F16D0287E419F00842168 /* Contact.swift in Sources */,
 				AA44B78228677AA9001691A3 /* Message.swift in Sources */,
+				AA2A82992895DFE6001D4CDA /* Dictionary.swift in Sources */,
 				AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */,
 				AA1F16CA287C860000842168 /* UserDataService.swift in Sources */,
 				AA44B780286527CA001691A3 /* User.swift in Sources */,

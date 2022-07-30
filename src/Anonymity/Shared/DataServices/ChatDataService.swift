@@ -37,7 +37,7 @@ class ChatDataService {
             .messages: chat.messages,
         ]
 
-        let decodedData = DicKeyManager.decodeKey(for: data)
+        let decodedData = data.mapKeys { $0.rawValue }
 
         document.setData(decodedData) { error in
             if let error = error {
