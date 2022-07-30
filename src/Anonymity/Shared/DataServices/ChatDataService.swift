@@ -31,7 +31,7 @@ class ChatDataService {
 
     static func add(for chat: Chat) {
         let document = db.document(chat.id)
-        let data: [DicKeyManager.MessageDicKey: Any] = [
+        let data: [DicKeyManager.ChatDicKey: Any] = [
             .id: chat.id,
             .users: chat.users,
             .messages: chat.messages,

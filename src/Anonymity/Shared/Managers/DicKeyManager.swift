@@ -19,7 +19,7 @@ protocol DicKey {
 
 /// Constants for Firestore Database storage keys
 struct DicKeyManager {
-    enum MessageDicKey: String, DicKey {
+    enum ChatDicKey: String, DicKey {
         case id
         case users
         case messages
