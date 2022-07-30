@@ -29,7 +29,7 @@ class ChatDataService {
         ),
     ]
 
-    static func addChat(for chat: Chat) {
+    static func add(for chat: Chat) {
         let document = db.document(chat.id)
         let data: [String: Any] = [
             "id": chat.id,
