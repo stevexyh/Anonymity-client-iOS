@@ -18,6 +18,7 @@ class MessageListViewModel: ObservableObject {
 
     init() {
         chats = ChatDataService.chats
+        autoRefreshChat()
     }
 
     func addChat(by creator: User.ID, with persons: [User.ID]) {
@@ -25,8 +26,11 @@ class MessageListViewModel: ObservableObject {
 
         // Create new chats only when it doesn't exist
         if chats.first(where: { $0.id == new_chat.id }) == nil {
-            chats.append(new_chat)
             ChatDataService.add(for: new_chat)
         }
+    }
+
+    func autoRefreshChat() {
+        ChatDataService.fetchRealTime(vm: self)
     }
 }

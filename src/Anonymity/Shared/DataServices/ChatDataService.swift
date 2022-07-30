@@ -43,4 +43,30 @@ class ChatDataService {
             }
         }
     }
+
+    static func fetchRealTime(vm: MessageListViewModel) {
+        db.addSnapshotListener { query, error in
+            if let error = error {
+                print(error)
+            }
+
+            if let query = query {
+                query.documentChanges.forEach { change in
+                    if change.type == .added {
+                        let data = change.document.data()
+                        let new_chat = Chat(
+                            id: data["id"] as? String ?? "",
+                            users: data["users"] as? [User.ID] ?? [],
+                            messages: data["messages"] as? [Message] ?? []
+                        )
+
+                        vm.chats.append(new_chat)
+                    } else if change.type == .removed {
+                        let data = change.document.data()
+                        vm.chats.removeAll { $0.id == data["id"] as? String }
+                    }
+                }
+            }
+        }
+    }
 }
