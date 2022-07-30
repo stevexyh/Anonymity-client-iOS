@@ -18,18 +18,18 @@ class MessageDataService {
 
     static let users: [User] = UserDataService.users
     static let messages: [Message] = [
-        Message(type: .received, sender: users[1], content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .sent, sender: users[0], content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .received, sender: users[1], content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .received, sender: users[1], content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .sent, sender: users[0], content: "test message", timestamp: .now, isReceived: true),
+        Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
     ]
 
     static func add(in chatID: Chat.ID, for message: Message) {
         let document = db.document(chatID).collection("messages").document(message.id)
         let data: [String: Any] = [
             "id": message.id,
-            "senderID": message.sender.id,
+            "senderID": message.senderID,
             "content": message.content,
             "timestamp": message.timestamp,
             "isReceived": message.isReceived,

@@ -20,11 +20,11 @@ class ChatDataService {
         Chat(
             users: [users[0].id, users[1].id],
             messages: [
-                Message(type: .received, sender: users[1], content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .sent, sender: users[0], content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .received, sender: users[1], content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .received, sender: users[1], content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .sent, sender: users[0], content: "test message", timestamp: .now, isReceived: true),
+                Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+                Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
+                Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+                Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+                Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
             ]
         ),
     ]

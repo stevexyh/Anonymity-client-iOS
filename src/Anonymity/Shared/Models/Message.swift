@@ -16,7 +16,7 @@ import Foundation
 struct Message: Identifiable {
     let id: String = UUID().uuidString
     let type: MessageType
-    let sender: User
+    let senderID: User.ID
     let content: String
     let timestamp: Date
 
