@@ -31,13 +31,15 @@ class ChatDataService {
 
     static func add(for chat: Chat) {
         let document = db.document(chat.id)
-        let data: [String: Any] = [
-            "id": chat.id,
-            "users": chat.users,
-            "messages": chat.messages,
+        let data: [DicKeyManager.MessageDicKey: Any] = [
+            .id: chat.id,
+            .users: chat.users,
+            .messages: chat.messages,
         ]
 
-        document.setData(data) { error in
+        let decodedData = DicKeyManager.decodeKey(for: data)
+
+        document.setData(decodedData) { error in
             if let error = error {
                 print(error)
             }

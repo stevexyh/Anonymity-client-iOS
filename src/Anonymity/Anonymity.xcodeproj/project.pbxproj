@@ -33,6 +33,7 @@
 		AA2A828D2891E641001D4CDA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828C2891E641001D4CDA /* FirebaseAuth */; };
 		AA2A828F2891E641001D4CDA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828E2891E641001D4CDA /* FirebaseFirestore */; };
 		AA2A82912891E641001D4CDA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A82902891E641001D4CDA /* FirebaseStorage */; };
+		AA2A82962895D911001D4CDA /* DicKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2A82952895D911001D4CDA /* DicKeyManager.swift */; };
 		AA44B780286527CA001691A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B77F286527CA001691A3 /* User.swift */; };
 		AA44B78228677AA9001691A3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B78128677AA9001691A3 /* Message.swift */; };
 		AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B783286A65BE001691A3 /* MessageListView.swift */; };
@@ -93,6 +94,7 @@
 		AA22B56D285D93C600E1DD29 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA22B571285D93C600E1DD29 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		AA2A82952895D911001D4CDA /* DicKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicKeyManager.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AA44B78128677AA9001691A3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AA44B783286A65BE001691A3 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				AA88372F288745B2000C19FA /* FirebaseManager.swift */,
 				AA023BF228883D3A0095C6B1 /* UserAuthManager.swift */,
+				AA2A82952895D911001D4CDA /* DicKeyManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				AAD9A0D1288F2CA1008A1F30 /* ChatViewModel.swift in Sources */,
 				AA023BF128877A190095C6B1 /* MessageListViewModel.swift in Sources */,
 				AA5A43F128750B5400C47765 /* AvatarView.swift in Sources */,
+				AA2A82962895D911001D4CDA /* DicKeyManager.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
 				AA44B788286B65CB001691A3 /* Chat.swift in Sources */,
 				AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */,
