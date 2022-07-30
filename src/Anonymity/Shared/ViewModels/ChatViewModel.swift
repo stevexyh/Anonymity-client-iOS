@@ -22,7 +22,7 @@ class ChatViewModel: ObservableObject {
     }
 
     func sendMessage(
-        chatId: Int,
+        chatId: Chat.ID,
         type: Message.MessageType,
         senderID: String,
         content: String,
@@ -39,5 +39,6 @@ class ChatViewModel: ObservableObject {
             isReceived: isReceived
         )
         chat.messages.append(new_message)
+        MessageDataService.add(in: chatId, for: new_message)
     }
 }

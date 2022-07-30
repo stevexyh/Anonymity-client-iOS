@@ -87,7 +87,7 @@ extension ChatView {
                 Button(action: {
                     vm.sendMessage(
                         // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to dynamic chatID
-                        chatId: 0,
+                        chatId: "0",
                         type: .sent,
 
                         // TODO: (Steve X): REMOVE BEFORE FLIGHT: set default value
