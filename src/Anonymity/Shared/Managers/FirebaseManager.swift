@@ -14,8 +14,6 @@
 import Firebase
 import Foundation
 
-// FIXME: (Steve X): a lot of gRPC warnings after installing FirebaseFirestore package
-// This should be fixed in next version(https://github.com/firebase/firebase-ios-sdk/issues/9790)
 class FirebaseManager {
     /// FirebaseAuth for authentication
     let auth: Auth
