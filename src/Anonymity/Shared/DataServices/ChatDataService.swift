@@ -55,17 +55,17 @@ class ChatDataService {
             if let query = query {
                 query.documentChanges.forEach { change in
                     if change.type == .added {
-                        let data = change.document.data()
+                        let data = change.document.data().mapKeys { DicKeyManager.ChatDicKey(rawValue: $0) }
                         let new_chat = Chat(
-                            id: data["id"] as? String ?? "",
-                            users: data["users"] as? [User.ID] ?? [],
-                            messages: data["messages"] as? [Message] ?? []
+                            id: data[.id] as? String ?? "",
+                            users: data[.users] as? [User.ID] ?? [],
+                            messages: data[.messages] as? [Message] ?? []
                         )
 
                         vm.chats.append(new_chat)
                     } else if change.type == .removed {
-                        let data = change.document.data()
-                        vm.chats.removeAll { $0.id == data["id"] as? String }
+                        let data = change.document.data().mapKeys { DicKeyManager.ChatDicKey(rawValue: $0) }
+                        vm.chats.removeAll { $0.id == data[.id] as? String }
                     }
                 }
             }
