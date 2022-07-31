@@ -18,11 +18,15 @@ class ContactsViewModel: ObservableObject {
 
     init() {
         contacts = ContactDataService.contacts
+        autoRefreshContact()
     }
 
     func addContact(from myID: User.ID, uid: String, firstName: String?, lastName: String?) {
         let new_contact = Contact(uid: uid, firstName: firstName, lastName: lastName)
-        contacts.append(new_contact)
         ContactDataService.add(userID: myID, contact: new_contact)
+    }
+
+    func autoRefreshContact() {
+        ContactDataService.fetchRealTime(vm: self)
     }
 }

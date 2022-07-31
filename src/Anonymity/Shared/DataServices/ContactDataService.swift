@@ -37,6 +37,38 @@ class ContactDataService {
             }
         }
     }
+
+    /// Refresh contacts from Firebase FireStore automatically at real time
+    /// - Parameter vm: ContactsViewModel
+    static func fetchRealTime(vm: ContactsViewModel) {
+        guard let myID = UserAuthManager.currentUser?.uid else { return }
+        db.document(myID)
+            .collection("contacts")
+            .addSnapshotListener { query, error in
+                if let error = error {
+                    print(error)
+                }
+
+                if let query = query {
+                    query.documentChanges.forEach { change in
+                        if change.type == .added {
+                            // Encode DicKeys into enum type
+                            let data = change.document.data() // .mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
+                            let new_contact = Contact(
+                                uid: data["id"] as? String ?? "",
+                                firstName: data["firstName"] as? String ?? "",
+                                lastName: data["lastName"] as? String ?? ""
+                            )
+
+                            vm.contacts.append(new_contact)
+                        } else if change.type == .removed {
+                            let data = change.document.data() // .mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
+                            vm.contacts.removeAll { $0.id == data["id"] as? String }
+                        }
+                    }
+                }
+            }
+    }
 }
 
 // protocol FirebaseDB {
