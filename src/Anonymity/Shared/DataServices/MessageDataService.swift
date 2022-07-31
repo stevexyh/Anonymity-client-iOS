@@ -62,6 +62,7 @@ class MessageDataService {
                 if let query = query {
                     query.documentChanges.forEach { change in
                         if change.type == .added {
+                            // TODO: (Steve X): Encode DicKeys into enum type
                             // Encode DicKeys into enum type
                             let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
                             let new_message = Message(
