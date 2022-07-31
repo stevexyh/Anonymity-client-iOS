@@ -14,12 +14,9 @@
 import Foundation
 
 class ChatViewModel: ObservableObject {
-//    @Published var chat: Chat
     @Published var messages: [Message]
 
     init() {
-        // TODO: (Steve X): REMOVE BEFORE FLIGHT: set custom id
-//        chat = ChatDataService.chats[0]
         messages = MessageDataService.messages
         autoRefreshChat()
     }
@@ -41,7 +38,6 @@ class ChatViewModel: ObservableObject {
             isReceived: isReceived
         )
 
-//        chat.messages.append(new_message)
         MessageDataService.add(in: chatId, for: new_message)
     }
 

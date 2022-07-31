@@ -73,7 +73,3 @@ class ContactDataService {
             }
     }
 }
-
-// protocol FirebaseDB {
-////    <#requirements#>
-// }
