@@ -18,11 +18,11 @@ class MessageDataService {
 
     static let users: [User] = UserDataService.users
     static let messages: [Message] = [
-        Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
     ]
 
     /// Write data into Firebase FireStore
@@ -33,6 +33,7 @@ class MessageDataService {
         let document = db.document(chatID).collection("messages").document(message.id)
         let data: [String: Any] = [
             "id": message.id,
+            "chatID": message.chatID,
             "senderID": message.senderID,
             "content": message.content,
             "timestamp": message.timestamp,
@@ -45,5 +46,41 @@ class MessageDataService {
                 print(error)
             }
         }
+    }
+
+    /// Refresh messages from Firebase FireStore automatically at real time
+    /// - Parameter vm: ChatViewModel
+    static func fetchRealTime(in chatID: Chat.ID, vm: ChatViewModel) {
+        guard let myID = UserAuthManager.currentUser?.uid else { return }
+        db.document(chatID)
+            .collection("messages")
+            .addSnapshotListener { query, error in
+                if let error = error {
+                    print(error)
+                }
+
+                if let query = query {
+                    query.documentChanges.forEach { change in
+                        if change.type == .added {
+                            // Encode DicKeys into enum type
+                            let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
+                            let new_message = Message(
+                                id: data["id"] as? String ?? "",
+                                chatID: data["chatID"] as? String ?? "",
+                                type: myID == (data["senderID"] as? String ?? "") ? .sent : .received,
+                                senderID: data["senderID"] as? String ?? "",
+                                content: data["content"] as? String ?? "",
+                                timestamp: data["timestamp"] as? Date ?? Date(timeIntervalSince1970: 0)
+                            )
+
+                            // FIXME: (Steve X): add repeated messages -> only add once
+                            vm.messages.append(new_message)
+                        } else if change.type == .removed {
+                            let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
+                            vm.messages.removeAll { $0.id == data["id"] as? String }
+                        }
+                    }
+                }
+            }
     }
 }

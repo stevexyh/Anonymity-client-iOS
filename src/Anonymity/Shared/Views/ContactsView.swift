@@ -87,7 +87,8 @@ extension ContactsView {
                         Spacer()
                     }
                     NavigationLink(destination: {
-                        ChatView(name: contact.fullName)
+                        // TODO: (Steve X): REMOVE BEFORE FLIGHT: set chatID
+                        ChatView(name: contact.fullName, chatID: "")
                             .onAppear {
                                 guard let myID = UserAuthManager.currentUser?.uid else { return }
                                 let withID = contact.id

@@ -15,6 +15,7 @@ import SwiftUI
 
 struct MessageListView: View {
     @EnvironmentObject private var vm: MessageListViewModel
+    @EnvironmentObject private var ChatVM: ChatViewModel
 
     var username: String?
     @Binding var showLoginPage: Bool
@@ -117,7 +118,12 @@ extension MessageListView {
                         }
                     }
                     NavigationLink(destination: {
-                        ChatView(name: chatName)
+                        ChatView(name: chatName, chatID: chat.id)
+                            .onAppear {
+                                // FIXME: (Steve X): multiple refresh listener -> single listener
+                                ChatVM.autoRefreshChat(chatID: chat.id)
+                                print(ChatVM.messages)
+                            }
                     }) {
                         EmptyView()
                     }
