@@ -17,6 +17,7 @@ import SwiftUI
 struct AnonymityApp: App {
     @StateObject private var vm1 = ContactsViewModel()
     @StateObject private var vm2 = MessageListViewModel()
+    @StateObject private var vm3 = ChatViewModel()
 
     let persistenceController = PersistenceController.shared
 
@@ -25,6 +26,7 @@ struct AnonymityApp: App {
             HomePageView()
                 .environmentObject(vm1)
                 .environmentObject(vm2)
+                .environmentObject(vm3)
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

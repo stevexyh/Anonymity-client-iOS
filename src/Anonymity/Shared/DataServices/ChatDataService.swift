@@ -19,13 +19,7 @@ class ChatDataService {
     static let chats: [Chat] = [
         Chat(
             users: [users[0].id, users[1].id],
-            messages: [
-                Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-                Message(type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
-            ]
+            messages: MessageDataService.messages
         ),
     ]
 

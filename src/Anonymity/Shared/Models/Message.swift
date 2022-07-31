@@ -14,7 +14,8 @@
 import Foundation
 
 struct Message: Identifiable {
-    let id: String = UUID().uuidString
+    var id: String = UUID().uuidString
+    let chatID: String
     let type: MessageType
     let senderID: User.ID
     let content: String
