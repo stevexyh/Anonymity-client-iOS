@@ -21,6 +21,7 @@ class ChatViewModel: ObservableObject {
         // TODO: (Steve X): REMOVE BEFORE FLIGHT: set custom id
 //        chat = ChatDataService.chats[0]
         messages = MessageDataService.messages
+        autoRefreshChat()
     }
 
     func sendMessage(
@@ -44,7 +45,7 @@ class ChatViewModel: ObservableObject {
         MessageDataService.add(in: chatId, for: new_message)
     }
 
-    func autoRefreshChat(chatID: Chat.ID) {
-        MessageDataService.fetchRealTime(in: chatID, vm: self)
+    func autoRefreshChat() {
+        MessageDataService.fetchRealTime(vm: self)
     }
 }

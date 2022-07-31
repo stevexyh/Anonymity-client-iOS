@@ -119,11 +119,6 @@ extension MessageListView {
                     }
                     NavigationLink(destination: {
                         ChatView(name: chatName, chatID: chat.id)
-                            .onAppear {
-                                // FIXME: (Steve X): multiple refresh listener -> single listener
-                                ChatVM.autoRefreshChat(chatID: chat.id)
-                                print(ChatVM.messages)
-                            }
                     }) {
                         EmptyView()
                     }

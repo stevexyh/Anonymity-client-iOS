@@ -51,10 +51,9 @@ class MessageDataService {
     // FIXME: (Steve X): show messages in all chats -> only in current chat
     /// Refresh messages from Firebase FireStore automatically at real time
     /// - Parameter vm: ChatViewModel
-    static func fetchRealTime(in chatID: Chat.ID, vm: ChatViewModel) {
+    static func fetchRealTime(vm: ChatViewModel) {
         guard let myID = UserAuthManager.currentUser?.uid else { return }
-        db.document(chatID)
-            .collection("messages")
+        FirebaseManager.shared.firestore.collectionGroup("messages")
             .addSnapshotListener { query, error in
                 if let error = error {
                     print(error)
