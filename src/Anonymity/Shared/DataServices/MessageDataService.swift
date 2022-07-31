@@ -75,8 +75,9 @@ class MessageDataService {
                                 timestamp: data["timestamp"] as? Date ?? Date(timeIntervalSince1970: 0)
                             )
 
-                            // FIXME: (Steve X): add repeated messages -> only add once
-                            vm.messages.append(new_message)
+                            if vm.messages.first(where: { $0.id == new_message.id }) == nil {
+                                vm.messages.append(new_message)
+                            }
                         } else if change.type == .removed {
                             let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
                             vm.messages.removeAll { $0.id == data["id"] as? String }
