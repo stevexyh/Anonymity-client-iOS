@@ -48,6 +48,7 @@ class MessageDataService {
         }
     }
 
+    // FIXME: (Steve X): show messages in all chats -> only in current chat
     /// Refresh messages from Firebase FireStore automatically at real time
     /// - Parameter vm: ChatViewModel
     static func fetchRealTime(in chatID: Chat.ID, vm: ChatViewModel) {
