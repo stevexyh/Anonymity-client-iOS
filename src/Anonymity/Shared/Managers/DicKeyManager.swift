@@ -24,4 +24,11 @@ struct DicKeyManager {
         case users
         case messages
     }
+
+    enum ContactDicKey: String, DicKey {
+        case id
+        case firstName
+        case lastName
+        case fullName
+    }
 }

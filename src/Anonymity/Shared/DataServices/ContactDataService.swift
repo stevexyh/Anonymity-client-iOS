@@ -24,14 +24,17 @@ class ContactDataService {
 
     static func add(userID: User.ID, contact: Contact) {
         let document = db.document(userID).collection("contacts").document(contact.id)
-        let data: [String: Any] = [
-            "id": contact.id,
-            "firstName": contact.firstName ?? "",
-            "lastName": contact.lastName ?? "",
-            "fullName": contact.fullName,
+        let data: [DicKeyManager.ContactDicKey: Any] = [
+            .id: contact.id,
+            .firstName: contact.firstName ?? "",
+            .lastName: contact.lastName ?? "",
+            .fullName: contact.fullName,
         ]
 
-        document.setData(data) { error in
+        // Decode DicKeys into rawValue String
+        let decodedData = data.mapKeys { $0.rawValue }
+
+        document.setData(decodedData) { error in
             if let error = error {
                 print(error)
             }
@@ -53,17 +56,17 @@ class ContactDataService {
                     query.documentChanges.forEach { change in
                         if change.type == .added {
                             // Encode DicKeys into enum type
-                            let data = change.document.data() // .mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
+                            let data = change.document.data().mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
                             let new_contact = Contact(
-                                uid: data["id"] as? String ?? "",
-                                firstName: data["firstName"] as? String ?? "",
-                                lastName: data["lastName"] as? String ?? ""
+                                uid: data[.id] as? String ?? "",
+                                firstName: data[.firstName] as? String ?? "",
+                                lastName: data[.lastName] as? String ?? ""
                             )
 
                             vm.contacts.append(new_contact)
                         } else if change.type == .removed {
-                            let data = change.document.data() // .mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
-                            vm.contacts.removeAll { $0.id == data["id"] as? String }
+                            let data = change.document.data().mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
+                            vm.contacts.removeAll { $0.id == data[.id] as? String }
                         }
                     }
                 }
