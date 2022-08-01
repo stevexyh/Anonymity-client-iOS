@@ -16,8 +16,8 @@ import Foundation
 class MessageDataService {
     static let db = FirebaseManager.shared.firestore.collection("chats")
 
-    static let users: [User] = UserDataService.users
-    static let messages: [Message] = [
+    static let users: [User] = UserDataService.sample
+    static let sample: [Message] = [
         Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
         Message(chatID: "0", type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
         Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),

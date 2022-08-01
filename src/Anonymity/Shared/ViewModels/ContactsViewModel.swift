@@ -17,7 +17,7 @@ class ContactsViewModel: ObservableObject {
     @Published var contacts: [Contact]
 
     init() {
-        contacts = ContactDataService.contacts
+        contacts = ContactDataService.sample
         autoRefreshContact()
     }
 

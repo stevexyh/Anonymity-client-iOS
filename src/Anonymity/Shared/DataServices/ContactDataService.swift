@@ -16,7 +16,7 @@ import Foundation
 class ContactDataService {
     static let db = FirebaseManager.shared.firestore.collection("users")
 
-    static let contacts: [Contact] = [
+    static let sample: [Contact] = [
         Contact(uid: "11-aa", firstName: "Alice", lastName: "Test"),
         Contact(uid: "12-ab", firstName: "Bob", lastName: "Test"),
         Contact(uid: "21-ba", firstName: "Charlie", lastName: "Test"),

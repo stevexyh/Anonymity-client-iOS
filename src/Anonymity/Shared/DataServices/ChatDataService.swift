@@ -15,11 +15,11 @@ import Foundation
 
 class ChatDataService {
     static let db = FirebaseManager.shared.firestore.collection("chats")
-    static let users: [User] = UserDataService.users
-    static let chats: [Chat] = [
+    static let users: [User] = UserDataService.sample
+    static let sample: [Chat] = [
         Chat(
             users: [users[0].id, users[1].id],
-            messages: MessageDataService.messages
+            messages: MessageDataService.sample
         ),
     ]
 

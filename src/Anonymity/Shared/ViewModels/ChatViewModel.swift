@@ -17,7 +17,7 @@ class ChatViewModel: ObservableObject {
     @Published var messages: [Chat.ID: [Message]]
 
     init() {
-        messages = ["0": MessageDataService.messages]
+        messages = ["0": MessageDataService.sample]
         autoRefreshChat()
     }
 

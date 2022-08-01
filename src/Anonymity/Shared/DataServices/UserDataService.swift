@@ -14,7 +14,7 @@
 import Foundation
 
 class UserDataService {
-    static let users: [User] = [
+    static let sample: [User] = [
         User(username: "a1", password: "aaa", avatarURL: "test", onlineStatus: .online),
         User(username: "a2", password: "aaa", avatarURL: "test", onlineStatus: .busy),
         User(username: "a3", password: "aaa", avatarURL: "test", onlineStatus: .online),

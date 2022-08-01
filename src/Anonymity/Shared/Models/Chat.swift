@@ -59,7 +59,7 @@ extension Chat {
     /// Fetch Chat instance from database in DataService
     /// - Parameter id: Chat ID
     init?(for id: Chat.ID) {
-        guard let chat = ChatDataService.chats.first(where: { $0.id == id }) else { return nil }
+        guard let chat = ChatDataService.sample.first(where: { $0.id == id }) else { return nil }
         self = chat
     }
 }

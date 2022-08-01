@@ -36,7 +36,7 @@ extension User {
     /// Fetch User instance from database in DataService
     /// - Parameter id: User ID
     init?(for id: User.ID) {
-        guard let user = UserDataService.users.first(where: { $0.id == id }) else { return nil }
+        guard let user = UserDataService.sample.first(where: { $0.id == id }) else { return nil }
         self = user
     }
 }
