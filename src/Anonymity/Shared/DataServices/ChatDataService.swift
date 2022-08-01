@@ -45,11 +45,11 @@ class ChatDataService {
         }
     }
 
-    // (Steve X) FIXME: fetch all chats -> fetch for only current user
     /// Refresh chats from Firebase FireStore automatically at real time
     /// - Parameter vm: MessageListViewModel
     static func fetchRealTime(vm: MessageListViewModel) {
-        db.addSnapshotListener { query, error in
+        guard let myID = UserAuthManager.currentUser?.uid else { return }
+        db.whereField("users", arrayContains: myID).addSnapshotListener { query, error in
             if let error = error {
                 print(error)
             }
