@@ -17,7 +17,7 @@ class MessageListViewModel: ObservableObject {
     @Published var chats: [Chat]
 
     init() {
-        chats = ChatDataService.sample
+        chats = []
         autoRefreshChat()
     }
 

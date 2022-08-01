@@ -17,6 +17,7 @@ class ContactsViewModel: ObservableObject {
     @Published var contacts: [Contact]
 
     init() {
+        // (Steve X): REMOVE BEFORE FLIGHT TODO: remove sample data
         contacts = ContactDataService.sample
         autoRefreshContact()
     }
