@@ -14,7 +14,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
     var username: String? = ""
 
     @State private var firstName: String = ""

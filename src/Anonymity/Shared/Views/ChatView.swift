@@ -16,7 +16,6 @@ import SwiftUI
 struct ChatView: View {
     @EnvironmentObject private var vm: ChatViewModel
 
-    // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
     let name: String
     let chatID: Chat.ID
     @State private var text: String = ""
