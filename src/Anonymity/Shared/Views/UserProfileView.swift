@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    var tmpName: String? = ""
+    var username: String? = ""
 
     @State private var firstName: String = ""
     @State private var lastName: String = ""
@@ -31,11 +31,11 @@ struct UserProfileView: View {
                     AvatarView(
                         avatarType: .nameCapital,
                         maxSize: 80,
-                        firstName: tmpName
+                        firstName: username
                     )
 
                     // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
-                    Text("\(tmpName ?? firstName)")
+                    Text("\(username ?? firstName)")
                         .font(.system(size: 40))
 
                     OnlineStatusView(
@@ -83,6 +83,6 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(tmpName: "Alice")
+        UserProfileView(username: "Alice")
     }
 }
