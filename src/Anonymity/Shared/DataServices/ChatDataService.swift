@@ -45,6 +45,7 @@ class ChatDataService {
         }
     }
 
+    // (Steve X) FIXME: fetch all chats -> fetch for only current user
     /// Refresh chats from Firebase FireStore automatically at real time
     /// - Parameter vm: MessageListViewModel
     static func fetchRealTime(vm: MessageListViewModel) {
