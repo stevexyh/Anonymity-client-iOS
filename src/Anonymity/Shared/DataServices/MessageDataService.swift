@@ -11,6 +11,7 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import Firebase
 import Foundation
 
 class MessageDataService {
@@ -64,15 +65,14 @@ class MessageDataService {
                             // TODO: (Steve X): Encode DicKeys into enum type
                             // Encode DicKeys into enum type
                             let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
+                            let timestamp = data["timestamp"] as? Timestamp ?? Timestamp(seconds: 0, nanoseconds: 0)
                             let new_message = Message(
                                 id: data["id"] as? String ?? "",
                                 chatID: data["chatID"] as? String ?? "",
                                 type: myID == (data["senderID"] as? String ?? "") ? .sent : .received,
                                 senderID: data["senderID"] as? String ?? "",
                                 content: data["content"] as? String ?? "",
-
-                                // (Steve X) FIXME: Timestamp decode failed
-                                timestamp: data["timestamp"] as? Date ?? Date(timeIntervalSince1970: 0)
+                                timestamp: timestamp.dateValue()
                             )
 
                             // Append new message to VM dict only once, default value is empty array if key does not exists
