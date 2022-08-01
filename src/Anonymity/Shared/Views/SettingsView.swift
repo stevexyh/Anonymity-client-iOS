@@ -15,7 +15,7 @@ import SwiftUI
 
 struct SettingsView: View {
     // TODO: (Steve X): REMOVE BEFORE FLIGHT: change to real Chat.person.name
-    var tmpName: String? = ""
+    var username: String? = ""
 
     @State private var firstName: String = ""
     @State private var lastName: String = ""
@@ -33,11 +33,11 @@ struct SettingsView: View {
                     AvatarView(
                         avatarType: .nameCapital,
                         maxSize: 80,
-                        firstName: tmpName ?? firstName
+                        firstName: username ?? firstName
                     )
 
                     // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
-                    Text("\(tmpName ?? "(null)")")
+                    Text("\(username ?? "(null)")")
                         .font(.system(size: 40))
 
                     OnlineStatusView(
@@ -126,7 +126,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SettingsView(tmpName: "Steve")
+            SettingsView(username: "Steve")
         }
     }
 }

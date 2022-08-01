@@ -43,7 +43,7 @@ struct HomePageView: View {
 
             // Settings Page View
             NavigationView {
-                SettingsView(tmpName: username != "" ? username : nil)
+                SettingsView(username: username != "" ? username : nil)
             }
             .tabItem {
                 Label("Settings", systemImage: "gear")
