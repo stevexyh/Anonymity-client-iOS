@@ -14,10 +14,10 @@
 import Foundation
 
 class ChatViewModel: ObservableObject {
-    @Published var messages: [Message]
+    @Published var messages: [Chat.ID: [Message]]
 
     init() {
-        messages = MessageDataService.messages
+        messages = ["0": MessageDataService.messages]
         autoRefreshChat()
     }
 

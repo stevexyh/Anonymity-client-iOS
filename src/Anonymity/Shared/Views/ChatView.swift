@@ -40,7 +40,7 @@ struct ChatView: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         EncryptionInfoSubView(name: name)
 
-                        ForEach(vm.messages) { msg in
+                        ForEach(vm.messages[chatID] ?? []) { msg in
                             HStack {
                                 ZStack {
                                     MessageBubbleSubView(id: msg.id, maxWidth: geometry.size.width * 0.8, type: msg.type, content: "\(msg.id): \(msg.content) chatID: \(msg.chatID)")

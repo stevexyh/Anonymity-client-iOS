@@ -48,7 +48,6 @@ class MessageDataService {
         }
     }
 
-    // FIXME: (Steve X): show messages in all chats -> only in current chat
     /// Refresh messages from Firebase FireStore automatically at real time
     /// - Parameter vm: ChatViewModel
     static func fetchRealTime(vm: ChatViewModel) {
@@ -71,15 +70,18 @@ class MessageDataService {
                                 type: myID == (data["senderID"] as? String ?? "") ? .sent : .received,
                                 senderID: data["senderID"] as? String ?? "",
                                 content: data["content"] as? String ?? "",
+
+                                // (Steve X) FIXME: Timestamp decode failed
                                 timestamp: data["timestamp"] as? Date ?? Date(timeIntervalSince1970: 0)
                             )
 
-                            if vm.messages.first(where: { $0.id == new_message.id }) == nil {
-                                vm.messages.append(new_message)
+                            // Append new message to VM dict only once, default value is empty array if key does not exists
+                            if vm.messages[new_message.chatID]?.first(where: { $0.id == new_message.id }) == nil {
+                                vm.messages[new_message.chatID, default: []].append(new_message)
                             }
                         } else if change.type == .removed {
                             let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
-                            vm.messages.removeAll { $0.id == data["id"] as? String }
+                            vm.messages[data["chatID"] as? Chat.ID ?? ""]?.removeAll { $0.id == data["id"] as? String }
                         }
                     }
                 }
