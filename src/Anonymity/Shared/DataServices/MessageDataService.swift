@@ -32,17 +32,20 @@ class MessageDataService {
     ///   - message: message instance
     static func add(in chatID: Chat.ID, for message: Message) {
         let document = db.document(chatID).collection("messages").document(message.id)
-        let data: [String: Any] = [
-            "id": message.id,
-            "chatID": message.chatID,
-            "senderID": message.senderID,
-            "content": message.content,
-            "timestamp": message.timestamp,
-            "isReceived": message.isReceived,
-            "digest": message.digest,
+        let data: [DicKeyManager.MessageDicKey: Any] = [
+            .id: message.id,
+            .chatID: message.chatID,
+            .senderID: message.senderID,
+            .content: message.content,
+            .timestamp: message.timestamp,
+            .isReceived: message.isReceived,
+            .digest: message.digest,
         ]
 
-        document.setData(data) { error in
+        // Decode DicKeys into rawValue String
+        let decodedData = data.mapKeys { $0.rawValue }
+
+        document.setData(decodedData) { error in
             if let error = error {
                 print(error)
             }
@@ -64,14 +67,15 @@ class MessageDataService {
                         if change.type == .added {
                             // TODO: (Steve X): Encode DicKeys into enum type
                             // Encode DicKeys into enum type
-                            let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
-                            let timestamp = data["timestamp"] as? Timestamp ?? Timestamp(seconds: 0, nanoseconds: 0)
+                            let data = change.document.data().mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
+                            let timestamp = data[.timestamp] as? Timestamp ?? Timestamp(seconds: 0, nanoseconds: 0)
+                            let senderID = data[.senderID] as? String ?? ""
                             let new_message = Message(
-                                id: data["id"] as? String ?? "",
-                                chatID: data["chatID"] as? String ?? "",
-                                type: myID == (data["senderID"] as? String ?? "") ? .sent : .received,
-                                senderID: data["senderID"] as? String ?? "",
-                                content: data["content"] as? String ?? "",
+                                id: data[.id] as? String ?? "",
+                                chatID: data[.chatID] as? String ?? "",
+                                type: myID == senderID ? .sent : .received,
+                                senderID: senderID,
+                                content: data[.content] as? String ?? "",
                                 timestamp: timestamp.dateValue()
                             )
 
@@ -80,8 +84,8 @@ class MessageDataService {
                                 vm.messages[new_message.chatID, default: []].append(new_message)
                             }
                         } else if change.type == .removed {
-                            let data = change.document.data() // .mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
-                            vm.messages[data["chatID"] as? Chat.ID ?? ""]?.removeAll { $0.id == data["id"] as? String }
+                            let data = change.document.data().mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
+                            vm.messages[data[.chatID] as? Chat.ID ?? ""]?.removeAll { $0.id == data[.id] as? String }
                         }
                     }
                 }

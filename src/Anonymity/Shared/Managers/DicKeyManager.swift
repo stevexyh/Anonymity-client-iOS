@@ -31,4 +31,15 @@ struct DicKeyManager {
         case lastName
         case fullName
     }
+
+    enum MessageDicKey: String, DicKey {
+        case id
+        case chatID
+        case type
+        case senderID
+        case content
+        case timestamp
+        case isReceived
+        case digest
+    }
 }
