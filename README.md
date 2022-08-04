@@ -74,7 +74,7 @@ Anonymity Client side
 - [x] tmp VM Database
 - [x] firebase
 - [x] auth
-- [ ] communication
+- [x] communication
 
 ---
 ## Screenshots
