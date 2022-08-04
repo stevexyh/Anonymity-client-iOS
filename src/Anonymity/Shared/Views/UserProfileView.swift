@@ -34,7 +34,6 @@ struct UserProfileView: View {
                         firstName: username
                     )
 
-                    // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
                     Text("\(username ?? firstName)")
                         .font(.system(size: 40))
 

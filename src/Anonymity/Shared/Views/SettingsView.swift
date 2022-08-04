@@ -35,7 +35,6 @@ struct SettingsView: View {
                         firstName: username ?? firstName
                     )
 
-                    // TODO: (Steve X): REMOVE BEFORE FLIGHT: Change to dynamic name
                     Text("\(username ?? "(null)")")
                         .font(.system(size: 40))
 
