@@ -16,6 +16,7 @@ import SwiftUI
 struct MessageListView: View {
     @EnvironmentObject private var vm: MessageListViewModel
     @EnvironmentObject private var ChatVM: ChatViewModel
+    @EnvironmentObject private var ContactVM: ContactsViewModel
 
     var username: String?
     @Binding var showLoginPage: Bool
@@ -88,8 +89,8 @@ extension MessageListView {
         List {
             ForEach(vm.chats) { chat in
                 let myID = UserAuthManager.currentUser?.uid ?? "<null myID>"
-                let contact = chat.users.first(where: { $0 != myID }) ?? "<null>"
-                let chatName = Contact(for: contact)?.fullName ?? "<null firendID: \(chat.users)\n myID: \(myID)>"
+                let contact = chat.users.first(where: { $0 != myID }) ?? "<null friend UID>"
+                let chatName = Contact(for: contact, in: ContactVM)?.fullName ?? "<UID: \(contact)>"
 
                 ZStack {
                     HStack {

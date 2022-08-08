@@ -27,8 +27,8 @@ struct Contact: Identifiable {
 extension Contact {
     /// Fetch Contact instance from database in DataService
     /// - Parameter id: Contact ID
-    init?(for id: Contact.ID) {
-        guard let contact = ContactDataService.sample.first(where: { $0.id == id }) else { return nil }
+    init?(for id: Contact.ID, in vm: ContactsViewModel) {
+        guard let contact = vm.contacts.first(where: { $0.id == id }) else { return nil }
         self = contact
     }
 }
