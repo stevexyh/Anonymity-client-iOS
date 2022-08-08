@@ -33,6 +33,7 @@ extension User {
         return lhs.id < rhs.id
     }
 
+    // (Steve X) FIXME: fetch form DataService.find, avoid VM
     /// Fetch User instance from database in DataService
     /// - Parameter id: User ID
     init?(for id: User.ID) {

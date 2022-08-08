@@ -56,6 +56,7 @@ extension Chat {
         }
     }
 
+    // (Steve X) FIXME: fetch form DataService.find, avoid VM
     /// Fetch Chat instance from database in DataService
     /// - Parameter id: Chat ID
     init?(for id: Chat.ID) {

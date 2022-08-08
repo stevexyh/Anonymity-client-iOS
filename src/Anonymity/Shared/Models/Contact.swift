@@ -25,7 +25,7 @@ struct Contact: Identifiable {
 }
 
 extension Contact {
-    // (Steve X) TODO: fetch form DataService.find
+    // (Steve X) FIXME: fetch form DataService.find, avoid VM
     /// Fetch Contact instance from database in ContactVM
     /// - Parameter id: Contact ID
     init?(for id: Contact.ID, in vm: ContactsViewModel) {
