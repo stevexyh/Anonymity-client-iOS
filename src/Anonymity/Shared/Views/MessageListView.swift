@@ -91,6 +91,7 @@ extension MessageListView {
                 let myID = UserAuthManager.currentUser?.uid ?? "<null myID>"
                 let contact = chat.users.first(where: { $0 != myID }) ?? "<null friend UID>"
                 let chatName = Contact(for: contact, in: ContactVM)?.fullName ?? "<UID: \(contact)>"
+                let lastMessage = ChatVM.getLatestMessage(in: chat.id)?.content ?? ""
 
                 ZStack {
                     HStack {
@@ -103,7 +104,7 @@ extension MessageListView {
 
                         VStack(alignment: .leading) {
                             Text(chatName)
-                            Text("This is a piece of message...")
+                            Text(lastMessage)
                                 .font(.system(size: 14))
                                 .foregroundColor(.gray)
                         }

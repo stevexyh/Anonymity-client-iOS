@@ -44,4 +44,8 @@ class ChatViewModel: ObservableObject {
     func autoRefreshChat() {
         MessageDataService.fetchRealTime(vm: self)
     }
+
+    func getLatestMessage(in chatID: Chat.ID) -> Message? {
+        return messages[chatID]?.last
+    }
 }
