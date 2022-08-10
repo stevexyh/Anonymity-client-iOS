@@ -27,7 +27,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1340;
 			};
-			buildConfigurationList = AAD4A30828A1DB810063526C /* Build configuration list for PBXProject "Anonimity-Playground" */;
+			buildConfigurationList = AAD4A30828A1DB810063526C /* Build configuration list for PBXProject "Anonymity-Playground" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -59,7 +59,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AAD4A30828A1DB810063526C /* Build configuration list for PBXProject "Anonimity-Playground" */ = {
+		AAD4A30828A1DB810063526C /* Build configuration list for PBXProject "Anonymity-Playground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAD4A30928A1DB810063526C /* Debug */,
