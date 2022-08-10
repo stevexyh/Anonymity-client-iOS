@@ -48,6 +48,26 @@ pubADecoded.rawRepresentation == pubA.rawRepresentation
 pubBDecoded.rawRepresentation == pubB.rawRepresentation
 
 // (Steve X) MARK: Key Generate
-let secKeyA = try? priA.sharedSecretFromKeyAgreement(with: pubBDecoded)
-let secKeyB = try? priB.sharedSecretFromKeyAgreement(with: pubADecoded)
+let sharedSecretA = try? priA.sharedSecretFromKeyAgreement(with: pubBDecoded)
+let sharedSecretB = try? priB.sharedSecretFromKeyAgreement(with: pubADecoded)
+sharedSecretA == sharedSecretB
+
+// (Steve X) MARK: Key Derivation from shared secret
+// (Steve X) TODO: [DISSERTATION]: Compare X9.63 & HKDF Key Derivation
+let salt = Data(nonce.unsafelyUnwrapped)
+let secKeyA = sharedSecretA?.hkdfDerivedSymmetricKey(
+    using: SHA256.self,
+    salt: salt, sharedInfo: Data(),
+    outputByteCount: 256
+)
+sharedSecretA?.description
+
+let secKeyB = sharedSecretB?.hkdfDerivedSymmetricKey(
+    using: SHA256.self,
+    salt: salt,
+    sharedInfo: Data(),
+    outputByteCount: 256
+)
+sharedSecretB?.description
+
 secKeyA == secKeyB
