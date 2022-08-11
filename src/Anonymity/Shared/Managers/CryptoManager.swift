@@ -15,7 +15,7 @@ import CryptoKit
 import Foundation
 
 class CryptoManager {
-    private static var secretKeys: [Chat.ID: SymmetricKey] = [:]
+    private static var secretKeys: [Chat.ID: SecretKey] = [:]
     private static var privateKey: Curve25519.KeyAgreement.PrivateKey?
     private static var publicKey: Curve25519.KeyAgreement.PublicKey? {
         privateKey?.publicKey
@@ -51,14 +51,15 @@ class CryptoManager {
         guard let pubKey = pubKey else { return }
 
         let sharedSecret = try? privateKey?.sharedSecretFromKeyAgreement(with: pubKey)
-        let secretKey = sharedSecret?.hkdfDerivedSymmetricKey(
+        let key = sharedSecret?.hkdfDerivedSymmetricKey(
             using: SHA256.self,
             salt: salt,
             sharedInfo: Data(),
             outputByteCount: size
         )
+        guard let key = key else { return }
 
-        secretKeys[chatID] = secretKey
+        secretKeys[chatID] = SecretKey(key: key, salt: salt)
     }
 
     /// Symmetrically encrypt a plaintext
@@ -74,4 +75,11 @@ class CryptoManager {
     ///   - chatID: id of chat
     /// - Returns: decrypted message in plain text
     static func symDecrypt(from cipherB64Str: String, in chatID: Chat.ID) {}
+}
+
+extension CryptoManager {
+    struct SecretKey {
+        let key: SymmetricKey
+        let salt: Data
+    }
 }
