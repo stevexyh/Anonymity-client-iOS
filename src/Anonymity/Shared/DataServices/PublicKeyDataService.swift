@@ -17,5 +17,25 @@ class PublicKeyDataService {
     static let db = FirebaseManager.shared.firestore.collection("users")
 
     /// Publish PublicKey to Firebase FireStore automatically at real time
-    static func publish() { }
+    static func publish() {
+        guard let myID = UserAuthManager.currentUser?.uid else { return }
+        let pubKeyB64Str = CryptoManager.keyPublish()
+        let document = db.document(myID)
+
+        document.addSnapshotListener { _, error in
+            if let error = error {
+                print(error)
+            }
+
+            // (Steve X) TODO: DicKeyManager.PubKeyDicKey
+            let data: [String: Any] = [
+                "publicKey": pubKeyB64Str ?? "null",
+            ]
+
+            // Decode DicKeys into rawValue String
+            let decodedData = data // .mapKeys { $0.rawValue }
+
+            document.updateData(decodedData)
+        }
+    }
 }
