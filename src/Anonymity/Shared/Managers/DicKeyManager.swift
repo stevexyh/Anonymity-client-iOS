@@ -23,6 +23,7 @@ struct DicKeyManager {
         case id
         case users
         case messages
+        case keySaltB64Str
     }
 
     enum ContactDicKey: String, DicKey {

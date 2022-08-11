@@ -33,6 +33,7 @@ class ChatDataService {
             .id: chat.id,
             .users: chat.users,
             .messages: chat.messages,
+            .keySaltB64Str: chat.keySalt?.base64EncodedString() ?? "",
         ]
 
         // Decode DicKeys into rawValue String
@@ -62,7 +63,8 @@ class ChatDataService {
                         let new_chat = Chat(
                             id: data[.id] as? String ?? "",
                             users: data[.users] as? [User.ID] ?? [],
-                            messages: data[.messages] as? [Message] ?? []
+                            messages: data[.messages] as? [Message] ?? [],
+                            keySalt: Data(base64Encoded: data[.keySaltB64Str] as? String ?? "")
                         )
 
                         vm.chats.append(new_chat)
