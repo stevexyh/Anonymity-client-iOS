@@ -36,8 +36,9 @@ class CryptoManager {
     /// Derivate shared symmetric secret key from PublicKey of others
     /// - Parameters:
     ///   - pubKeyB64Str: Base64 string of PublicKey of others
+    ///   - chatID: id of chat
     ///   - size: The length in bytes of resulting symmetric key
-    static func symKeyDerivation(with pubKeyB64Str: String, size: Int = 256) {}
+    static func symKeyDerivation(with pubKeyB64Str: String, for chatID: Chat.ID, size: Int = 256) {}
 
     /// Symmetrically encrypt a plaintext
     /// - Parameters:
