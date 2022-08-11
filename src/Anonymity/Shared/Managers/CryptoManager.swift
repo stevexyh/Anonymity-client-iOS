@@ -79,10 +79,18 @@ class CryptoManager {
 
     /// Symmetrically decrypt a ciphertext
     /// - Parameters:
-    ///   - cipherB64Str: Base64 string of cipher text
+    ///   - combinedB64Str: Base64 string of cipher text
     ///   - chatID: id of chat
     /// - Returns: decrypted message in plain text
-    static func symDecrypt(from cipherB64Str: String, in chatID: Chat.ID) {}
+    static func symDecrypt(from combinedB64Str: String, in chatID: Chat.ID) -> String? {
+        guard let secKey = secretKeys[chatID] else { return nil }
+        guard let combinedData = Data(base64Encoded: combinedB64Str) else { return nil }
+        guard let sealedBox = try? AES.GCM.SealedBox(combined: combinedData) else { return nil }
+        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey.key) else { return nil }
+        let decryptedText = String(data: decryptedData, encoding: .utf8)
+
+        return decryptedText
+    }
 }
 
 extension CryptoManager {
