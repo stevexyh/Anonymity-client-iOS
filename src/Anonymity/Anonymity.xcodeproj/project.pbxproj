@@ -41,6 +41,7 @@
 		AA44B786286A845B001691A3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B785286A845B001691A3 /* ChatView.swift */; };
 		AA44B788286B65CB001691A3 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B787286B65CB001691A3 /* Chat.swift */; };
 		AA4E640128A56B0700E59455 /* CryptoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E640028A56B0700E59455 /* CryptoManager.swift */; };
+		AA4E640328A5A55000E59455 /* PublicKeyDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E640228A5A55000E59455 /* PublicKeyDataService.swift */; };
 		AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E32874940100C47765 /* MessageDataService.swift */; };
 		AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E5287495D200C47765 /* ContactsView.swift */; };
 		AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */; };
@@ -104,6 +105,7 @@
 		AA44B785286A845B001691A3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AA44B787286B65CB001691A3 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		AA4E640028A56B0700E59455 /* CryptoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoManager.swift; sourceTree = "<group>"; };
+		AA4E640228A5A55000E59455 /* PublicKeyDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKeyDataService.swift; sourceTree = "<group>"; };
 		AA5A43E32874940100C47765 /* MessageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataService.swift; sourceTree = "<group>"; };
 		AA5A43E5287495D200C47765 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatusView.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				AA1F16C9287C860000842168 /* UserDataService.swift */,
 				AA1F16D1287E45B000842168 /* ContactDataService.swift */,
 				AA023BEE2887770E0095C6B1 /* ChatDataService.swift */,
+				AA4E640228A5A55000E59455 /* PublicKeyDataService.swift */,
 			);
 			path = DataServices;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				AA22B577285D93C600E1DD29 /* AnonymityApp.swift in Sources */,
 				AA5A43EB28749EAD00C47765 /* HomePageView.swift in Sources */,
 				AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */,
+				AA4E640328A5A55000E59455 /* PublicKeyDataService.swift in Sources */,
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
 				AA1F16D4287ED6D100842168 /* ContactsAddSheetView.swift in Sources */,
 				AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */,
