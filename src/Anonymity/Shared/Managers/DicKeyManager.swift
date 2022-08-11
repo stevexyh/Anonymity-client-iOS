@@ -43,4 +43,8 @@ struct DicKeyManager {
         case isReceived
         case digest
     }
+
+    enum PublicKeyDicKey: String, DicKey {
+        case publicKey
+    }
 }

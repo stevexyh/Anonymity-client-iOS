@@ -27,13 +27,13 @@ class PublicKeyDataService {
                 print(error)
             }
 
-            // (Steve X) TODO: DicKeyManager.PubKeyDicKey
-            let data: [String: Any] = [
-                "publicKey": pubKeyB64Str ?? "null",
+            // Encode DicKeys into enum type
+            let data: [DicKeyManager.PublicKeyDicKey: Any] = [
+                .publicKey: pubKeyB64Str ?? "N/A",
             ]
 
             // Decode DicKeys into rawValue String
-            let decodedData = data // .mapKeys { $0.rawValue }
+            let decodedData = data.mapKeys { $0.rawValue }
 
             document.updateData(decodedData)
         }
