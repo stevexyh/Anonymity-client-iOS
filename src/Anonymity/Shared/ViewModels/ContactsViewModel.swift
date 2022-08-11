@@ -22,7 +22,7 @@ class ContactsViewModel: ObservableObject {
         autoRefreshContact()
     }
 
-    func addContact(from myID: User.ID, uid: String, firstName: String?, lastName: String?) {
+    func addContact(for myID: User.ID, uid: String, firstName: String?, lastName: String?) {
         let new_contact = Contact(uid: uid, firstName: firstName, lastName: lastName)
         ContactDataService.add(userID: myID, contact: new_contact)
     }

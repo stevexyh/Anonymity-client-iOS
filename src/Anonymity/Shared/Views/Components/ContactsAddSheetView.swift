@@ -49,7 +49,7 @@ struct ContactsAddSheetView: View {
                         self.showTextInvalidAlert = false
 
                         if let myID = UserAuthManager.currentUser?.uid {
-                            self.vm.addContact(from: myID, uid: uid, firstName: firstName, lastName: lastName)
+                            self.vm.addContact(for: myID, uid: uid, firstName: firstName, lastName: lastName)
                             self.presentation.wrappedValue.dismiss()
                         }
                     } else {
