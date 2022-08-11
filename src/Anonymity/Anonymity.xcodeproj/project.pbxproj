@@ -40,6 +40,7 @@
 		AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B783286A65BE001691A3 /* MessageListView.swift */; };
 		AA44B786286A845B001691A3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B785286A845B001691A3 /* ChatView.swift */; };
 		AA44B788286B65CB001691A3 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44B787286B65CB001691A3 /* Chat.swift */; };
+		AA4E640128A56B0700E59455 /* CryptoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E640028A56B0700E59455 /* CryptoManager.swift */; };
 		AA5A43E42874940100C47765 /* MessageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E32874940100C47765 /* MessageDataService.swift */; };
 		AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E5287495D200C47765 /* ContactsView.swift */; };
 		AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */; };
@@ -102,6 +103,7 @@
 		AA44B783286A65BE001691A3 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		AA44B785286A845B001691A3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AA44B787286B65CB001691A3 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		AA4E640028A56B0700E59455 /* CryptoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoManager.swift; sourceTree = "<group>"; };
 		AA5A43E32874940100C47765 /* MessageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataService.swift; sourceTree = "<group>"; };
 		AA5A43E5287495D200C47765 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStatusView.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				AA88372F288745B2000C19FA /* FirebaseManager.swift */,
 				AA023BF228883D3A0095C6B1 /* UserAuthManager.swift */,
 				AA2A82952895D911001D4CDA /* DicKeyManager.swift */,
+				AA4E640028A56B0700E59455 /* CryptoManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				AA5A43F128750B5400C47765 /* AvatarView.swift in Sources */,
 				AA2A82962895D911001D4CDA /* DicKeyManager.swift in Sources */,
 				AA22B575285D93C600E1DD29 /* Anonymity.xcdatamodeld in Sources */,
+				AA4E640128A56B0700E59455 /* CryptoManager.swift in Sources */,
 				AA44B788286B65CB001691A3 /* Chat.swift in Sources */,
 				AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */,
 				AA023BEF2887770E0095C6B1 /* ChatDataService.swift in Sources */,
