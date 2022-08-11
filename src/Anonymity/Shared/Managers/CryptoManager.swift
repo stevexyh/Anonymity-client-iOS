@@ -15,12 +15,14 @@ import CryptoKit
 import Foundation
 
 class CryptoManager {
+    // (Steve X) MARK: - SENSITIVE PRIVATE ZONE
     private static var secretKeys: [Chat.ID: SecretKey] = [:]
     private static var privateKey: Curve25519.KeyAgreement.PrivateKey?
     private static var publicKey: Curve25519.KeyAgreement.PublicKey? {
         privateKey?.publicKey
     }
 
+    // (Steve X) MARK: - Key Agreement by Asymmetric Encryption (ECC)
     /// Generate asymmetric key pairs (PrivateKey & PublicKey)
     static func keyGen() {
         privateKey = Curve25519.KeyAgreement.PrivateKey()
@@ -60,6 +62,7 @@ class CryptoManager {
         secretKeys[chatID] = SecretKey(key: key, salt: salt)
     }
 
+    // (Steve X) MARK: - Symmetric Encryption & Decryption (AES)
     /// Symmetrically encrypt a plaintext
     /// - Parameters:
     ///   - plainText: message in plain text
@@ -91,6 +94,7 @@ class CryptoManager {
     }
 }
 
+// (Steve X) MARK: - Extensions
 extension CryptoManager {
     struct SecretKey {
         let key: SymmetricKey
