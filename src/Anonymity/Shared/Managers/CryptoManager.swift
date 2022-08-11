@@ -33,12 +33,27 @@ class CryptoManager {
         return publicKey?.rawRepresentation.base64EncodedString()
     }
 
+    // (Steve X) TODO: Add Exception handle
     /// Derivate shared symmetric secret key from PublicKey of others
     /// - Parameters:
     ///   - pubKeyB64Str: Base64 string of PublicKey of others
     ///   - chatID: id of chat
     ///   - size: The length in bytes of resulting symmetric key
-    static func symKeyDerivation(with pubKeyB64Str: String, for chatID: Chat.ID, size: Int = 256) {}
+    static func symKeyDerivation(with pubKeyB64Str: String, for chatID: Chat.ID, size: Int = 256) {
+        let pubKeyData = Data(base64Encoded: pubKeyB64Str) ?? Data()
+        let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData)
+        guard let pubKey = pubKey else { return }
+
+        let sharedSecret = try? privateKey?.sharedSecretFromKeyAgreement(with: pubKey)
+        let secretKey = sharedSecret?.hkdfDerivedSymmetricKey(
+            using: SHA256.self,
+            salt: Data(),
+            sharedInfo: Data(),
+            outputByteCount: size
+        )
+
+        secretKeys[chatID] = secretKey
+    }
 
     /// Symmetrically encrypt a plaintext
     /// - Parameters:
