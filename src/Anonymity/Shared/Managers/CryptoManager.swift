@@ -66,8 +66,16 @@ class CryptoManager {
     /// - Parameters:
     ///   - plainText: message in plain text
     ///   - chatID: id of chat
-    /// - Returns: Base64 string of cipher text
-    static func symEncrypt(for plainText: String, in chatID: Chat.ID) {}
+    /// - Returns: Base64 string of combined SealBox Data(nonce, ciphertext, tag)
+    static func symEncrypt(for plainText: String, in chatID: Chat.ID) -> String? {
+        guard let secKey = secretKeys[chatID] else { return nil }
+        guard let plainTextData = plainText.data(using: .utf8) else { return nil }
+
+        let sealedBox = try? AES.GCM.seal(plainTextData, using: secKey.key)
+        let combinedB64Str = sealedBox?.combined?.base64EncodedString()
+
+        return combinedB64Str
+    }
 
     /// Symmetrically decrypt a ciphertext
     /// - Parameters:
