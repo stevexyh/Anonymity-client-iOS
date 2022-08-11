@@ -22,10 +22,16 @@ class CryptoManager {
     }
 
     /// Generate asymmetric key pairs (PrivateKey & PublicKey)
-    static func keyGen() {}
+    static func keyGen() {
+        privateKey = Curve25519.KeyAgreement.PrivateKey()
+    }
 
+    // (Steve X) TODO: Save PublicKey Base64 string in Firestore
     /// Publish Base64 string of PublicKey
-    static func keyPublish() {}
+    /// - Returns: Base64 string of PublicKey
+    static func keyPublish() -> String? {
+        return publicKey?.rawRepresentation.base64EncodedString()
+    }
 
     /// Derivate shared symmetric secret key from PublicKey of others
     /// - Parameters:
