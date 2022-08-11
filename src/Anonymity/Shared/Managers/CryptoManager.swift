@@ -46,18 +46,16 @@ class CryptoManager {
         size: Int = 256,
         salt: Data = Data(CryptoKit.AES.GCM.Nonce())
     ) {
-        let pubKeyData = Data(base64Encoded: pubKeyB64Str) ?? Data()
-        let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData)
-        guard let pubKey = pubKey else { return }
+        guard let pubKeyData = Data(base64Encoded: pubKeyB64Str) else { return }
+        guard let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData) else { return }
 
-        let sharedSecret = try? privateKey?.sharedSecretFromKeyAgreement(with: pubKey)
-        let key = sharedSecret?.hkdfDerivedSymmetricKey(
+        guard let sharedSecret = try? privateKey?.sharedSecretFromKeyAgreement(with: pubKey) else { return }
+        let key = sharedSecret.hkdfDerivedSymmetricKey(
             using: SHA256.self,
             salt: salt,
             sharedInfo: Data(),
             outputByteCount: size
         )
-        guard let key = key else { return }
 
         secretKeys[chatID] = SecretKey(key: key, salt: salt)
     }
