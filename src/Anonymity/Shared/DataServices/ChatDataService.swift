@@ -27,13 +27,14 @@ class ChatDataService {
     /// - Parameter chat: Chat instance
     static func add(for chat: Chat) {
         let document = db.document(chat.id)
+        let keySaltB64Str: String = (chat.keySalt ?? CryptoManager.saltGen()).base64EncodedString()
 
         // Encode DicKeys into enum type
         let data: [DicKeyManager.ChatDicKey: Any] = [
             .id: chat.id,
             .users: chat.users,
             .messages: chat.messages,
-            .keySaltB64Str: chat.keySalt?.base64EncodedString() ?? "",
+            .keySaltB64Str: keySaltB64Str,
         ]
 
         // Decode DicKeys into rawValue String
