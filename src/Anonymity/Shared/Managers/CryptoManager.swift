@@ -23,6 +23,11 @@ class CryptoManager {
     }
 
     // (Steve X) MARK: - Key Agreement by Asymmetric Encryption (ECC)
+
+    static func saltGen() -> Data {
+        Data(CryptoKit.AES.GCM.Nonce())
+    }
+
     /// Generate asymmetric key pairs (PrivateKey & PublicKey)
     static func keyGen() {
         privateKey = Curve25519.KeyAgreement.PrivateKey()
@@ -46,7 +51,7 @@ class CryptoManager {
         with pubKeyB64Str: String,
         for chatID: Chat.ID,
         size: Int = 256,
-        salt: Data = Data(CryptoKit.AES.GCM.Nonce())
+        salt: Data
     ) {
         guard let pubKeyData = Data(base64Encoded: pubKeyB64Str) else { return }
         guard let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData) else { return }
