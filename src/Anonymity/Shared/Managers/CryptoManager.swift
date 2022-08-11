@@ -21,9 +21,29 @@ class CryptoManager {
         privateKey?.publicKey
     }
 
+    /// Generate asymmetric key pairs (PrivateKey & PublicKey)
     static func keyGen() {}
+
+    /// Publish Base64 string of PublicKey
     static func keyPublish() {}
+
+    /// Derivate shared symmetric secret key from PublicKey of others
+    /// - Parameters:
+    ///   - pubKeyB64Str: Base64 string of PublicKey of others
+    ///   - size: The length in bytes of resulting symmetric key
     static func symKeyDerivation(with pubKeyB64Str: String, size: Int = 256) {}
+
+    /// Symmetrically encrypt a plaintext
+    /// - Parameters:
+    ///   - plainText: message in plain text
+    ///   - chatID: id of chat
+    /// - Returns: Base64 string of cipher text
     static func symEncrypt(for plainText: String, in chatID: Chat.ID) {}
+
+    /// Symmetrically decrypt a ciphertext
+    /// - Parameters:
+    ///   - cipherB64Str: Base64 string of cipher text
+    ///   - chatID: id of chat
+    /// - Returns: decrypted message in plain text
     static func symDecrypt(from cipherB64Str: String, in chatID: Chat.ID) {}
 }
