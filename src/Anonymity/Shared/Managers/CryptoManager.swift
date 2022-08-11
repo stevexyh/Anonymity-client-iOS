@@ -15,7 +15,7 @@ import CryptoKit
 import Foundation
 
 class CryptoManager {
-    // (Steve X) MARK: - SENSITIVE PRIVATE ZONE
+    // (Steve X) MARK: - SENSITIVE PRIVATE ZONE (This part must keep locally)
     private static var secretKeys: [Chat.ID: SecretKey] = [:]
     private static var privateKey: Curve25519.KeyAgreement.PrivateKey?
     private static var publicKey: Curve25519.KeyAgreement.PublicKey? {
