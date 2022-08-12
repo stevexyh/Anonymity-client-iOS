@@ -33,7 +33,6 @@ class CryptoManager {
         privateKey = Curve25519.KeyAgreement.PrivateKey()
     }
 
-    // (Steve X) TODO: Save PublicKey Base64 string in Firestore
     /// Publish Base64 string of PublicKey.
     /// If the PublicKey does not exist, generate a new PrivateKey & PublicKey pair.
     /// - Returns: Base64 string of PublicKey
