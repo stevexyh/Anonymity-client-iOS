@@ -19,7 +19,6 @@ class ContactsViewModel: ObservableObject {
     init() {
         // (Steve X): REMOVE BEFORE FLIGHT TODO: remove sample data
         contacts = ContactDataService.sample
-        autoRefreshContact()
     }
 
     func addContact(for myID: User.ID, uid: String, firstName: String?, lastName: String?) {
@@ -28,6 +27,8 @@ class ContactsViewModel: ObservableObject {
     }
 
     func autoRefreshContact() {
+        // (Steve X): REMOVE BEFORE FLIGHT TODO: remove sample data
+        contacts = ContactDataService.sample
         ContactDataService.fetchRealTime(vm: self)
     }
 }

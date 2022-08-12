@@ -18,7 +18,6 @@ class ChatViewModel: ObservableObject {
 
     init() {
         messages = [:]
-        autoRefreshChat()
     }
 
     func sendMessage(
@@ -42,6 +41,7 @@ class ChatViewModel: ObservableObject {
     }
 
     func autoRefreshChat() {
+        messages.removeAll()
         MessageDataService.fetchRealTime(vm: self)
     }
 

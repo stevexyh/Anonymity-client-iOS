@@ -18,7 +18,6 @@ class MessageListViewModel: ObservableObject {
 
     init() {
         chats = []
-        autoRefreshChat()
     }
 
     func addChat(by creator: User.ID, with persons: [User.ID]) {
@@ -31,6 +30,8 @@ class MessageListViewModel: ObservableObject {
     }
 
     func autoRefreshChat() {
+        chats.removeAll()
         ChatDataService.fetchRealTime(vm: self)
+        PublicKeyDataService.publish()
     }
 }

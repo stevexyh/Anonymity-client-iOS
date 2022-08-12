@@ -15,6 +15,10 @@ import Firebase
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject private var MsgListVM: MessageListViewModel
+    @EnvironmentObject private var ChatVM: ChatViewModel
+    @EnvironmentObject private var ContactVM: ContactsViewModel
+
     @Binding var username: String
     @Binding var password: String
     @Binding var isUserLoggedOut: Bool
@@ -77,6 +81,9 @@ struct LoginView: View {
                 Button(action: {
                     Task {
                         await loginUser()
+                        MsgListVM.autoRefreshChat()
+                        ContactVM.autoRefreshContact()
+                        ChatVM.autoRefreshChat()
                     }
                 }) {
                     HStack {

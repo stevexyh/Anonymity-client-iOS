@@ -22,7 +22,6 @@ class UserAuthManager {
         _loginStatus
     }
 
-    // (Steve X) FIXME: Severe Bug: multi user switch, refresh previous cache
     static var currentUser: Firebase.User? {
         _currentUser
 //        FirebaseManager.shared.auth.currentUser
@@ -53,7 +52,7 @@ class UserAuthManager {
         if let status = try? await FirebaseManager.shared.auth.signIn(withEmail: username, password: password) {
             _loginStatus = true
             _currentUser = status.user
-            PublicKeyDataService.publish()
+
             return true
         }
 
