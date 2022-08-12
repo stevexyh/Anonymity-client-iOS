@@ -15,6 +15,11 @@ import Firebase
 import Foundation
 
 class UserAuthManager {
+    private static var _loginStatus: Bool = false
+    static var loginStatus: Bool {
+        _loginStatus
+    }
+
     // (Steve X) FIXME: Severe Bug: multi user switch, refresh previous cache
     static var currentUser: Firebase.User? {
         return FirebaseManager.shared.auth.currentUser
@@ -43,6 +48,7 @@ class UserAuthManager {
     @MainActor
     static func userLogin(username: String, password: String) async -> Bool {
         if let _ = try? await FirebaseManager.shared.auth.signIn(withEmail: username, password: password) {
+            _loginStatus = true
             PublicKeyDataService.publish()
             return true
         }
@@ -69,6 +75,7 @@ class UserAuthManager {
     static func logOut(with logOutStatus: inout Bool) {
         if (try? FirebaseManager.shared.auth.signOut()) != nil {
             logOutStatus = true
+            _loginStatus = false
         }
     }
 }
