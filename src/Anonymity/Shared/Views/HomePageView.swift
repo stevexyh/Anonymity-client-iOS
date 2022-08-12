@@ -22,6 +22,7 @@ struct HomePageView: View {
         TabView {
             NavigationView {
                 MessageListView(
+                    isUserLoggedOut: $isUserLoggedOut,
                     username: username != "" ? username : nil
                 )
             }

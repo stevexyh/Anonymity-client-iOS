@@ -17,6 +17,7 @@ struct MessageListView: View {
     @EnvironmentObject private var vm: MessageListViewModel
     @EnvironmentObject private var ChatVM: ChatViewModel
     @EnvironmentObject private var ContactVM: ContactsViewModel
+    @Binding var isUserLoggedOut: Bool
 
     var username: String?
 
@@ -51,7 +52,7 @@ struct MessageListView: View {
                     Spacer()
 
                     Button(action: {
-                        try? FirebaseManager.shared.auth.signOut()
+                        UserAuthManager.logOut(with: &isUserLoggedOut)
                     }) {
                         HStack {
                             Image(systemName: "minus.circle")
@@ -119,7 +120,7 @@ extension MessageListView {
 struct MessageListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MessageListView()
+            MessageListView(isUserLoggedOut: Binding<Bool>.constant(false))
                 .environmentObject(MessageListViewModel())
         }
     }
