@@ -16,14 +16,13 @@ import SwiftUI
 struct HomePageView: View {
     @State var username: String = ""
     @State var password: String = ""
-    @State var showLoginPage: Bool = true
+    @State var isUserLoggedOut: Bool = true
 
     var body: some View {
         TabView {
             NavigationView {
                 MessageListView(
-                    username: username != "" ? username : nil,
-                    showLoginPage: $showLoginPage
+                    username: username != "" ? username : nil
                 )
             }
             .tabItem {
@@ -32,10 +31,7 @@ struct HomePageView: View {
 
             // Contacts Page View
             NavigationView {
-                ContactsView(
-                    username: username != "" ? username : nil,
-                    showLoginPage: $showLoginPage
-                )
+                ContactsView()
             }
             .tabItem {
                 Label("Contacts", systemImage: "person.text.rectangle")
@@ -49,8 +45,8 @@ struct HomePageView: View {
                 Label("Settings", systemImage: "gear")
             }
         }
-        .fullScreenCover(isPresented: $showLoginPage) {
-            LoginView(username: $username, password: $password, showLoginPage: $showLoginPage)
+        .fullScreenCover(isPresented: $isUserLoggedOut) {
+            LoginView(username: $username, password: $password, isUserLoggedOut: $isUserLoggedOut)
         }
     }
 }

@@ -16,31 +16,11 @@ import SwiftUI
 struct ContactsView: View {
     @EnvironmentObject private var vm: ContactsViewModel
     @EnvironmentObject private var MessageListVM: MessageListViewModel
-
-    var username: String? = ""
-    @Binding var showLoginPage: Bool
     @State var showAddSheet: Bool = false
 
     var body: some View {
         VStack {
-            if username != nil {
-                contactsListView
-            } else {
-                Button(action: {
-                    showLoginPage = true
-                }) {
-                    HStack {
-                        Text("Please log in first")
-                        Image(systemName: "arrow.right.circle.fill")
-                            .font(.system(size: 20))
-                    }
-                }
-                .frame(height: 10)
-                .padding()
-                .background(Color.accentColor)
-                .foregroundColor(.white)
-                .cornerRadius(20)
-            }
+            contactsListView
         }
         .navigationTitle("Contacts")
         .toolbar {
@@ -107,7 +87,7 @@ extension ContactsView {
 struct ContactsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContactsView(showLoginPage: Binding.constant(false))
+            ContactsView()
                 .environmentObject(ContactsViewModel())
         }
     }

@@ -17,7 +17,7 @@ import SwiftUI
 struct LoginView: View {
     @Binding var username: String
     @Binding var password: String
-    @Binding var showLoginPage: Bool
+    @Binding var isUserLoggedOut: Bool
     @State var statusMessage = ""
 
 //    @State var createMode: Bool = false
@@ -25,11 +25,11 @@ struct LoginView: View {
     init(
         username: Binding<String> = .constant(""),
         password: Binding<String> = .constant(""),
-        showLoginPage: Binding<Bool> = .constant(true)
+        isUserLoggedOut: Binding<Bool> = .constant(true)
     ) {
         _username = username
         _password = password
-        _showLoginPage = showLoginPage
+        _isUserLoggedOut = isUserLoggedOut
     }
 
     var body: some View {
@@ -140,7 +140,7 @@ extension LoginView {
     // TODO: (Steve X): add error message
     private func loginUser() async {
         let res = await UserAuthManager.userLogin(username: username, password: password)
-        showLoginPage = !res
+        isUserLoggedOut = !res
         print("static:", res)
 
 //        FirebaseManager.shared.auth.signIn(withEmail: username, password: password) { result, err in
