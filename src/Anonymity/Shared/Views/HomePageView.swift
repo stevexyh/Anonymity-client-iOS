@@ -54,6 +54,9 @@ struct HomePageView: View {
 
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
-        HomePageView()
+        HomePageView(isUserLoggedOut: false)
+            .environmentObject(MessageListViewModel())
+            .environmentObject(ContactsViewModel())
+            .environmentObject(ChatViewModel())
     }
 }
