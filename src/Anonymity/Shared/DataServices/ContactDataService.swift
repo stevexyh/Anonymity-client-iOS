@@ -11,10 +11,12 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import Firebase
 import Foundation
 
 class ContactDataService {
     static let db = FirebaseManager.shared.firestore.collection("users")
+    static var listener: Firebase.ListenerRegistration?
 
     static let sample: [Contact] = [
         Contact(uid: "11-aa", firstName: "Alice", lastName: "Test"),
@@ -45,7 +47,8 @@ class ContactDataService {
     /// - Parameter vm: ContactsViewModel
     static func fetchRealTime(vm: ContactsViewModel) {
         guard let myID = UserAuthManager.currentUser?.uid else { return }
-        db.document(myID)
+
+        listener = db.document(myID)
             .collection("contacts")
             .addSnapshotListener { query, error in
                 if let error = error {
@@ -71,5 +74,10 @@ class ContactDataService {
                     }
                 }
             }
+    }
+
+    /// Remove Firebase Firestore listener
+    static func unsubscribe() {
+        listener?.remove()
     }
 }

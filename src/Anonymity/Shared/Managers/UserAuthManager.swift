@@ -73,6 +73,12 @@ class UserAuthManager {
     /// Log out current user
     /// - Parameter logOutStatus: the log out status to be changed
     static func logOut(with logOutStatus: inout Bool) {
+        // Unsubscribe listeners of DataServices
+        MessageDataService.unsubscribe()
+        ContactDataService.unsubscribe()
+        ChatDataService.unsubscribe()
+        PublicKeyDataService.unsubscribe()
+
         if (try? FirebaseManager.shared.auth.signOut()) != nil {
             logOutStatus = true
             _loginStatus = false

@@ -16,6 +16,7 @@ import Foundation
 
 class MessageDataService {
     static let db = FirebaseManager.shared.firestore.collection("chats")
+    static var listener: Firebase.ListenerRegistration?
 
     static let users: [User] = UserDataService.sample
     static let sample: [Message] = [
@@ -56,7 +57,8 @@ class MessageDataService {
     /// - Parameter vm: ChatViewModel
     static func fetchRealTime(vm: ChatViewModel) {
         guard let myID = UserAuthManager.currentUser?.uid else { return }
-        FirebaseManager.shared.firestore.collectionGroup("messages")
+
+        listener = FirebaseManager.shared.firestore.collectionGroup("messages")
             .addSnapshotListener { query, error in
                 if let error = error {
                     print(error)
@@ -89,5 +91,10 @@ class MessageDataService {
                     }
                 }
             }
+    }
+
+    /// Remove Firebase Firestore listener
+    static func unsubscribe() {
+        listener?.remove()
     }
 }

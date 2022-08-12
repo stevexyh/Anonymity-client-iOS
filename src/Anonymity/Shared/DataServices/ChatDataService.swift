@@ -11,10 +11,13 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import Firebase
 import Foundation
 
 class ChatDataService {
     static let db = FirebaseManager.shared.firestore.collection("chats")
+    static var listener: Firebase.ListenerRegistration?
+
     static let users: [User] = UserDataService.sample
     static let sample: [Chat] = [
         Chat(
@@ -51,7 +54,8 @@ class ChatDataService {
     /// - Parameter vm: MessageListViewModel
     static func fetchRealTime(vm: MessageListViewModel) {
         guard let myID = UserAuthManager.currentUser?.uid else { return }
-        db.whereField("users", arrayContains: myID).addSnapshotListener { query, error in
+
+        listener = db.whereField("users", arrayContains: myID).addSnapshotListener { query, error in
             if let error = error {
                 print(error)
             }
@@ -76,5 +80,10 @@ class ChatDataService {
                 }
             }
         }
+    }
+
+    /// Remove Firebase Firestore listener
+    static func unsubscribe() {
+        listener?.remove()
     }
 }

@@ -11,18 +11,21 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import Firebase
 import Foundation
 
 class PublicKeyDataService {
     static let db = FirebaseManager.shared.firestore.collection("users")
+    static var listener: Firebase.ListenerRegistration?
 
     /// Publish PublicKey to Firebase FireStore automatically at real time
     static func publish() {
         guard let myID = UserAuthManager.currentUser?.uid else { return }
+
         let pubKeyB64Str = CryptoManager.keyPublish()
         let document = db.document(myID)
 
-        document.addSnapshotListener { _, error in
+        listener = document.addSnapshotListener { _, error in
             if let error = error {
                 print(error)
             }
@@ -37,5 +40,10 @@ class PublicKeyDataService {
 
             document.updateData(decodedData)
         }
+    }
+
+    /// Remove Firebase Firestore listener
+    static func unsubscribe() {
+        listener?.remove()
     }
 }
