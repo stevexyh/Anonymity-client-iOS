@@ -32,6 +32,5 @@ class MessageListViewModel: ObservableObject {
 
     func autoRefreshChat() {
         ChatDataService.fetchRealTime(vm: self)
-        PublicKeyDataService.publish()
     }
 }

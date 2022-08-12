@@ -42,6 +42,7 @@ class UserAuthManager {
     @MainActor
     static func userLogin(username: String, password: String) async -> Bool {
         if let _ = try? await FirebaseManager.shared.auth.signIn(withEmail: username, password: password) {
+            PublicKeyDataService.publish()
             return true
         }
 
