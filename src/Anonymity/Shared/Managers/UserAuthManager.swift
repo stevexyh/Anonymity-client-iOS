@@ -16,6 +16,7 @@ import Foundation
 
 class UserAuthManager {
     private static var _loginStatus: Bool = false
+
     static var loginStatus: Bool {
         _loginStatus
     }
@@ -63,11 +64,8 @@ class UserAuthManager {
     /// - Returns: boolean user creation result
     @MainActor
     static func userCreate(username: String, password: String) async -> Bool {
-        if let _ = try? await FirebaseManager.shared.auth.createUser(withEmail: username, password: password) {
-            return true
-        }
-
-        return false
+        let status = try? await FirebaseManager.shared.auth.createUser(withEmail: username, password: password)
+        return status != nil
     }
 
     /// Log out current user
