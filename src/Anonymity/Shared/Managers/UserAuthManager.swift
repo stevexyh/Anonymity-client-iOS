@@ -15,6 +15,7 @@ import Firebase
 import Foundation
 
 class UserAuthManager {
+    // (Steve X) FIXME: Severe Bug: multi user switch, refresh previous cache
     static var currentUser: Firebase.User? {
         return FirebaseManager.shared.auth.currentUser
     }
