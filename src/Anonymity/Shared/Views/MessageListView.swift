@@ -51,7 +51,14 @@ struct MessageListView: View {
 
                     Spacer()
 
-                    Image(systemName: "plus.circle")
+                    Button(action: {
+                        try? FirebaseManager.shared.auth.signOut()
+                    }) {
+                        HStack {
+                            Image(systemName: "minus.circle")
+                            Text("Log Out")
+                        }.foregroundColor(.red)
+                    }
 
                 }.padding()
 
