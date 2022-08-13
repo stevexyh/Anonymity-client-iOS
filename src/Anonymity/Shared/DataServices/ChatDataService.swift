@@ -15,8 +15,8 @@ import Firebase
 import Foundation
 
 class ChatDataService {
-    static let db = FirebaseManager.shared.firestore.collection("chats")
-    static var listener: Firebase.ListenerRegistration?
+    private static let db = FirebaseManager.shared.firestore.collection("chats")
+    private static var listener: Firebase.ListenerRegistration?
 
     static let users: [User] = UserDataService.sample
     static let sample: [Chat] = [

@@ -15,8 +15,8 @@ import Firebase
 import Foundation
 
 class PublicKeyDataService {
-    static let db = FirebaseManager.shared.firestore.collection("users")
-    static var listener: Firebase.ListenerRegistration?
+    private static let db = FirebaseManager.shared.firestore.collection("users")
+    private static var listener: Firebase.ListenerRegistration?
 
     /// Publish PublicKey to Firebase FireStore automatically at real time
     static func publish() {

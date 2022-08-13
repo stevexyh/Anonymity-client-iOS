@@ -15,8 +15,8 @@ import Firebase
 import Foundation
 
 class ContactDataService {
-    static let db = FirebaseManager.shared.firestore.collection("users")
-    static var listener: Firebase.ListenerRegistration?
+    private static let db = FirebaseManager.shared.firestore.collection("users")
+    private static var listener: Firebase.ListenerRegistration?
 
     static let sample: [Contact] = [
         Contact(uid: "11-aa", firstName: "Alice", lastName: "Test"),
