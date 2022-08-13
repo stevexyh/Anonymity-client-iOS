@@ -14,6 +14,7 @@
 import Foundation
 
 class UserDataService {
+    // (Steve X): REMOVE BEFORE FLIGHT TODO: remove `users`, `sample`
     static let sample: [User] = [
         User(username: "a1", password: "aaa", avatarURL: "test", onlineStatus: .online),
         User(username: "a2", password: "aaa", avatarURL: "test", onlineStatus: .busy),

@@ -18,6 +18,7 @@ class MessageDataService {
     private static let db = FirebaseManager.shared.firestore.collection("chats")
     private static var listener: Firebase.ListenerRegistration?
 
+    // (Steve X): REMOVE BEFORE FLIGHT TODO: remove `users`, `sample`
     static let users: [User] = UserDataService.sample
     static let sample: [Message] = [
         Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),

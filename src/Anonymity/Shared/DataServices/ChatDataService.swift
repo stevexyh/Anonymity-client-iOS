@@ -18,6 +18,7 @@ class ChatDataService {
     private static let db = FirebaseManager.shared.firestore.collection("chats")
     private static var listener: Firebase.ListenerRegistration?
 
+    // (Steve X): REMOVE BEFORE FLIGHT TODO: remove `users`, `sample`
     static let users: [User] = UserDataService.sample
     static let sample: [Chat] = [
         Chat(

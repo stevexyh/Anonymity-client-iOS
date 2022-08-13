@@ -18,6 +18,7 @@ class ContactDataService {
     private static let db = FirebaseManager.shared.firestore.collection("users")
     private static var listener: Firebase.ListenerRegistration?
 
+    // (Steve X): REMOVE BEFORE FLIGHT TODO: remove `sample`
     static let sample: [Contact] = [
         Contact(uid: "11-aa", firstName: "Alice", lastName: "Test"),
         Contact(uid: "12-ab", firstName: "Bob", lastName: "Test"),
