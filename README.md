@@ -75,6 +75,10 @@ Anonymity Client side
 - [x] firebase
 - [x] auth
 - [x] communication
+- [ ] encryption
+    - [x] ECC key gen & publish
+    - [ ] AES key distribution
+    - [ ] AES symmetric encryption & decryption
 
 ---
 ## Screenshots
