@@ -80,6 +80,10 @@ Anonymity Client side
     - [ ] AES key distribution
     - [ ] AES symmetric encryption & decryption
 
+### Learn Next
+- [ ] Dependency Injection
+- [ ] Unit Test
+
 ---
 ## Screenshots
 ### Version 0.2-Sketch
