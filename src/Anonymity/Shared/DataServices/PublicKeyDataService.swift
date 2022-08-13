@@ -51,5 +51,19 @@ class PublicKeyDataService {
     /// Fetch Base64 string of target user's PublicKey
     /// - Parameter userID: uid of target user
     /// - Returns: Base64 string of target user's PublicKey
-    static func fetchPubKeyB64Str(for userID: User.ID) -> String? { return nil }
+    static func fetchPubKeyB64Str(for userID: User.ID) async -> String? {
+        guard let data = try? await
+            db
+            .document(userID)
+            .getDocument()
+            .data() as? [DicKeyManager.PublicKeyDicKey: Any]
+        else {
+            print("Fail to fetch PublicKey for UserID: [\(userID)]")
+            return nil
+        }
+
+        let pubKeyB64Str = data[.publicKey] as? String
+
+        return pubKeyB64Str
+    }
 }
