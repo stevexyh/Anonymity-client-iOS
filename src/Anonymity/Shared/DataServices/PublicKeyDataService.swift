@@ -46,4 +46,10 @@ class PublicKeyDataService {
     static func unsubscribe() {
         listener?.remove()
     }
+
+    // (Steve X) TODO: Fetch Base64 string of target user's PublicKey
+    /// Fetch Base64 string of target user's PublicKey
+    /// - Parameter userID: uid of target user
+    /// - Returns: Base64 string of target user's PublicKey
+    static func fetchPubKeyB64Str(for userID: User.ID) -> String? { return nil }
 }
