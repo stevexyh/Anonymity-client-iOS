@@ -22,7 +22,7 @@ class PublicKeyDataService {
     static func publish() {
         guard let myID = UserAuthManager.currentUser?.uid else { return }
 
-        let pubKeyB64Str = CryptoManager.keyPublish()
+        let pubKeyB64Str = CryptoManager.pubKeyB64Str
         let document = db.document(myID)
 
         listener = document.addSnapshotListener { _, error in

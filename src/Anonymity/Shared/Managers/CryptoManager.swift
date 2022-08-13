@@ -24,6 +24,16 @@ class CryptoManager {
 
     // (Steve X) MARK: - Key Agreement by Asymmetric Encryption (ECC)
 
+    /// Base64 string of PublicKey.
+    /// If the PublicKey does not exist, generate a new PrivateKey & PublicKey pair.
+    static var pubKeyB64Str: String? {
+        if privateKey == nil {
+            keyGen()
+        }
+
+        return publicKey?.rawRepresentation.base64EncodedString()
+    }
+
     static func saltGen() -> Data {
         Data(CryptoKit.AES.GCM.Nonce())
     }
@@ -31,17 +41,6 @@ class CryptoManager {
     /// Generate asymmetric key pairs (PrivateKey & PublicKey)
     static func keyGen() {
         privateKey = Curve25519.KeyAgreement.PrivateKey()
-    }
-
-    /// Publish Base64 string of PublicKey.
-    /// If the PublicKey does not exist, generate a new PrivateKey & PublicKey pair.
-    /// - Returns: Base64 string of PublicKey
-    static func keyPublish() -> String? {
-        if privateKey == nil {
-            keyGen()
-        }
-
-        return publicKey?.rawRepresentation.base64EncodedString()
     }
 
     // (Steve X) TODO: Add Exception handle
