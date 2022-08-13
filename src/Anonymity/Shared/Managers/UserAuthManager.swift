@@ -24,7 +24,6 @@ class UserAuthManager {
 
     static var currentUser: Firebase.User? {
         _currentUser
-//        FirebaseManager.shared.auth.currentUser
     }
 
     // MARK: - (Steve X): HIGHLIGHT: async Login -
@@ -79,6 +78,7 @@ class UserAuthManager {
         ChatDataService.unsubscribe()
         PublicKeyDataService.unsubscribe()
 
+        // Log out from Firebase, then set status
         if (try? FirebaseManager.shared.auth.signOut()) != nil {
             logOutStatus = true
             _loginStatus = false
