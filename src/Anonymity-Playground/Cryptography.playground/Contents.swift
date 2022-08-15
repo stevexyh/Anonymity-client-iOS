@@ -1,5 +1,5 @@
 import CryptoKit
-import UIKit
+import Foundation
 
 // (Steve X) MARK: - AES Symmetric Encryption
 // (Steve X) MARK: Encryption
