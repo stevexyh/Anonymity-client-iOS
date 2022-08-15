@@ -87,4 +87,40 @@ class ChatDataService {
     static func unsubscribe() {
         listener?.remove()
     }
+
+    /// Derivate shared symmetric secret key with other user for chat using specific salt.
+    /// If salt for this chat does not exist in DB, generate a new salt and then publish to DB.
+    /// - Parameters:
+    ///   - userID: ID of target user
+    ///   - chatID: ID of chat
+    ///   - size: The length in bytes of resulting symmetric key
+    static func symKeyGen(
+        with userID: User.ID,
+        for chatID: Chat.ID,
+        size: Int = 256
+    ) async {
+        guard let pubKeyB64Str = await PublicKeyDataService.fetchPubKeyB64Str(for: userID) else { return }
+
+        // Fetch salt from DB
+        guard let dataDict = try? await
+            db
+            .document(chatID)
+            .getDocument()
+            .data()
+        else {
+            print("Fail to fetch data for ChatID: [\(chatID)]")
+            return
+        }
+
+        let data = dataDict.mapKeys { DicKeyManager.ChatDicKey(rawValue: $0) }
+        var salt: Data
+        if let keySaltB64Str = data[.keySaltB64Str] as? String {
+            salt = Data(base64Encoded: keySaltB64Str) ?? CryptoManager.saltGen()
+        } else {
+            salt = CryptoManager.saltGen()
+        }
+
+        // (Steve X) TODO: Update salt to DB
+        CryptoManager.symKeyDerivation(with: pubKeyB64Str, for: chatID, size: size, salt: salt)
+    }
 }
