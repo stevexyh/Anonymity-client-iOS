@@ -70,9 +70,11 @@ extension ContactsView {
                         // TODO: (Steve X): REMOVE BEFORE FLIGHT: set chatID
                         ChatView(name: contact.fullName, chatID: "")
                             .onAppear {
-                                guard let myID = UserAuthManager.currentUser?.uid else { return }
-                                let withID = contact.id
-                                MessageListVM.addChat(by: myID, with: [withID])
+                                Task {
+                                    guard let myID = UserAuthManager.currentUser?.uid else { return }
+                                    let withID = contact.id
+                                    await MessageListVM.addChat(by: myID, with: [withID])
+                                }
                             }
                     }) {
                         EmptyView()
