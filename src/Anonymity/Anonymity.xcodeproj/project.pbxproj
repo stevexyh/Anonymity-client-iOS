@@ -775,7 +775,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.steve-x-software.Anonymity";
 				PRODUCT_NAME = Anonymity;
 				SDKROOT = iphoneos;
@@ -805,7 +805,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.steve-x-software.Anonymity";
 				PRODUCT_NAME = Anonymity;
 				SDKROOT = iphoneos;
