@@ -77,7 +77,7 @@ Anonymity Client side
 - [x] communication
 - [ ] encryption
     - [x] ECC key gen & publish
-    - [ ] AES key distribution
+    - [x] AES key distribution
     - [ ] AES symmetric encryption & decryption
 
 ### Learn Next
