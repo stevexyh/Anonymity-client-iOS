@@ -128,6 +128,7 @@
 		AA88372B28872B7F000C19FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA88372F288745B2000C19FA /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		AAF7CCD528AA97AA00FFA189 /* Cryptography.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Cryptography.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +178,7 @@
 			children = (
 				AA22B549285D93C500E1DD29 /* Shared */,
 				AA22B55B285D93C600E1DD29 /* macOS */,
+				AAF7CCD428AA974F00FFA189 /* Playgrounds */,
 				AA6E46A628A9C11C00CA31B8 /* UnitTests iOS */,
 				AA22B564285D93C600E1DD29 /* Tests iOS */,
 				AA22B570285D93C600E1DD29 /* Tests macOS */,
@@ -341,6 +343,14 @@
 				AA4E640028A56B0700E59455 /* CryptoManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		AAF7CCD428AA974F00FFA189 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				AAF7CCD528AA97AA00FFA189 /* Cryptography.playground */,
+			);
+			path = Playgrounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
