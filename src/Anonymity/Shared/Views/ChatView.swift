@@ -37,7 +37,7 @@ struct ChatView: View {
             GeometryReader { geometry in
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 0) {
-                        EncryptionInfoSubView(name: name)
+                        EncryptionInfoSubView(name: name, isEncrypted: chat.isEncrypted)
 
                         ForEach(vm.messages[chat.id] ?? []) { msg in
                             HStack {
@@ -126,7 +126,7 @@ struct MessageBubbleSubView: View {
 
 struct EncryptionInfoSubView: View {
     let name: String
-    let isEncrypted: Bool = false
+    let isEncrypted: Bool
 
     var body: some View {
         HStack {

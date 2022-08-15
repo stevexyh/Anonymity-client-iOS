@@ -55,7 +55,7 @@ class MessageListViewModel: ObservableObject {
     func encryptChat(with userID: User.ID, for chatID: Chat.ID, size: Int = 256) async -> Bool {
         let res = await ChatDataService.symKeyGen(with: userID, for: chatID, size: size) != nil
         if let id = chats.firstIndex(where: { $0.id == chatID }) {
-            chats[id].isEncrypted = true
+            chats[id].isEncrypted = res
         }
 
         return res
