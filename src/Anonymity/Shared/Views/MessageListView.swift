@@ -107,6 +107,11 @@ extension MessageListView {
                     }
                     NavigationLink(destination: {
                         ChatView(name: chatName, chatID: chat.id)
+                            .onAppear {
+                                Task {
+                                    await vm.encryptChat(with: contact, for: chat.id)
+                                }
+                            }
                     }) {
                         EmptyView()
                     }

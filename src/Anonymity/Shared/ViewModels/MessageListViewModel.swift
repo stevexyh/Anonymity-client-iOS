@@ -20,6 +20,7 @@ class MessageListViewModel: ObservableObject {
         chats = []
     }
 
+    @MainActor
     /// Create & encrypt new chat
     /// - Parameters:
     ///   - creator: User.ID of chat creator
@@ -44,6 +45,7 @@ class MessageListViewModel: ObservableObject {
         PublicKeyDataService.publish()
     }
 
+    @MainActor
     /// Generate symmetric key for encrypting a chat.
     /// - Parameters:
     ///   - userID: ID of target user
