@@ -20,16 +20,21 @@ class MessageListViewModel: ObservableObject {
         chats = []
     }
 
+    /// Create & encrypt new chat
+    /// - Parameters:
+    ///   - creator: User.ID of chat creator
+    ///   - persons: An array of [User.ID]
     func addChat(by creator: User.ID, with persons: [User.ID]) async {
         var new_chat = Chat(by: creator, with: persons)
+
+        // Encrypt when creating new chats
+        if await encryptChat(with: persons[0], for: new_chat.id) {
+            new_chat.isEncrypted = true
+        }
 
         // Create new chats only when it doesn't exist
         if chats.first(where: { $0.id == new_chat.id }) == nil {
             ChatDataService.add(for: new_chat)
-        }
-
-        if await encryptChat(with: persons[0], for: new_chat.id) {
-            new_chat.isEncrypted = true
         }
     }
 
