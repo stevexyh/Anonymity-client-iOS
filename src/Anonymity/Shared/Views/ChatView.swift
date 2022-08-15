@@ -17,7 +17,7 @@ struct ChatView: View {
     @EnvironmentObject private var vm: ChatViewModel
 
     let name: String
-    let chatID: Chat.ID
+    let chat: Chat
     @State private var text: String = ""
     @FocusState private var isFocused
 
@@ -39,7 +39,7 @@ struct ChatView: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         EncryptionInfoSubView(name: name)
 
-                        ForEach(vm.messages[chatID] ?? []) { msg in
+                        ForEach(vm.messages[chat.id] ?? []) { msg in
                             HStack {
                                 ZStack {
                                     MessageBubbleSubView(
@@ -91,7 +91,7 @@ extension ChatView {
 
                 Button(action: {
                     vm.sendMessage(
-                        chatId: chatID,
+                        chatId: chat.id,
                         type: .sent,
                         content: self.text
                     )
@@ -146,7 +146,7 @@ struct EncryptionInfoSubView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ChatView(name: "Alice", chatID: "0")
+            ChatView(name: "Alice", chat: Chat(users: ["11-aa"], messages: []))
                 .environmentObject(ChatViewModel())
         }
     }
