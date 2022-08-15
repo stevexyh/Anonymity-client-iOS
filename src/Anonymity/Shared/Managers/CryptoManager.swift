@@ -19,7 +19,11 @@ class CryptoManager {
     private static var secretKeys: [Chat.ID: SecretKey] = [:]
     private static var privateKey: Curve25519.KeyAgreement.PrivateKey?
     private static var publicKey: Curve25519.KeyAgreement.PublicKey? {
-        privateKey?.publicKey
+        if privateKey == nil {
+            keyGen()
+        }
+
+        return privateKey?.publicKey
     }
 
     // (Steve X) MARK: - Key Agreement by Asymmetric Encryption (ECC)
@@ -27,11 +31,7 @@ class CryptoManager {
     /// Base64 string of PublicKey.
     /// If the PublicKey does not exist, generate a new PrivateKey & PublicKey pair.
     static var pubKeyB64Str: String? {
-        if privateKey == nil {
-            keyGen()
-        }
-
-        return publicKey?.rawRepresentation.base64EncodedString()
+        publicKey?.rawRepresentation.base64EncodedString()
     }
 
     static func saltGen() -> Data {
@@ -57,10 +57,31 @@ class CryptoManager {
         size: Int = 256,
         salt: Data
     ) -> Bool {
-        guard let pubKeyData = Data(base64Encoded: pubKeyB64Str) else { return false }
-        guard let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData) else { return false }
+        guard let pubKeyData = Data(base64Encoded: pubKeyB64Str) else {
+            print(">>> Nil pubKeyData for other user")
+            return false
+        }
 
-        guard let sharedSecret = try? privateKey?.sharedSecretFromKeyAgreement(with: pubKey) else { return false }
+        guard let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData) else {
+            print(">>> Nil pubKey for other user")
+            return false
+        }
+
+        guard self.pubKeyB64Str != nil else {
+            print(">>> Nil pubKey for myself")
+            return false
+        }
+
+        guard let privateKey = privateKey else {
+            print(">>> Nil PrivateKey")
+            return false
+        }
+
+        guard let sharedSecret = try? privateKey.sharedSecretFromKeyAgreement(with: pubKey) else {
+            print(">>> Nil sharedSecret")
+            return false
+        }
+
         let key = sharedSecret.hkdfDerivedSymmetricKey(
             using: SHA256.self,
             salt: salt,
