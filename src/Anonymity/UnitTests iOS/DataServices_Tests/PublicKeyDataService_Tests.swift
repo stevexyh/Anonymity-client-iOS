@@ -49,10 +49,10 @@ class PublicKeyDataServices_Tests: XCTestCase {
         let userID = "Hwx4lGQp2NXnhYvuFZbCvjXnn5K2"
 
         // When
-        let pk = await ds.fetchPubKeyB64Str(for: userID)
-        print(pk ?? "nil")
+        let pubKey = await ds.fetchPubKeyB64Str(for: userID)
+        print(pubKey ?? "nil")
 
         // Then
-        XCTAssertNotNil(pk, "XCTset failed: cannot find the PubKey for UserID[\(userID)]")
+        XCTAssertNotNil(pubKey, "XCTset failed: cannot find the PubKey for UserID[\(userID)]")
     }
 }
