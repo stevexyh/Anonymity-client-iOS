@@ -56,6 +56,7 @@
 		AA883730288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
 		AA883731288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
 		AAD9A0D1288F2CA1008A1F30 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */; };
+		AAF7CCD728AAD18B00FFA189 /* ChatDataService_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7CCD628AAD18B00FFA189 /* ChatDataService_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		AA88372F288745B2000C19FA /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		AAF7CCD528AA97AA00FFA189 /* Cryptography.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Cryptography.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		AAF7CCD628AAD18B00FFA189 /* ChatDataService_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataService_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6E46B628A9C17000CA31B8 /* PublicKeyDataService_Tests.swift */,
+				AAF7CCD628AAD18B00FFA189 /* ChatDataService_Tests.swift */,
 			);
 			path = DataServices_Tests;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 			files = (
 				AA6E46B728A9C17000CA31B8 /* PublicKeyDataService_Tests.swift in Sources */,
 				AA6E46A828A9C11C00CA31B8 /* UnitTests_iOS.swift in Sources */,
+				AAF7CCD728AAD18B00FFA189 /* ChatDataService_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
