@@ -17,6 +17,7 @@ struct Chat: Identifiable, Comparable {
     var id: String = UUID().uuidString
     var users: [User.ID]
     var messages: [Message]
+    var isEncrypted: Bool = false
     var keySalt: Data?
     var type: ChatType {
         if users.count == 2 {

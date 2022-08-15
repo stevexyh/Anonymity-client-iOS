@@ -21,14 +21,16 @@ class MessageListViewModel: ObservableObject {
     }
 
     func addChat(by creator: User.ID, with persons: [User.ID]) async {
-        let new_chat = Chat(by: creator, with: persons)
+        var new_chat = Chat(by: creator, with: persons)
 
         // Create new chats only when it doesn't exist
         if chats.first(where: { $0.id == new_chat.id }) == nil {
             ChatDataService.add(for: new_chat)
         }
 
-        let _ = await encryptChat(with: persons[0], for: new_chat.id)
+        if await encryptChat(with: persons[0], for: new_chat.id) {
+            new_chat.isEncrypted = true
+        }
     }
 
     func autoRefreshChat() {
@@ -45,6 +47,10 @@ class MessageListViewModel: ObservableObject {
     /// - Returns: A boolean indicates success / failure
     func encryptChat(with userID: User.ID, for chatID: Chat.ID, size: Int = 256) async -> Bool {
         let res = await ChatDataService.symKeyGen(with: userID, for: chatID, size: size) != nil
+        if let id = chats.firstIndex(where: { $0.id == chatID }) {
+            chats[id].isEncrypted = true
+        }
+
         return res
     }
 }
