@@ -123,4 +123,19 @@ class ChatDataService {
         // (Steve X) TODO: Update salt to DB
         CryptoManager.symKeyDerivation(with: pubKeyB64Str, for: chatID, size: size, salt: salt)
     }
+
+    static func saltPublish(salt: Data, for chatID: Chat.ID) {
+        let saltB64Str = salt.base64EncodedString()
+        let document = db.document(chatID)
+
+        // Encode DicKeys into enum type
+        let data: [DicKeyManager.ChatDicKey: Any] = [
+            .keySaltB64Str: saltB64Str,
+        ]
+
+        // Decode DicKeys into rawValue String
+        let decodedData = data.mapKeys { $0.rawValue }
+
+        document.updateData(decodedData)
+    }
 }
