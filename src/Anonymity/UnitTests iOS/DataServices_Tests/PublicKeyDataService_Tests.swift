@@ -13,6 +13,12 @@
 
 import XCTest
 
+// Unit Test
+// Naming Structure: func test_[Unit of Work]_[State Under Test]_[Expected Behavior][_stress]()
+// Naming Structure: func test_[struct / class]_[var / func]_[Expected Result][_stress]()
+// Testing Structure: Given, When, Then
+@testable import Anonymity
+
 class PublicKeyDataServices_Tests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
