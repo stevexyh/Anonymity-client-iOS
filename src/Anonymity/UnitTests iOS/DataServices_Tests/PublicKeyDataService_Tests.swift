@@ -42,4 +42,17 @@ class PublicKeyDataServices_Tests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
+    func test_PublicKeyDataService_fetchPubKeyB64Str_ShouldReturnB64Str() async {
+        // Given
+        let ds = PublicKeyDataService.self
+        let userID = "Hwx4lGQp2NXnhYvuFZbCvjXnn5K2"
+
+        // When
+        let pk = await ds.fetchPubKeyB64Str(for: userID)
+        print(pk ?? "nil")
+
+        // Then
+        XCTAssertNotNil(pk, "XCTset failed: cannot find the PubKey for UserID[\(userID)]")
+    }
 }
