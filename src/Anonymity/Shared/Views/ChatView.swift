@@ -126,16 +126,17 @@ struct MessageBubbleSubView: View {
 
 struct EncryptionInfoSubView: View {
     let name: String
+    let isEncrypted: Bool = false
 
     var body: some View {
         HStack {
-            Image(systemName: "lock.open.fill")
-            Text("Chat with \(name) has not been encrypted yet")
+            Image(systemName: isEncrypted ? "lock.fill" : "lock.open.fill")
+            Text("Chat with \(name) has \(isEncrypted ? "been encrypted" : "not been encrypted yet")")
         }
         .font(.system(size: 14))
         .padding(.horizontal)
         .padding(.vertical, 10)
-        .background(.orange.opacity(0.3))
+        .background(isEncrypted ? .green.opacity(0.6) : .orange.opacity(0.3))
         .foregroundColor(.black.opacity(0.7))
         .cornerRadius(20)
         .padding()
