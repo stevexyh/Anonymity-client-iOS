@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Anonymity.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AA6E46A428A9C11C00CA31B8"
+               BuildableName = "UnitTests iOS.xctest"
+               BlueprintName = "UnitTests iOS"
+               ReferencedContainer = "container:Anonymity.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

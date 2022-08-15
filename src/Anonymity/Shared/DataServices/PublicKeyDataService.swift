@@ -51,6 +51,7 @@ class PublicKeyDataService {
     /// Fetch Base64 string of target user's PublicKey
     /// - Parameter userID: uid of target user
     /// - Returns: Base64 string of target user's PublicKey
+    @MainActor
     static func fetchPubKeyB64Str(for userID: User.ID) async -> String? {
         guard let data = try? await
             db
