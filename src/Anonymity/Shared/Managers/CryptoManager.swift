@@ -50,16 +50,17 @@ class CryptoManager {
     ///   - chatID: id of chat
     ///   - size: The length in bytes of resulting symmetric key
     ///   - salt: The salt to use for key derivation
+    /// - Returns: A boolean indicates success / failure
     static func symKeyDerivation(
         with pubKeyB64Str: String,
         for chatID: Chat.ID,
         size: Int = 256,
         salt: Data
-    ) {
-        guard let pubKeyData = Data(base64Encoded: pubKeyB64Str) else { return }
-        guard let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData) else { return }
+    ) -> Bool {
+        guard let pubKeyData = Data(base64Encoded: pubKeyB64Str) else { return false }
+        guard let pubKey = try? Curve25519.KeyAgreement.PublicKey(rawRepresentation: pubKeyData) else { return false }
 
-        guard let sharedSecret = try? privateKey?.sharedSecretFromKeyAgreement(with: pubKey) else { return }
+        guard let sharedSecret = try? privateKey?.sharedSecretFromKeyAgreement(with: pubKey) else { return false }
         let key = sharedSecret.hkdfDerivedSymmetricKey(
             using: SHA256.self,
             salt: salt,
@@ -68,6 +69,8 @@ class CryptoManager {
         )
 
         secretKeys[chatID] = SecretKey(key: key, salt: salt)
+
+        return true
     }
 
     // (Steve X) MARK: - Symmetric Encryption & Decryption (AES)

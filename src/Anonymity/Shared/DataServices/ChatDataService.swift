@@ -94,12 +94,13 @@ class ChatDataService {
     ///   - userID: ID of target user
     ///   - chatID: ID of chat
     ///   - size: The length in bytes of resulting symmetric key
+    /// - Returns: Salt `Data` for generating this key or `nil` if failed.
     static func symKeyGen(
         with userID: User.ID,
         for chatID: Chat.ID,
         size: Int = 256
-    ) async {
-        guard let pubKeyB64Str = await PublicKeyDataService.fetchPubKeyB64Str(for: userID) else { return }
+    ) async -> Data? {
+        guard let pubKeyB64Str = await PublicKeyDataService.fetchPubKeyB64Str(for: userID) else { return nil }
 
         // Fetch salt from DB
         guard let dataDict = try? await
@@ -109,7 +110,7 @@ class ChatDataService {
             .data()
         else {
             print("Fail to fetch data for ChatID: [\(chatID)]")
-            return
+            return nil
         }
 
         let data = dataDict.mapKeys { DicKeyManager.ChatDicKey(rawValue: $0) }
@@ -121,7 +122,9 @@ class ChatDataService {
         }
 
         saltPublish(salt: salt, for: chatID)
-        CryptoManager.symKeyDerivation(with: pubKeyB64Str, for: chatID, size: size, salt: salt)
+        guard CryptoManager.symKeyDerivation(with: pubKeyB64Str, for: chatID, size: size, salt: salt) else { return nil }
+
+        return salt
     }
 
     /// Update salt for specific chat
