@@ -124,6 +124,10 @@ class ChatDataService {
         CryptoManager.symKeyDerivation(with: pubKeyB64Str, for: chatID, size: size, salt: salt)
     }
 
+    /// Update salt for specific chat
+    /// - Parameters:
+    ///   - salt: salt data
+    ///   - chatID: ID of target chat
     static func saltPublish(salt: Data, for chatID: Chat.ID) {
         let saltB64Str = salt.base64EncodedString()
         let document = db.document(chatID)
