@@ -101,8 +101,15 @@ class CryptoManager {
     ///   - chatID: id of chat
     /// - Returns: Base64 string of combined SealBox Data(nonce, ciphertext, tag)
     static func symEncrypt(for plainText: String, in chatID: Chat.ID) -> String? {
-        guard let secKey = secretKeys[chatID] else { return nil }
-        guard let plainTextData = plainText.data(using: .utf8) else { return nil }
+        guard let secKey = secretKeys[chatID] else {
+            print(">>> Nil SecKey")
+            return nil
+        }
+
+        guard let plainTextData = plainText.data(using: .utf8) else {
+            print(">>> Nil Plain Text Data")
+            return nil
+        }
 
         let sealedBox = try? AES.GCM.seal(plainTextData, using: secKey.key)
         let combinedB64Str = sealedBox?.combined?.base64EncodedString()
@@ -116,10 +123,26 @@ class CryptoManager {
     ///   - chatID: id of chat
     /// - Returns: decrypted message in plain text
     static func symDecrypt(from combinedB64Str: String, in chatID: Chat.ID) -> String? {
-        guard let secKey = secretKeys[chatID] else { return nil }
-        guard let combinedData = Data(base64Encoded: combinedB64Str) else { return nil }
-        guard let sealedBox = try? AES.GCM.SealedBox(combined: combinedData) else { return nil }
-        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey.key) else { return nil }
+        guard let secKey = secretKeys[chatID] else {
+            print(">>> Nil SecKey")
+            return nil
+        }
+
+        guard let combinedData = Data(base64Encoded: combinedB64Str) else {
+            print(">>> Nil CombinedData")
+            return nil
+        }
+
+        guard let sealedBox = try? AES.GCM.SealedBox(combined: combinedData) else {
+            print(">>> Nil SealedBox")
+            return nil
+        }
+
+        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey.key) else {
+            print(">>> Nil Decrypted Data")
+            return nil
+        }
+
         let decryptedText = String(data: decryptedData, encoding: .utf8)
 
         return decryptedText
