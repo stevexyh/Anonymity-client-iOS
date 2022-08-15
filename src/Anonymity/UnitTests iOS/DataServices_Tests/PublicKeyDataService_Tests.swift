@@ -43,16 +43,22 @@ class PublicKeyDataServices_Tests: XCTestCase {
         }
     }
 
-    func test_PublicKeyDataService_fetchPubKeyB64Str_ShouldReturnB64Str() async {
+    func test_PublicKeyDataService_fetchPubKeyB64Str_ShouldReturnB64Str_stress() async {
         // Given
         let ds = PublicKeyDataService.self
         let userID = "Hwx4lGQp2NXnhYvuFZbCvjXnn5K2"
+        let loopCount = Int.random(in: 1 ..< 100)
+        var keys: [String?] = []
 
         // When
-        let pubKey = await ds.fetchPubKeyB64Str(for: userID)
-        print(pubKey ?? "nil")
+        for _ in 0 ..< loopCount {
+            let pubKey = await ds.fetchPubKeyB64Str(for: userID)
+            keys.append(pubKey)
+            print(pubKey ?? "nil")
+        }
 
         // Then
-        XCTAssertNotNil(pubKey, "XCTset failed: cannot find the PubKey for UserID[\(userID)]")
+
+        XCTAssertTrue(keys.allSatisfy { $0 != nil }, "XCTset failed: cannot find the PubKey for UserID[\(userID)]")
     }
 }
