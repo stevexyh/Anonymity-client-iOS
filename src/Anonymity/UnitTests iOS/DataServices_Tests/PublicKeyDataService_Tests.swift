@@ -58,7 +58,6 @@ class PublicKeyDataServices_Tests: XCTestCase {
         }
 
         // Then
-
         XCTAssertTrue(keys.allSatisfy { $0 != nil }, "XCTset failed: cannot find the PubKey for UserID[\(userID)]")
     }
 }
