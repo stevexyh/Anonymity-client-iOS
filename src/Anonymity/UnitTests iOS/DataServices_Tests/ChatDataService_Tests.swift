@@ -43,18 +43,24 @@ class ChatDataService_Tests: XCTestCase {
         }
     }
 
-    func test_ChatDataService_symKeyGen_ShouldReturnSalt() async {
+    func test_ChatDataService_symKeyGen_ShouldReturnSalt_stress() async {
         // Given
         let ds = ChatDataService.self
         let userID = "26qn8z3JRhh4LWPIjaB7XBY3jy52"
         let chatID = "26qn8z3JRhh4LWPIjaB7XBY3jy52Hwx4lGQp2NXnhYvuFZbCvjXnn5K2"
-        let size = 256
+        let size = Int.random(in: 1 ... 256)
+        let loopCount = Int.random(in: 1 ..< 100)
+        var salts: [Data?] = []
 
         // When
-        let salt = await ds.symKeyGen(with: userID, for: chatID, size: size)
+        for _ in 0 ..< loopCount {
+            let salt = await ds.symKeyGen(with: userID, for: chatID, size: size)
+            salts.append(salt)
+            print(salt?.base64EncodedString() ?? "nil salt")
+        }
 
         // Then
-        print(salt?.base64EncodedString() ?? "nil salt")
-        XCTAssertNotNil(salt, "SymKey with User[\(userID)] for Chat[\(chatID)] generation failed.")
+        XCTAssertNotNil(salts, "SymKey with User[\(userID)] for Chat[\(chatID)] generation failed.")
+        XCTAssertTrue(salts.allSatisfy { $0 == salts[0] }, "Generated different salts with User[\(userID)] for Chat[\(chatID)].")
     }
 }
