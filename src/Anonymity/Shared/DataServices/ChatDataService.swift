@@ -120,7 +120,7 @@ class ChatDataService {
             salt = CryptoManager.saltGen()
         }
 
-        // (Steve X) TODO: Update salt to DB
+        saltPublish(salt: salt, for: chatID)
         CryptoManager.symKeyDerivation(with: pubKeyB64Str, for: chatID, size: size, salt: salt)
     }
 
