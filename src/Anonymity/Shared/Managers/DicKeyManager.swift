@@ -41,6 +41,7 @@ struct DicKeyManager {
         case content
         case timestamp
         case isReceived
+        case isEncrypted
         case digest
     }
 

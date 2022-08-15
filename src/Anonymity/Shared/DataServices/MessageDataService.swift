@@ -41,6 +41,7 @@ class MessageDataService {
             .content: message.content,
             .timestamp: message.timestamp,
             .isReceived: message.isReceived,
+            .isEncrypted: message.isEncrypted,
             .digest: message.digest,
         ]
 
@@ -72,13 +73,15 @@ class MessageDataService {
                             let data = change.document.data().mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
                             let timestamp = data[.timestamp] as? Timestamp ?? Timestamp(seconds: 0, nanoseconds: 0)
                             let senderID = data[.senderID] as? String ?? ""
+                            let isEncrypted = data[.isEncrypted] as? Bool ?? false
                             let new_message = Message(
                                 id: data[.id] as? String ?? "",
                                 chatID: data[.chatID] as? String ?? "",
                                 type: myID == senderID ? .sent : .received,
                                 senderID: senderID,
                                 content: data[.content] as? String ?? "",
-                                timestamp: timestamp.dateValue()
+                                timestamp: timestamp.dateValue(),
+                                isEncrypted: isEncrypted
                             )
 
                             // Append new message to VM dict only once, default value is empty array if key does not exists

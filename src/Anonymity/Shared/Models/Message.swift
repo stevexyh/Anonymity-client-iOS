@@ -20,6 +20,7 @@ struct Message: Identifiable {
     let senderID: User.ID
     let content: String
     let timestamp: Date
+    var isEncrypted: Bool = false
 
     // TODO: (Steve X): add receive status & digest check
     var isReceived: Bool = false
