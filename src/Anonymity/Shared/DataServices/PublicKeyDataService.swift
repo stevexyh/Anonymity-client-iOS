@@ -47,7 +47,6 @@ class PublicKeyDataService {
         listener?.remove()
     }
 
-    // (Steve X) TODO: Fetch Base64 string of target user's PublicKey
     /// Fetch Base64 string of target user's PublicKey
     /// - Parameter userID: uid of target user
     /// - Returns: Base64 string of target user's PublicKey
