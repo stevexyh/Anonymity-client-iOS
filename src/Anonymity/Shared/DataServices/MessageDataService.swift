@@ -73,14 +73,19 @@ class MessageDataService {
                             // Encode DicKeys into enum type
                             let data = change.document.data().mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
                             let timestamp = data[.timestamp] as? Timestamp ?? Timestamp(seconds: 0, nanoseconds: 0)
+                            let chatID = data[.chatID] as? String ?? ""
                             let senderID = data[.senderID] as? String ?? ""
                             let isEncrypted = data[.isEncrypted] as? Bool ?? false
+
+                            let content = data[.content] as? String ?? ""
+                            let plainText = isEncrypted ? CryptoManager.symDecrypt(from: content, in: chatID) : content
+
                             let new_message = Message(
                                 id: data[.id] as? String ?? "",
-                                chatID: data[.chatID] as? String ?? "",
+                                chatID: chatID,
                                 type: myID == senderID ? .sent : .received,
                                 senderID: senderID,
-                                content: data[.content] as? String ?? "",
+                                content: plainText ?? "",
                                 timestamp: timestamp.dateValue(),
                                 isEncrypted: isEncrypted
                             )
