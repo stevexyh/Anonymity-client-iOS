@@ -33,15 +33,16 @@ class MessageDataService {
     ///   - chatID: ID of chat instance
     ///   - message: message instance
     static func add(in chatID: Chat.ID, for message: Message) {
+        let cipherText = CryptoManager.symEncrypt(for: message.content, in: chatID)
         let document = db.document(chatID).collection("messages").document(message.id)
         let data: [DicKeyManager.MessageDicKey: Any] = [
             .id: message.id,
             .chatID: message.chatID,
             .senderID: message.senderID,
-            .content: message.content,
+            .content: cipherText ?? message.content,
             .timestamp: message.timestamp,
             .isReceived: message.isReceived,
-            .isEncrypted: message.isEncrypted,
+            .isEncrypted: cipherText != nil,
             .digest: message.digest,
         ]
 
