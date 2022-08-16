@@ -43,10 +43,8 @@ struct ChatView: View {
                             HStack {
                                 ZStack {
                                     MessageBubbleSubView(
-                                        id: msg.id,
-                                        maxWidth: geometry.size.width * 0.8,
-                                        type: msg.type,
-                                        content: msg.content
+                                        message: msg,
+                                        maxWidth: geometry.size.width * 0.8
                                     )
                                     .padding()
                                 }
@@ -109,18 +107,20 @@ extension ChatView {
 }
 
 struct MessageBubbleSubView: View {
-    let id: String
+    let message: Message
     let maxWidth: CGFloat?
-    let type: Message.MessageType
-    let content: String
 
     var body: some View {
-        Text(content)
-            .padding(.horizontal)
-            .padding(.vertical, 5)
-            .background((type == .received) ? .gray.opacity(0.3) : .green.opacity(0.6))
-            .cornerRadius(10)
-            .frame(maxWidth: maxWidth, alignment: (type == .received) ? .leading : .trailing)
+        HStack {
+            Image(systemName: message.isEncrypted ? "lock.fill" : "lock.open.fill")
+            Text(message.content)
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 5)
+        .background((message.type == .received) ? .gray.opacity(0.3) :
+            (message.isEncrypted ? .green.opacity(0.6) : .orange.opacity(0.6)))
+        .cornerRadius(10)
+        .frame(maxWidth: maxWidth, alignment: (message.type == .received) ? .leading : .trailing)
     }
 }
 
