@@ -54,7 +54,7 @@ class CryptoManager {
     static func symKeyDerivation(
         with pubKeyB64Str: String,
         for chatID: Chat.ID,
-        size: Int = 256,
+        size: Int = 32,
         salt: Data
     ) -> Bool {
         guard let pubKeyData = Data(base64Encoded: pubKeyB64Str) else {

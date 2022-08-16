@@ -52,7 +52,7 @@ class MessageListViewModel: ObservableObject {
     ///   - chatID: ID of chat
     ///   - size: The length in bytes of resulting symmetric key
     /// - Returns: A boolean indicates success / failure
-    func encryptChat(with userID: User.ID, for chatID: Chat.ID, size: Int = 256) async -> Bool {
+    func encryptChat(with userID: User.ID, for chatID: Chat.ID, size: Int = 32) async -> Bool {
         let res = await ChatDataService.symKeyGen(with: userID, for: chatID, size: size) != nil
         if let id = chats.firstIndex(where: { $0.id == chatID }) {
             chats[id].isEncrypted = res

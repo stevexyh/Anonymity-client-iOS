@@ -98,7 +98,7 @@ class ChatDataService {
     static func symKeyGen(
         with userID: User.ID,
         for chatID: Chat.ID,
-        size: Int = 256
+        size: Int = 32
     ) async -> Data? {
         guard let pubKeyB64Str = await PublicKeyDataService.fetchPubKeyB64Str(for: userID) else { return nil }
 
