@@ -40,6 +40,7 @@ class MessageDataService {
             .chatID: message.chatID,
             .senderID: message.senderID,
             .content: cipherText ?? message.content,
+            .contentType: message.contentType.rawValue,
             .timestamp: message.timestamp,
             .isReceived: message.isReceived,
             .isEncrypted: cipherText != nil,
