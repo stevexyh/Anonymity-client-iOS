@@ -19,6 +19,7 @@ struct ChatView: View {
     let name: String
     let chat: Chat
     @State private var text: String = ""
+    @State private var chooseFile: Bool = false
     @FocusState private var isFocused
 
     var body: some View {
@@ -57,6 +58,14 @@ struct ChatView: View {
             .background(.gray.opacity(0.2))
 
             toolbarView
+                .fileImporter(isPresented: $chooseFile, allowedContentTypes: [.content]) { result in
+                    do {
+                        let fileURL = try result.get()
+                        print(fileURL)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
         }
         .toolbar {
             NavigationLink(destination: {
@@ -79,7 +88,16 @@ extension ChatView {
     private var toolbarView: some View {
         VStack {
             let height: CGFloat = 37
+
             HStack {
+                Button {
+                    chooseFile.toggle()
+                } label: {
+                    Image(systemName: "folder")
+                        .resizable()
+                        .frame(width: height, height: height * 0.8)
+                }
+
                 TextField("Text here...", text: $text)
                     .padding(.horizontal)
                     .frame(height: height)
