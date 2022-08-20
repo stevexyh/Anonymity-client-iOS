@@ -58,10 +58,14 @@ struct ChatView: View {
             .background(.gray.opacity(0.2))
 
             toolbarView
-                .fileImporter(isPresented: $chooseFile, allowedContentTypes: [.content]) { result in
+                .fileImporter(isPresented: $chooseFile, allowedContentTypes: [.data]) { result in
                     do {
                         let fileURL = try result.get()
                         print(fileURL)
+
+                        // (Steve X): REMOVE BEFORE FLIGHT TODO: move DS call to VM
+                        FileDataService.add(in: chat.id, for: fileURL)
+
                     } catch {
                         print(error.localizedDescription)
                     }
