@@ -30,6 +30,7 @@
 		AA22B57C285D93C600E1DD29 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B54E285D93C500E1DD29 /* Persistence.swift */; };
 		AA22B57D285D93C600E1DD29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA22B54F285D93C600E1DD29 /* Assets.xcassets */; };
 		AA22B57E285D93C600E1DD29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA22B54F285D93C600E1DD29 /* Assets.xcassets */; };
+		AA263CD128B13BF700CDFFE4 /* FileDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD028B13BF700CDFFE4 /* FileDataService.swift */; };
 		AA2A828D2891E641001D4CDA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828C2891E641001D4CDA /* FirebaseAuth */; };
 		AA2A828F2891E641001D4CDA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828E2891E641001D4CDA /* FirebaseFirestore */; };
 		AA2A82912891E641001D4CDA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A82902891E641001D4CDA /* FirebaseStorage */; };
@@ -107,6 +108,7 @@
 		AA22B56D285D93C600E1DD29 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA22B571285D93C600E1DD29 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		AA263CD028B13BF700CDFFE4 /* FileDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataService.swift; sourceTree = "<group>"; };
 		AA2A82952895D911001D4CDA /* DicKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicKeyManager.swift; sourceTree = "<group>"; };
 		AA2A82982895DFE6001D4CDA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				AA1F16D1287E45B000842168 /* ContactDataService.swift */,
 				AA023BEE2887770E0095C6B1 /* ChatDataService.swift */,
 				AA4E640228A5A55000E59455 /* PublicKeyDataService.swift */,
+				AA263CD028B13BF700CDFFE4 /* FileDataService.swift */,
 			);
 			path = DataServices;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				AA1F16CA287C860000842168 /* UserDataService.swift in Sources */,
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
 				AA22B579285D93C600E1DD29 /* ContentView.swift in Sources */,
+				AA263CD128B13BF700CDFFE4 /* FileDataService.swift in Sources */,
 				AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */,
 				AA883730288745B2000C19FA /* FirebaseManager.swift in Sources */,
 				AA1F16D2287E45B000842168 /* ContactDataService.swift in Sources */,
