@@ -37,6 +37,7 @@ struct DicKeyManager {
         case id
         case chatID
         case type
+        case contentType
         case senderID
         case content
         case timestamp

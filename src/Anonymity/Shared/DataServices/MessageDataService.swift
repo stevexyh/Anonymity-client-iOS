@@ -75,6 +75,7 @@ class MessageDataService {
                             let timestamp = data[.timestamp] as? Timestamp ?? Timestamp(seconds: 0, nanoseconds: 0)
                             let chatID = data[.chatID] as? String ?? ""
                             let senderID = data[.senderID] as? String ?? ""
+                            let contentType = data[.contentType] as? String ?? "text"
                             let isEncrypted = data[.isEncrypted] as? Bool ?? false
 
                             let content = data[.content] as? String ?? ""
@@ -84,7 +85,7 @@ class MessageDataService {
                                 id: data[.id] as? String ?? "",
                                 chatID: chatID,
                                 type: myID == senderID ? .sent : .received,
-                                contentType: .text,
+                                contentType: .init(rawValue: contentType) ?? .text,
                                 senderID: senderID,
                                 content: plainText ?? "",
                                 timestamp: timestamp.dateValue(),

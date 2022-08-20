@@ -34,7 +34,7 @@ extension Message {
         case received
     }
 
-    enum ContentType {
+    enum ContentType: String {
         case text
         case file
     }
