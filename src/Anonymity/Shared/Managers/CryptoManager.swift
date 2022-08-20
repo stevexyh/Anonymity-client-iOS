@@ -117,6 +117,23 @@ class CryptoManager {
         return combinedB64Str
     }
 
+    /// Symmetrically encrypt a Data object
+    /// - Parameters:
+    ///   - data: origin Data object
+    ///   - chatID: id of chat
+    /// - Returns: Data? object of combined SealBox Data(nonce, ciphertext, tag)
+    static func symEncrypt(for data: Data, in chatID: Chat.ID) -> Data? {
+        guard let secKey = secretKeys[chatID] else {
+            print(">>> Nil SecKey")
+            return nil
+        }
+
+        let sealedBox = try? AES.GCM.seal(data, using: secKey.key)
+        let combinedData = sealedBox?.combined
+
+        return combinedData
+    }
+
     /// Symmetrically decrypt a ciphertext
     /// - Parameters:
     ///   - combinedB64Str: Base64 string of cipher text
