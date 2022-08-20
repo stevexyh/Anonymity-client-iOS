@@ -247,6 +247,14 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		AA263CD228B156CC00CDFFE4 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AA44B785286A845B001691A3 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		AA2A82972895DFA3001D4CDA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,8 +280,8 @@
 				AA5A43EA28749EAD00C47765 /* HomePageView.swift */,
 				AA22B54D285D93C500E1DD29 /* ContentView.swift */,
 				AA5A43E72874976400C47765 /* Components */,
+				AA263CD228B156CC00CDFFE4 /* Chat */,
 				AA44B783286A65BE001691A3 /* MessageListView.swift */,
-				AA44B785286A845B001691A3 /* ChatView.swift */,
 				AA5A43E5287495D200C47765 /* ContactsView.swift */,
 				AA5A43EC2874A34900C47765 /* UserProfileView.swift */,
 				AA5A43EE2874D55300C47765 /* SettingsView.swift */,
