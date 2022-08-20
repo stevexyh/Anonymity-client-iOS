@@ -22,7 +22,8 @@ class FileDataService {
     ///   - chatID: ID of chat instance
     ///   - dataURL: URL of file to be uploaded
     static func add(in chatID: Chat.ID, for dataURL: URL) {
-        let document = db.reference(withPath: chatID)
+        let filename = dataURL.lastPathComponent
+        let document = db.reference(withPath: "chat files/\(chatID)/\(filename)")
 
         do {
             let data = try Data(contentsOf: dataURL, options: .uncached)
