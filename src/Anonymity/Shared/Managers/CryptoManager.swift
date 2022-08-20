@@ -164,6 +164,30 @@ class CryptoManager {
 
         return decryptedText
     }
+
+    /// Symmetrically decrypt a cipher Data object
+    /// - Parameters:
+    ///   - combinedData: Data? object of combined SealBox Data(nonce, ciphertext, tag)
+    ///   - chatID: id of chat
+    /// - Returns: decrypted Data object
+    static func symDecrypt(from combinedData: Data, in chatID: Chat.ID) -> Data? {
+        guard let secKey = secretKeys[chatID] else {
+            print(">>> Nil SecKey")
+            return nil
+        }
+
+        guard let sealedBox = try? AES.GCM.SealedBox(combined: combinedData) else {
+            print(">>> Nil SealedBox")
+            return nil
+        }
+
+        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey.key) else {
+            print(">>> Nil Decrypted Data")
+            return nil
+        }
+
+        return decryptedData
+    }
 }
 
 // (Steve X) MARK: - Extensions
