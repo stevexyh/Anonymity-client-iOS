@@ -17,18 +17,25 @@ import UniformTypeIdentifiers
 
 /// File model for exporting files
 struct File: FileDocument {
-    var url: URL?
+    private var _url: URL?
+
+    var urlString: String?
+    var url: URL? {
+        _url
+    }
 
     static var readableContentTypes: [UTType] = [.data]
 
-    init(url: URL) {
-        self.url = url
+    init(urlString: String) {
+        self.urlString = urlString
+        _url = URL(string: urlString)
     }
 
     /// Do not need this func in protocol, set url to nil
     /// - Parameter configuration: configuration description
     init(configuration: ReadConfiguration) throws {
-        url = nil
+        urlString = nil
+        _url = nil
     }
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
