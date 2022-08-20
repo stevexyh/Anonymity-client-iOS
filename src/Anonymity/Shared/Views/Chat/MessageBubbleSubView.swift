@@ -18,14 +18,37 @@ struct MessageBubbleSubView: View {
     let maxWidth: CGFloat?
 
     var body: some View {
+        let bubbleColor = (message.type == .received) ? Color.gray.opacity(0.3) :
+            (message.isEncrypted ? Color.green.opacity(0.6) : Color.orange.opacity(0.6))
+
         HStack {
-            Image(systemName: message.isEncrypted ? "lock.fill" : "lock.open.fill")
-            Text(message.content)
+            let filename = URL(string: message.content)?.lastPathComponent
+
+            if message.contentType == .file {
+                ZStack {
+                    let radius: CGFloat = 60
+
+                    Circle()
+                        .foregroundColor(.white)
+                        .frame(width: radius, height: radius)
+
+                    Image(systemName: "arrow.down")
+                        .resizable()
+                        .frame(width: radius / 2, height: radius / 2)
+                        .foregroundColor(bubbleColor)
+                }
+                .padding(.top)
+                .padding(.bottom)
+                .padding(.trailing)
+            } else {
+                Image(systemName: message.isEncrypted ? "lock.fill" : "lock.open.fill")
+            }
+
+            Text(message.contentType == .text ? message.content : filename ?? "Untitled File")
         }
         .padding(.horizontal)
         .padding(.vertical, 5)
-        .background((message.type == .received) ? .gray.opacity(0.3) :
-            (message.isEncrypted ? .green.opacity(0.6) : .orange.opacity(0.6)))
+        .background(bubbleColor)
         .cornerRadius(10)
         .frame(
             maxWidth: maxWidth,
@@ -54,6 +77,21 @@ struct MessageBubbleSubView_Previews: PreviewProvider {
                     chatID: "",
                     type: .sent,
                     contentType: .text,
+                    senderID: "",
+                    content: "encrypted message",
+                    timestamp: .now,
+                    isEncrypted: true,
+                    isReceived: true
+                ),
+                maxWidth: maxWidth
+            )
+
+            MessageBubbleSubView(
+                message: Message(
+                    id: "",
+                    chatID: "",
+                    type: .sent,
+                    contentType: .file,
                     senderID: "",
                     content: "encrypted message",
                     timestamp: .now,
