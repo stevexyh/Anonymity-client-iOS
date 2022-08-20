@@ -11,6 +11,7 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import FirebaseStorage
 import Foundation
 
 class FileDataService {
@@ -21,6 +22,33 @@ class FileDataService {
     ///   - chatID: ID of chat instance
     ///   - dataURL: URL of file to be uploaded
     static func add(in chatID: Chat.ID, for dataURL: URL) {
-        // pass
+        let document = db.reference(withPath: chatID)
+
+        do {
+            let data = try Data(contentsOf: dataURL, options: .uncached)
+
+            document.putData(data, metadata: nil) { metadata, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+
+                if let metadata = metadata {
+                    print(metadata.description)
+                }
+
+                document.downloadURL { url, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+
+                    print(url?.absoluteString ?? "")
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
     }
 }
