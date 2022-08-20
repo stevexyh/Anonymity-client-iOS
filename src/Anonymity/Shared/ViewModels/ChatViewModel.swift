@@ -22,8 +22,9 @@ class ChatViewModel: ObservableObject {
 
     func sendMessage(
         chatId: Chat.ID,
-        type: Message.MessageType,
+        type: Message.ReceiveType,
         senderID: String = UserAuthManager.currentUser?.uid ?? "",
+        contentType: Message.ContentType,
         content: String,
         timestamp: Date = .now,
         isReceived: Bool = false
@@ -31,6 +32,7 @@ class ChatViewModel: ObservableObject {
         let new_message = Message(
             chatID: chatId,
             type: type,
+            contentType: contentType,
             senderID: senderID,
             content: content,
             timestamp: timestamp,

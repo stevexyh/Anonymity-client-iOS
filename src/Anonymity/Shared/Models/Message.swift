@@ -16,7 +16,8 @@ import Foundation
 struct Message: Identifiable {
     var id: String = UUID().uuidString
     let chatID: String
-    let type: MessageType
+    let type: ReceiveType
+    let contentType: ContentType
     let senderID: User.ID
     let content: String
     let timestamp: Date
@@ -28,8 +29,13 @@ struct Message: Identifiable {
 }
 
 extension Message {
-    enum MessageType {
+    enum ReceiveType {
         case sent
         case received
+    }
+
+    enum ContentType {
+        case text
+        case file
     }
 }

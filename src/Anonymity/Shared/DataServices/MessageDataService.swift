@@ -21,11 +21,11 @@ class MessageDataService {
     // (Steve X): REMOVE BEFORE FLIGHT TODO: remove `users`, `sample`
     static let users: [User] = UserDataService.sample
     static let sample: [Message] = [
-        Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(chatID: "0", type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(chatID: "0", type: .received, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
-        Message(chatID: "0", type: .sent, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .received, contentType: .text, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .sent, contentType: .text, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .received, contentType: .text, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .received, contentType: .text, senderID: users[1].id, content: "test message", timestamp: .now, isReceived: true),
+        Message(chatID: "0", type: .sent, contentType: .text, senderID: users[0].id, content: "test message", timestamp: .now, isReceived: true),
     ]
 
     /// Write data into Firebase FireStore
@@ -84,6 +84,7 @@ class MessageDataService {
                                 id: data[.id] as? String ?? "",
                                 chatID: chatID,
                                 type: myID == senderID ? .sent : .received,
+                                contentType: .text,
                                 senderID: senderID,
                                 content: plainText ?? "",
                                 timestamp: timestamp.dateValue(),

@@ -113,6 +113,7 @@ extension ChatView {
                     vm.sendMessage(
                         chatId: chat.id,
                         type: .sent,
+                        contentType: .text,
                         content: self.text
                     )
 
