@@ -12,6 +12,7 @@
 //
 
 import Firebase
+import FirebaseStorage
 import Foundation
 
 class FirebaseManager {
@@ -20,6 +21,9 @@ class FirebaseManager {
 
     /// Firestore for database
     let firestore: Firestore
+
+    /// Firestore Storage for storing files
+    let storage: Storage
 
     /// Singleton instance
     static let shared: FirebaseManager = {
@@ -33,5 +37,6 @@ class FirebaseManager {
     init() {
         auth = Auth.auth()
         firestore = Firestore.firestore()
+        storage = Storage.storage()
     }
 }
