@@ -44,7 +44,26 @@ class FileDataService {
                         return
                     }
 
-                    print(url?.absoluteString ?? "")
+                    if let url = url {
+                        let filename = url.lastPathComponent
+                        let absStr = url.absoluteString
+                        let new_message = Message(
+                            chatID: chatID,
+                            type: .sent,
+                            contentType: .file,
+                            senderID: UserAuthManager.currentUser?.uid ?? "",
+                            content: absStr,
+                            timestamp: .now,
+                            isReceived: false
+                        )
+
+                        MessageDataService.add(
+                            in: chatID,
+                            for: new_message
+                        )
+
+                        print("Successfully uploaded file: [\(filename)] to URL: [\(absStr)]")
+                    }
                 }
             }
         } catch {
