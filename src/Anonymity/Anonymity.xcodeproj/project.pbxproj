@@ -111,6 +111,7 @@
 		AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		AA263CD028B13BF700CDFFE4 /* FileDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataService.swift; sourceTree = "<group>"; };
 		AA263CD328B1575200CDFFE4 /* MessageBubbleSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleSubView.swift; sourceTree = "<group>"; };
+		AA263CD528B16F9F00CDFFE4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		AA2A82952895D911001D4CDA /* DicKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicKeyManager.swift; sourceTree = "<group>"; };
 		AA2A82982895DFE6001D4CDA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -182,6 +183,7 @@
 		AA22B544285D93C500E1DD29 = {
 			isa = PBXGroup;
 			children = (
+				AA263CD528B16F9F00CDFFE4 /* README.md */,
 				AA22B549285D93C500E1DD29 /* Shared */,
 				AA22B55B285D93C600E1DD29 /* macOS */,
 				AAF7CCD428AA974F00FFA189 /* Playgrounds */,
