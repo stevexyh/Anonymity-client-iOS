@@ -31,6 +31,7 @@
 		AA22B57D285D93C600E1DD29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA22B54F285D93C600E1DD29 /* Assets.xcassets */; };
 		AA22B57E285D93C600E1DD29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA22B54F285D93C600E1DD29 /* Assets.xcassets */; };
 		AA263CD128B13BF700CDFFE4 /* FileDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD028B13BF700CDFFE4 /* FileDataService.swift */; };
+		AA263CD428B1575200CDFFE4 /* MessageBubbleSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD328B1575200CDFFE4 /* MessageBubbleSubView.swift */; };
 		AA2A828D2891E641001D4CDA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828C2891E641001D4CDA /* FirebaseAuth */; };
 		AA2A828F2891E641001D4CDA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828E2891E641001D4CDA /* FirebaseFirestore */; };
 		AA2A82912891E641001D4CDA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A82902891E641001D4CDA /* FirebaseStorage */; };
@@ -109,6 +110,7 @@
 		AA22B571285D93C600E1DD29 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		AA22B573285D93C600E1DD29 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		AA263CD028B13BF700CDFFE4 /* FileDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataService.swift; sourceTree = "<group>"; };
+		AA263CD328B1575200CDFFE4 /* MessageBubbleSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleSubView.swift; sourceTree = "<group>"; };
 		AA2A82952895D911001D4CDA /* DicKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicKeyManager.swift; sourceTree = "<group>"; };
 		AA2A82982895DFE6001D4CDA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				AA44B785286A845B001691A3 /* ChatView.swift */,
+				AA263CD328B1575200CDFFE4 /* MessageBubbleSubView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				AA5A43E9287497BD00C47765 /* OnlineStatusView.swift in Sources */,
 				AA023BEF2887770E0095C6B1 /* ChatDataService.swift in Sources */,
 				AA5A43ED2874A34900C47765 /* UserProfileView.swift in Sources */,
+				AA263CD428B1575200CDFFE4 /* MessageBubbleSubView.swift in Sources */,
 				AA023BF328883D3A0095C6B1 /* UserAuthManager.swift in Sources */,
 				AA44B786286A845B001691A3 /* ChatView.swift in Sources */,
 				AA1F16D0287E419F00842168 /* Contact.swift in Sources */,

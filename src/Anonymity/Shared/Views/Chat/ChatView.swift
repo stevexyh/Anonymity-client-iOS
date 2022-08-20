@@ -129,24 +129,6 @@ extension ChatView {
     }
 }
 
-struct MessageBubbleSubView: View {
-    let message: Message
-    let maxWidth: CGFloat?
-
-    var body: some View {
-        HStack {
-            Image(systemName: message.isEncrypted ? "lock.fill" : "lock.open.fill")
-            Text(message.content)
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 5)
-        .background((message.type == .received) ? .gray.opacity(0.3) :
-            (message.isEncrypted ? .green.opacity(0.6) : .orange.opacity(0.6)))
-        .cornerRadius(10)
-        .frame(maxWidth: maxWidth, alignment: (message.type == .received) ? .leading : .trailing)
-    }
-}
-
 struct EncryptionInfoSubView: View {
     let name: String
     let isEncrypted: Bool
