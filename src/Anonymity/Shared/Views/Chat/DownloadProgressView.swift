@@ -22,7 +22,7 @@ struct DownloadProgressView: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(.gray.opacity(0.3))
+                .fill(.gray.opacity(0.2))
 
             ProgressShape(progress: progress, radius: diameter / 2)
                 .fill(.gray.opacity(0.7))
@@ -34,7 +34,7 @@ struct DownloadProgressView: View {
 
 struct DownloadProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        DownloadProgressView(progress: .constant(0.5), diameter: 200)
+        DownloadProgressView(progress: .constant(0.2), diameter: 200)
     }
 }
 
@@ -52,7 +52,7 @@ struct ProgressShape: Shape {
                 radius: radius,
                 startAngle: .zero,
                 endAngle: .init(degrees: progress * 360),
-                clockwise: false
+                clockwise: true
             )
         }
     }

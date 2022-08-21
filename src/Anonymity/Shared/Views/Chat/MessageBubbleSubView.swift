@@ -14,6 +14,8 @@
 import SwiftUI
 
 struct MessageBubbleSubView: View {
+    @EnvironmentObject private var vm: ChatViewModel
+
     let message: Message
     let maxWidth: CGFloat?
 
@@ -37,6 +39,10 @@ struct MessageBubbleSubView: View {
                         .resizable()
                         .frame(width: radius / 2, height: radius / 2)
                         .foregroundColor(bubbleColor)
+
+                    if vm.showProgress {
+                        DownloadProgressView(progress: $vm.progress, diameter: radius)
+                    }
                 }
                 .padding(.top)
                 .padding(.bottom)
@@ -102,5 +108,6 @@ struct MessageBubbleSubView_Previews: PreviewProvider {
                 maxWidth: maxWidth
             )
         }
+        .environmentObject(ChatViewModel())
     }
 }
