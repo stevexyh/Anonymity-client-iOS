@@ -77,7 +77,9 @@ extension MessageListView {
                 let myID = UserAuthManager.currentUser?.uid ?? "<null myID>"
                 let contact = chat.users.first(where: { $0 != myID }) ?? "<null friend UID>"
                 let chatName = Contact(for: contact, in: ContactVM)?.fullName ?? "<UID: \(contact)>"
-                let lastMessage = ChatVM.getLatestMessage(in: chat.id)?.content ?? ""
+                let lastMessage = ChatVM.getLatestMessage(in: chat.id)
+                let lastMsgFileName = URL(string: lastMessage?.content ?? "")?.lastPathComponent ?? ""
+                let displayMessage = lastMessage?.contentType == .file ? "[File] \(lastMsgFileName)" : lastMessage?.content ?? ""
 
                 ZStack {
                     HStack {
@@ -90,7 +92,7 @@ extension MessageListView {
 
                         VStack(alignment: .leading) {
                             Text(chatName)
-                            Text(lastMessage)
+                            Text(displayMessage)
                                 .font(.system(size: 14))
                                 .foregroundColor(.gray)
                         }
@@ -98,7 +100,7 @@ extension MessageListView {
                         Spacer()
 
                         VStack {
-                            Text("\(Date().formatted(date: .omitted, time: .shortened))")
+                            Text("\(lastMessage?.timestamp.formatted(date: .abbreviated, time: .shortened) ?? "")")
                                 .font(.system(size: 10))
                                 .foregroundColor(.gray)
 
