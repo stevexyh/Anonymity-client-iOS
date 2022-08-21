@@ -12,11 +12,12 @@
 //
 
 import Foundation
+import SwiftUI
 
-class ChatViewModel: ObservableObject {
+class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionControllerDelegate {
     @Published var messages: [Chat.ID: [Message]]
 
-    init() {
+    override init() {
         messages = [:]
     }
 
@@ -49,5 +50,53 @@ class ChatViewModel: ObservableObject {
 
     func getLatestMessage(in chatID: Chat.ID) -> Message? {
         return messages[chatID]?.last
+    }
+
+    /// Download file of url to a tmp directory, then open a View Controller for preview
+    /// - Parameter urlString: url string of target file
+    func download(urlString: String) {
+        guard let filename = URL(string: urlString)?.lastPathComponent else { return }
+
+        // Create a reference from an HTTPS URL
+        let httpsReference = FirebaseManager.shared.storage.reference(forURL: urlString)
+
+        // Create temporary URL for downloading
+        let localTmpURL = FileManager.default.temporaryDirectory.appendingPathComponent(filename)
+
+        // Download file to the tmp URL
+        httpsReference.write(toFile: localTmpURL) { url, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+
+            if let url = url {
+                let controller = UIDocumentInteractionController(url: url)
+                controller.delegate = self
+                controller.presentPreview(animated: true)
+            }
+        }
+    }
+
+    /// Inherited from UIKit.UIDocumentInteractionControllerDelegate.documentInteractionControllerViewControllerForPreview(_:).
+    /// - Parameter controller:
+    /// - Returns: UIViewController
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return (UIApplication.shared.keyWindow?.rootViewController)!
+    }
+}
+
+extension UIApplication {
+    var keyWindow: UIWindow? {
+        // Get connected scenes
+        return UIApplication.shared.connectedScenes
+            // Keep only active scenes, onscreen and visible to the user
+            .filter { $0.activationState == .foregroundActive }
+            // Keep only the first `UIWindowScene`
+            .first(where: { $0 is UIWindowScene })
+            // Get its associated windows
+            .flatMap({ $0 as? UIWindowScene })?.windows
+            // Finally, keep only the key window
+            .first(where: \.isKeyWindow)
     }
 }

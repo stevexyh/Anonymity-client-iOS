@@ -19,6 +19,7 @@ struct ChatView: View {
     let name: String
     let chat: Chat
     @State private var text: String = ""
+    @State private var fileData: Data?
     @State private var chooseFile: Bool = false
     @FocusState private var isFocused
 
@@ -48,6 +49,11 @@ struct ChatView: View {
                                         maxWidth: geometry.size.width * 0.8
                                     )
                                     .padding()
+                                    .onTapGesture {
+                                        if msg.contentType == .file {
+                                            vm.download(urlString: msg.content)
+                                        }
+                                    }
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: (msg.type == .received) ? .leading : .trailing)
