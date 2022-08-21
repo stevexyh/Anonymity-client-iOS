@@ -18,12 +18,13 @@ struct MessageBubbleSubView: View {
     let maxWidth: CGFloat?
 
     var body: some View {
-        let bubbleColor = (message.type == .received) ? Color.gray.opacity(0.3) :
-            (message.isEncrypted ? Color.green.opacity(0.6) : Color.orange.opacity(0.6))
+        let _bubbleColor: Color = (message.type == .received) ? .gray.opacity(0.3) :
+            (message.isEncrypted ? .green.opacity(0.6) : .orange.opacity(0.6))
+        let filename = URL(string: message.content)?.lastPathComponent
+        let invalid = (message.contentType == .file && filename == nil)
+        let bubbleColor = invalid ? .red.opacity(0.6) : _bubbleColor
 
         HStack {
-            let filename = URL(string: message.content)?.lastPathComponent
-
             if message.contentType == .file {
                 ZStack {
                     let radius: CGFloat = 60
@@ -32,7 +33,7 @@ struct MessageBubbleSubView: View {
                         .foregroundColor(.white)
                         .frame(width: radius, height: radius)
 
-                    Image(systemName: "arrow.down")
+                    Image(systemName: invalid ? "xmark" : "arrow.down")
                         .resizable()
                         .frame(width: radius / 2, height: radius / 2)
                         .foregroundColor(bubbleColor)
@@ -44,7 +45,7 @@ struct MessageBubbleSubView: View {
                 Image(systemName: message.isEncrypted ? "lock.fill" : "lock.open.fill")
             }
 
-            Text(message.contentType == .text ? message.content : filename ?? "Untitled File")
+            Text(message.contentType == .text ? message.content : filename ?? "EXPIRED FILE")
         }
         .padding(.horizontal)
         .padding(.vertical, 5)
