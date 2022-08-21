@@ -26,9 +26,10 @@ class FileDataService {
         let document = db.reference(withPath: "chat files/\(chatID)/\(filename)")
 
         do {
-            let data = try Data(contentsOf: dataURL, options: .uncached)
+            let rawData = try Data(contentsOf: dataURL, options: .uncached)
+            guard let cipherData = CryptoManager.symEncrypt(for: rawData, in: chatID) else { return }
 
-            document.putData(data, metadata: nil) { metadata, error in
+            document.putData(cipherData, metadata: nil) { metadata, error in
                 if let error = error {
                     print(error.localizedDescription)
                     return
