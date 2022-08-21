@@ -96,6 +96,7 @@ class MessageDataService {
                             // Append new message to VM dict only once, default value is empty array if key does not exists
                             if vm.messages[new_message.chatID]?.first(where: { $0.id == new_message.id }) == nil {
                                 vm.messages[new_message.chatID, default: []].append(new_message)
+                                vm.messages[new_message.chatID]?.sort { $0.timestamp < $1.timestamp }
                             }
                         } else if change.type == .removed {
                             let data = change.document.data().mapKeys { DicKeyManager.MessageDicKey(rawValue: $0) }
