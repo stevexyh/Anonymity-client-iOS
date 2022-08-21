@@ -34,6 +34,7 @@
 		AA263CD428B1575200CDFFE4 /* MessageBubbleSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD328B1575200CDFFE4 /* MessageBubbleSubView.swift */; };
 		AA263CD828B185AD00CDFFE4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD728B185AD00CDFFE4 /* File.swift */; };
 		AA263CDA28B1C71A00CDFFE4 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD928B1C71A00CDFFE4 /* UIApplication.swift */; };
+		AA263CDC28B1CE9C00CDFFE4 /* DownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CDB28B1CE9C00CDFFE4 /* DownloadProgressView.swift */; };
 		AA2A828D2891E641001D4CDA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828C2891E641001D4CDA /* FirebaseAuth */; };
 		AA2A828F2891E641001D4CDA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828E2891E641001D4CDA /* FirebaseFirestore */; };
 		AA2A82912891E641001D4CDA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A82902891E641001D4CDA /* FirebaseStorage */; };
@@ -116,6 +117,7 @@
 		AA263CD528B16F9F00CDFFE4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		AA263CD728B185AD00CDFFE4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AA263CD928B1C71A00CDFFE4 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		AA263CDB28B1CE9C00CDFFE4 /* DownloadProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgressView.swift; sourceTree = "<group>"; };
 		AA2A82952895D911001D4CDA /* DicKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicKeyManager.swift; sourceTree = "<group>"; };
 		AA2A82982895DFE6001D4CDA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				AA44B785286A845B001691A3 /* ChatView.swift */,
 				AA263CD328B1575200CDFFE4 /* MessageBubbleSubView.swift */,
+				AA263CDB28B1CE9C00CDFFE4 /* DownloadProgressView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				AA1F16CC287DC36D00842168 /* LoginView.swift in Sources */,
 				AA1F16CA287C860000842168 /* UserDataService.swift in Sources */,
 				AA44B780286527CA001691A3 /* User.swift in Sources */,
+				AA263CDC28B1CE9C00CDFFE4 /* DownloadProgressView.swift in Sources */,
 				AA22B579285D93C600E1DD29 /* ContentView.swift in Sources */,
 				AA263CD128B13BF700CDFFE4 /* FileDataService.swift in Sources */,
 				AA5A43E6287495D200C47765 /* ContactsView.swift in Sources */,
