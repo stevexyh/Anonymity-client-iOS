@@ -15,6 +15,8 @@ import Foundation
 import SwiftUI
 
 extension UIApplication {
+    /// This extension is due to "'windows' was deprecated in iOS 15.0: Use UIWindowScene.windows on a relevant window scene instead".
+    /// See [Stack Overflow](https://stackoverflow.com/questions/68387187/how-to-use-uiwindowscene-windows-on-ios-15)
     var keyWindow: UIWindow? {
         // Get connected scenes
         return UIApplication.shared.connectedScenes
