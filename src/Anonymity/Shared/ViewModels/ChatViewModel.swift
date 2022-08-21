@@ -56,6 +56,7 @@ class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionController
 
     /// Download file of url to a tmp directory, then open a View Controller for preview
     /// - Parameter urlString: url string of target file
+    /// - Parameter messageID: ID of message including this file
     func download(from urlString: String, for messageID: Message.ID) {
         guard let filename = URL(string: urlString)?.lastPathComponent else { return }
 
@@ -83,8 +84,8 @@ class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionController
             self.showProgress = nil
         }
 
+        // Updating download progress
         downloadTask.observe(.progress) { snapshot in
-            // Download reported progress
             let progress = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
             self.progress = progress
             print(progress)
