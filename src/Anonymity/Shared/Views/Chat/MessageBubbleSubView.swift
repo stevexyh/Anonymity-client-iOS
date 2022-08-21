@@ -40,7 +40,7 @@ struct MessageBubbleSubView: View {
                         .frame(width: radius / 2, height: radius / 2)
                         .foregroundColor(bubbleColor)
 
-                    if vm.showProgress {
+                    if vm.showProgress == message.id {
                         DownloadProgressView(progress: $vm.progress, diameter: radius)
                     }
                 }

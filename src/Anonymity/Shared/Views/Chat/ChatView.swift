@@ -51,7 +51,7 @@ struct ChatView: View {
                                     .padding()
                                     .onTapGesture {
                                         if msg.contentType == .file {
-                                            vm.download(urlString: msg.content)
+                                            vm.download(from: msg.content, for: msg.id)
                                         }
                                     }
                                 }

@@ -16,7 +16,7 @@ import SwiftUI
 
 class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionControllerDelegate {
     @Published var messages: [Chat.ID: [Message]]
-    @Published var showProgress: Bool = false
+    @Published var showProgress: Message.ID? = nil
     @Published var progress: CGFloat = 0
 
     override init() {
@@ -56,7 +56,7 @@ class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionController
 
     /// Download file of url to a tmp directory, then open a View Controller for preview
     /// - Parameter urlString: url string of target file
-    func download(urlString: String) {
+    func download(from urlString: String, for messageID: Message.ID) {
         guard let filename = URL(string: urlString)?.lastPathComponent else { return }
 
         // Create a reference from an HTTPS URL
@@ -65,9 +65,7 @@ class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionController
         // Create temporary URL for downloading
         let localTmpURL = FileManager.default.temporaryDirectory.appendingPathComponent(filename)
 
-        withAnimation {
-            showProgress = true
-        }
+        showProgress = messageID
 
         // Download file to the tmp URL
         let downloadTask = httpsReference.write(toFile: localTmpURL) { url, error in
@@ -81,6 +79,8 @@ class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionController
                 controller.delegate = self
                 controller.presentPreview(animated: true)
             }
+
+            self.showProgress = nil
         }
 
         downloadTask.observe(.progress) { snapshot in
