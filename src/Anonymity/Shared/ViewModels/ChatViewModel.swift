@@ -57,7 +57,11 @@ class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionController
     /// Download file of url to a tmp directory, then open a View Controller for preview
     /// - Parameter urlString: url string of target file
     /// - Parameter messageID: ID of message including this file
-    func download(from urlString: String, for messageID: Message.ID) {
+    func download(from message: Message) {
+        let urlString: String = message.content
+        let messageID: Message.ID = message.id
+        let chatID: Chat.ID = message.chatID
+
         guard let filename = URL(string: urlString)?.lastPathComponent else { return }
 
         // Create a reference from an HTTPS URL
@@ -76,6 +80,10 @@ class ChatViewModel: NSObject, ObservableObject, UIDocumentInteractionController
             }
 
             if let url = url {
+                guard let cipherData = try? Data(contentsOf: url) else { return }
+                guard let decryptedData = CryptoManager.symDecrypt(from: cipherData, in: chatID) else { return }
+                try? decryptedData.write(to: url, options: .atomic)
+
                 let controller = UIDocumentInteractionController(url: url)
                 controller.delegate = self
                 controller.presentPreview(animated: true)
