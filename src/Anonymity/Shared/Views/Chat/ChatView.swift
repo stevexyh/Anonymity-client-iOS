@@ -38,25 +38,38 @@ struct ChatView: View {
             let columns = [GridItem(.flexible(minimum: 10))]
             GeometryReader { geometry in
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 0) {
-                        EncryptionInfoSubView(name: name, isEncrypted: chat.isEncrypted)
+                    ScrollViewReader { proxy in
+                        LazyVGrid(columns: columns, spacing: 0) {
+                            EncryptionInfoSubView(name: name, isEncrypted: chat.isEncrypted)
 
-                        ForEach(vm.messages[chat.id] ?? []) { msg in
-                            HStack {
-                                ZStack {
-                                    MessageBubbleSubView(
-                                        message: msg,
-                                        maxWidth: geometry.size.width * 0.8
-                                    )
-                                    .padding()
-                                    .onTapGesture {
-                                        if msg.contentType == .file {
-                                            vm.download(from: msg)
+                            ForEach(vm.messages[chat.id] ?? []) { msg in
+                                HStack {
+                                    ZStack {
+                                        MessageBubbleSubView(
+                                            message: msg,
+                                            maxWidth: geometry.size.width * 0.8
+                                        )
+                                        .padding()
+                                        .onTapGesture {
+                                            if msg.contentType == .file {
+                                                vm.download(from: msg)
+                                            }
                                         }
                                     }
                                 }
+                                .frame(maxWidth: .infinity, alignment: (msg.type == .received) ? .leading : .trailing)
+                                .id(msg.id)
                             }
-                            .frame(maxWidth: .infinity, alignment: (msg.type == .received) ? .leading : .trailing)
+                            .onAppear {
+                                withAnimation {
+                                    proxy.scrollTo(vm.getLatestMessage(in: chat.id)?.id, anchor: .top)
+                                }
+                            }
+                            .onChange(of: vm.getLatestMessage(in: chat.id)?.id) { value in
+                                withAnimation {
+                                    proxy.scrollTo(value, anchor: .top)
+                                }
+                            }
                         }
                     }
                 }
