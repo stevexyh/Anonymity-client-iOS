@@ -65,12 +65,19 @@ struct LoginView: View {
                     .background(.black.opacity(0.1))
                     .cornerRadius(20)
 
-                Spacer()
-
                 if let errorMessage = statusMessage {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
+                    HStack {
+                        Text(errorMessage)
+                            .fontWeight(.bold)
+                    }
+                    .frame(maxWidth: 200)
+                    .padding()
+                    .background(.red.opacity(0.7))
+                    .foregroundColor(.white)
+                    .cornerRadius(20)
                 }
+
+                Spacer()
 
                 Button(action: {
                     Task {
