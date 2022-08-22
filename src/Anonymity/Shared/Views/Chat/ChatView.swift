@@ -16,7 +16,7 @@ import SwiftUI
 struct ChatView: View {
     @EnvironmentObject private var vm: ChatViewModel
 
-    let name: String
+    let contact: Contact
     let chat: Chat
     @State private var text: String = ""
     @State private var fileData: Data?
@@ -40,7 +40,7 @@ struct ChatView: View {
                 ScrollView {
                     ScrollViewReader { proxy in
                         LazyVGrid(columns: columns, spacing: 0) {
-                            EncryptionInfoSubView(name: name, isEncrypted: chat.isEncrypted)
+                            EncryptionInfoSubView(name: contact.fullName, isEncrypted: chat.isEncrypted)
 
                             ForEach(vm.messages[chat.id] ?? []) { msg in
                                 HStack {
@@ -92,10 +92,10 @@ struct ChatView: View {
         }
         .toolbar {
             NavigationLink(destination: {
-                UserProfileView(username: name)
+                UserProfileView(contact: contact)
             }) {
                 HStack(alignment: .bottom, spacing: 80) {
-                    Text("\(name)")
+                    Text("\(contact.fullName)")
                         .font(.system(size: 30))
                     Image(systemName: "person.circle")
                         .font(.system(size: 30))
@@ -170,7 +170,7 @@ struct EncryptionInfoSubView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ChatView(name: "Alice", chat: Chat(users: ["11-aa"], messages: []))
+            ChatView(contact: ContactDataService.sample[0], chat: Chat(users: ["11-aa"], messages: []))
                 .environmentObject(ChatViewModel())
         }
     }

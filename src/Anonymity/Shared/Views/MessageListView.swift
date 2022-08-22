@@ -75,8 +75,9 @@ extension MessageListView {
         List {
             ForEach(vm.chats) { chat in
                 let myID = UserAuthManager.currentUser?.uid ?? "<null myID>"
-                let contact = chat.users.first(where: { $0 != myID }) ?? "<null friend UID>"
-                let chatName = Contact(for: contact, in: ContactVM)?.fullName ?? "<UID: \(contact)>"
+                let contactID = chat.users.first(where: { $0 != myID }) ?? "<null friend UID>"
+                let contact = Contact(for: contactID, in: ContactVM) ?? Contact(uid: contactID, firstName: "UID: \(contactID)", lastName: "")
+                let chatName = contact.fullName
                 let lastMessage = ChatVM.getLatestMessage(in: chat.id)
                 let lastMsgFileName = URL(string: lastMessage?.content ?? "")?.lastPathComponent ?? ""
                 let displayMessage = lastMessage?.contentType == .file ? "[File] \(lastMsgFileName)" : lastMessage?.content ?? ""
@@ -108,10 +109,10 @@ extension MessageListView {
                         }
                     }
                     NavigationLink(destination: {
-                        ChatView(name: chatName, chat: chat)
+                        ChatView(contact: contact, chat: chat)
                             .onAppear {
                                 Task {
-                                    await vm.encryptChat(with: contact, for: chat.id)
+                                    await vm.encryptChat(with: contactID, for: chat.id)
                                 }
                             }
                     }) {

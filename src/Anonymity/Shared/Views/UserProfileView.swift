@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    var username: String? = ""
+    let contact: Contact
 
     @State private var firstName: String = ""
     @State private var lastName: String = ""
@@ -31,10 +31,11 @@ struct UserProfileView: View {
                     AvatarView(
                         avatarType: .nameCapital,
                         maxSize: 80,
-                        firstName: username
+                        firstName: contact.firstName,
+                        lastName: contact.lastName
                     )
 
-                    Text("\(username ?? firstName)")
+                    Text(contact.fullName)
                         .font(.system(size: 40))
 
                     OnlineStatusView(
@@ -55,7 +56,7 @@ struct UserProfileView: View {
 
             Form {
                 Section(header: Text("Personal Information")) {
-                    Text("ID Hash: \("qwud-hdqb-jwbd-jndq")")
+                    Text("UID: \(contact.uid)")
                         .foregroundColor(.gray)
 
                     TextField("First Name", text: $firstName)
@@ -82,6 +83,6 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(username: "Alice")
+        UserProfileView(contact: ContactDataService.sample[0])
     }
 }
