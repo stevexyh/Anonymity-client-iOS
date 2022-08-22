@@ -11,6 +11,7 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import CryptoKit
 import Firebase
 import Foundation
 
@@ -62,7 +63,9 @@ class UserAuthManager {
     /// - Returns: boolean auth result
     @MainActor
     static func userLogin(username: String, password: String) async -> Bool {
-        if let status = try? await FirebaseManager.shared.auth.signIn(withEmail: username, password: password) {
+        let hashedUsername = hashedEmail(for: username)
+
+        if let status = try? await FirebaseManager.shared.auth.signIn(withEmail: hashedUsername, password: password) {
             _loginStatus = true
             _currentUser = status.user
 
@@ -79,7 +82,9 @@ class UserAuthManager {
     /// - Returns: boolean user creation result
     @MainActor
     static func userCreate(username: String, password: String) async -> Bool {
-        let status = try? await FirebaseManager.shared.auth.createUser(withEmail: username, password: password)
+        let hashedUsername = hashedEmail(for: username)
+
+        let status = try? await FirebaseManager.shared.auth.createUser(withEmail: hashedUsername, password: password)
         return status != nil
     }
 
