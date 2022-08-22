@@ -79,7 +79,7 @@ Anonymity Client side
     - [x] ECC key gen & publish
     - [x] AES key distribution
     - [x] AES symmetric encryption & decryption
-- [ ] file transfer
+- [x] file transfer
 
 ### Learn Next
 - [ ] Dependency Injection
