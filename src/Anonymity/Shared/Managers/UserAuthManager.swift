@@ -60,19 +60,22 @@ class UserAuthManager {
     /// - Parameters:
     ///   - username: Currently using email
     ///   - password:
-    /// - Returns: boolean auth result
+    /// - Returns: A Result indicates auth .success(true) .failure(Error)
     @MainActor
-    static func userLogin(username: String, password: String) async -> Bool {
+    static func userLogin(username: String, password: String) async -> Result<Bool, Error> {
         let hashedUsername = hashedEmail(for: username)
+        let result: Result<Bool, Error>
 
-        if let status = try? await FirebaseManager.shared.auth.signIn(withEmail: hashedUsername, password: password) {
+        do {
+            let status = try await FirebaseManager.shared.auth.signIn(withEmail: hashedUsername, password: password)
             _loginStatus = true
             _currentUser = status.user
-
-            return true
+            result = .success(true)
+        } catch {
+            result = .failure(error)
         }
 
-        return false
+        return result
     }
 
     /// Create a new user with Firebase and return the boolean result

@@ -22,7 +22,7 @@ struct LoginView: View {
     @Binding var username: String
     @Binding var password: String
     @Binding var isUserLoggedOut: Bool
-    @State var statusMessage = ""
+    @State var statusMessage: String?
 
 //    @State var createMode: Bool = false
 
@@ -75,8 +75,10 @@ struct LoginView: View {
 
                 Spacer()
 
-                Text(statusMessage)
-                    .foregroundColor(.red)
+                if let errorMessage = statusMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                }
 
                 Button(action: {
                     Task {
@@ -144,11 +146,13 @@ extension LoginView {
 //        }
     }
 
-    // TODO: (Steve X): add error message
     private func loginUser() async {
-        let res = await UserAuthManager.userLogin(username: username, password: password)
-        isUserLoggedOut = !res
-        print("static:", res)
+        do {
+            _ = try await UserAuthManager.userLogin(username: username, password: password).get()
+            isUserLoggedOut = false
+        } catch {
+            statusMessage = error.localizedDescription
+        }
 
 //        FirebaseManager.shared.auth.signIn(withEmail: username, password: password) { result, err in
 //            if let err = err {
