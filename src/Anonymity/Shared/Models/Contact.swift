@@ -16,11 +16,11 @@ import Foundation
 struct Contact: Identifiable {
     var id: String { uid }
     let uid: String
-    let firstName: String?
-    let lastName: String?
+    var firstName: String = ""
+    var lastName: String = ""
 
     var fullName: String {
-        "\(firstName ?? "") \(lastName ?? "")"
+        "\(firstName) \(lastName)"
     }
 }
 

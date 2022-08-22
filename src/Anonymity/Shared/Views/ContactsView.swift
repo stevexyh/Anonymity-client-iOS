@@ -47,8 +47,8 @@ extension ContactsView {
                         AvatarView(
                             avatarType: .nameCapital,
                             maxSize: 50,
-                            firstName: "\(contact.firstName ?? "")",
-                            lastName: "\(contact.lastName ?? "")"
+                            firstName: contact.firstName,
+                            lastName: contact.lastName
                         )
 
                         VStack(alignment: .leading) {

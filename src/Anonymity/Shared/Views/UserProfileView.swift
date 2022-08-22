@@ -14,10 +14,8 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    let contact: Contact
+    @State var contact: Contact
 
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
     @State private var isMuted: Bool = false
 
     var body: some View {
@@ -59,8 +57,8 @@ struct UserProfileView: View {
                     Text("UID: \(contact.uid)")
                         .foregroundColor(.gray)
 
-                    TextField("First Name", text: $firstName)
-                    TextField("Last Name", text: $lastName)
+                    TextField("First Name", text: $contact.firstName)
+                    TextField("Last Name", text: $contact.lastName)
                 }
 
                 Section(header: Text("Actions")) {
@@ -83,6 +81,7 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(contact: ContactDataService.sample[0])
+        let contact = ContactDataService.sample[0]
+        UserProfileView(contact: contact)
     }
 }

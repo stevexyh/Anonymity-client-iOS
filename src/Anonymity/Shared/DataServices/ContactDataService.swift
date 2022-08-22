@@ -29,8 +29,8 @@ class ContactDataService {
         let document = db.document(userID).collection("contacts").document(contact.id)
         let data: [DicKeyManager.ContactDicKey: Any] = [
             .id: contact.id,
-            .firstName: contact.firstName ?? "",
-            .lastName: contact.lastName ?? "",
+            .firstName: contact.firstName,
+            .lastName: contact.lastName,
             .fullName: contact.fullName,
         ]
 
