@@ -1,3 +1,16 @@
+//
+//  File Name     : Cryptography.playground
+//  Project Name  : Anonymity/Playgrounds
+//  Description   : This file is actually not a part of this project, only for testing SDKs.
+//
+//  Swift Version : Using Swift 5.0
+//  macOS Version : Developed on macOS 12.4
+//  GitHub Page   : https://github.com/Steve-Xyh
+//  -------------------------------------------------------
+//  Created by Steve X on 2022/8/9 01:02.
+//  Copyright © 2022 Steve X Software. All rights reserved.
+//
+
 import CryptoKit
 import Foundation
 
@@ -71,3 +84,5 @@ let secKeyB = sharedSecretB?.hkdfDerivedSymmetricKey(
 sharedSecretB?.description
 
 secKeyA == secKeyB
+
+let hashString = String(SHA256.hash(data: "123".data(using: .utf8) ?? Data()).description.split(separator: " ").last ?? "")
