@@ -84,11 +84,18 @@ class UserAuthManager {
     ///   - password:
     /// - Returns: boolean user creation result
     @MainActor
-    static func userCreate(username: String, password: String) async -> Bool {
+    static func userCreate(username: String, password: String) async -> Result<Bool, Error> {
         let hashedUsername = hashedEmail(for: username)
+        let result: Result<Bool, Error>
 
-        let status = try? await FirebaseManager.shared.auth.createUser(withEmail: hashedUsername, password: password)
-        return status != nil
+        do {
+            _ = try await FirebaseManager.shared.auth.createUser(withEmail: hashedUsername, password: password)
+            result = .success(true)
+        } catch {
+            result = .failure(error)
+        }
+
+        return result
     }
 
     /// Log out current user

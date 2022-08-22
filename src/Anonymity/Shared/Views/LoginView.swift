@@ -24,8 +24,6 @@ struct LoginView: View {
     @Binding var isUserLoggedOut: Bool
     @State var statusMessage: String?
 
-//    @State var createMode: Bool = false
-
     init(
         username: Binding<String> = .constant(""),
         password: Binding<String> = .constant(""),
@@ -67,12 +65,6 @@ struct LoginView: View {
                     .background(.black.opacity(0.1))
                     .cornerRadius(20)
 
-//                SecureField(createMode ? "PASSWORD AGAIN" : "", text: $password)
-//                    .frame(width: 200, height: 10, alignment: .center)
-//                    .padding()
-//                    .background(.black.opacity(createMode ? 0.1 : 0))
-//                    .cornerRadius(20)
-
                 Spacer()
 
                 if let errorMessage = statusMessage {
@@ -103,7 +95,6 @@ struct LoginView: View {
                 .cornerRadius(20)
 
                 Button(action: {
-//                    createMode.toggle()
                     Task {
                         await createNewUser()
                     }
@@ -130,20 +121,12 @@ struct LoginView: View {
 }
 
 extension LoginView {
-    // TODO: (Steve X): add error message
     private func createNewUser() async {
-        _ = await UserAuthManager.userCreate(username: username, password: password)
-
-//        FirebaseManager.shared.auth.createUser(withEmail: username, password: password) { result, err in
-//            if let err = err {
-//                statusMessage = "Failed to create new user: \(err.localizedDescription)"
-//                print(statusMessage)
-//                return
-//            }
-//
-//            statusMessage = "User created successfully: \(result?.user.uid ?? "")"
-//            print(statusMessage)
-//        }
+        do {
+            _ = try await UserAuthManager.userCreate(username: username, password: password).get()
+        } catch {
+            statusMessage = error.localizedDescription
+        }
     }
 
     private func loginUser() async {
@@ -153,18 +136,6 @@ extension LoginView {
         } catch {
             statusMessage = error.localizedDescription
         }
-
-//        FirebaseManager.shared.auth.signIn(withEmail: username, password: password) { result, err in
-//            if let err = err {
-//                statusMessage = "Failed to login user: \(err.localizedDescription)"
-//                print(statusMessage)
-//                return
-//            }
-//
-//            statusMessage = "User login successfully: \(result?.user.uid ?? "")"
-//            showLoginPage = false
-//            print(statusMessage)
-//        }
     }
 }
 
