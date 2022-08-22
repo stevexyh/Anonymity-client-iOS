@@ -38,7 +38,7 @@ class PublicKeyDataService {
             // Decode DicKeys into rawValue String
             let decodedData = data.mapKeys { $0.rawValue }
 
-            document.updateData(decodedData)
+            document.setData(decodedData)
         }
     }
 
