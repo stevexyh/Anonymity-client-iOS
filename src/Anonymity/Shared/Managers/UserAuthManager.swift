@@ -26,6 +26,20 @@ class UserAuthManager {
         _currentUser
     }
 
+    /// Generate a fake email address from the SHA256 hash of username.
+    ///
+    /// This is because Firebase Auth ONLY support email & password authentication, not username & password authentication.
+    ///
+    /// **WARNING: This func MUST NOT change anymore, otherwise it will cause failure of authentication for old users!!!**
+    /// - Parameter username:
+    /// - Returns: A fake email from hashed username
+    private static func hashedEmail(for username: String) -> String {
+        let hashString = String(SHA256.hash(data: username.data(using: .utf8) ?? Data()).description.split(separator: " ").last ?? "")
+        let fakeEmail = "\(hashString)@anonymity.test"
+
+        return fakeEmail
+    }
+
     // MARK: - (Steve X): HIGHLIGHT: async Login -
 
     /// Login user with Firebase and return the boolean auth result
