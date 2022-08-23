@@ -35,6 +35,7 @@
 		AA263CD828B185AD00CDFFE4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD728B185AD00CDFFE4 /* File.swift */; };
 		AA263CDA28B1C71A00CDFFE4 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CD928B1C71A00CDFFE4 /* UIApplication.swift */; };
 		AA263CDC28B1CE9C00CDFFE4 /* DownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA263CDB28B1CE9C00CDFFE4 /* DownloadProgressView.swift */; };
+		AA2875B828B596EB00AF137E /* CryotoManager_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2875B728B596EB00AF137E /* CryotoManager_Tests.swift */; };
 		AA2A828D2891E641001D4CDA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828C2891E641001D4CDA /* FirebaseAuth */; };
 		AA2A828F2891E641001D4CDA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A828E2891E641001D4CDA /* FirebaseFirestore */; };
 		AA2A82912891E641001D4CDA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA2A82902891E641001D4CDA /* FirebaseStorage */; };
@@ -119,6 +120,7 @@
 		AA263CD728B185AD00CDFFE4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AA263CD928B1C71A00CDFFE4 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		AA263CDB28B1CE9C00CDFFE4 /* DownloadProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgressView.swift; sourceTree = "<group>"; };
+		AA2875B728B596EB00AF137E /* CryotoManager_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryotoManager_Tests.swift; sourceTree = "<group>"; };
 		AA2A82952895D911001D4CDA /* DicKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicKeyManager.swift; sourceTree = "<group>"; };
 		AA2A82982895DFE6001D4CDA /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		AA44B77F286527CA001691A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -269,6 +271,14 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		AA2875B628B596A500AF137E /* Managers_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AA2875B728B596EB00AF137E /* CryotoManager_Tests.swift */,
+			);
+			path = Managers_Tests;
+			sourceTree = "<group>";
+		};
 		AA2A82972895DFA3001D4CDA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6E46B528A9C15100CA31B8 /* DataServices_Tests */,
+				AA2875B628B596A500AF137E /* Managers_Tests */,
 				AA6E46A728A9C11C00CA31B8 /* UnitTests_iOS.swift */,
 			);
 			path = "UnitTests iOS";
@@ -661,6 +672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6E46B728A9C17000CA31B8 /* PublicKeyDataService_Tests.swift in Sources */,
+				AA2875B828B596EB00AF137E /* CryotoManager_Tests.swift in Sources */,
 				AA6E46A828A9C11C00CA31B8 /* UnitTests_iOS.swift in Sources */,
 				AAF7CCD728AAD18B00FFA189 /* ChatDataService_Tests.swift in Sources */,
 			);
