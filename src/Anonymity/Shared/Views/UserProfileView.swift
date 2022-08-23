@@ -16,8 +16,8 @@ import SwiftUI
 struct UserProfileView: View {
     @EnvironmentObject private var vm: ContactsViewModel
 
-    @State var contact: Contact
     @State private var isMuted: Bool = false
+    @State var contact: Contact
 
     var body: some View {
         VStack(spacing: 0) {
@@ -55,9 +55,7 @@ struct UserProfileView: View {
 
             Form {
                 Section(header: Text("Personal Information")) {
-                    Text("UID: \(contact.uid)")
-                        .foregroundColor(.gray)
-
+                    ClipboardSubView(content: contact.uid)
                     TextField("First Name", text: $contact.firstName)
                     TextField("Last Name", text: $contact.lastName)
                 }

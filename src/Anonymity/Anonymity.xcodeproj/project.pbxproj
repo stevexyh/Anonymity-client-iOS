@@ -60,6 +60,7 @@
 		AA88372D28872B7F000C19FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA88372B28872B7F000C19FA /* GoogleService-Info.plist */; };
 		AA883730288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
 		AA883731288745B2000C19FA /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88372F288745B2000C19FA /* FirebaseManager.swift */; };
+		AACA2CFE28B477EE005B0FBA /* ClipboardSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA2CFD28B477EE005B0FBA /* ClipboardSubView.swift */; };
 		AAD9A0D1288F2CA1008A1F30 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */; };
 		AAF7CCD728AAD18B00FFA189 /* ChatDataService_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7CCD628AAD18B00FFA189 /* ChatDataService_Tests.swift */; };
 /* End PBXBuildFile section */
@@ -139,6 +140,7 @@
 		AA6E46B628A9C17000CA31B8 /* PublicKeyDataService_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKeyDataService_Tests.swift; sourceTree = "<group>"; };
 		AA88372B28872B7F000C19FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA88372F288745B2000C19FA /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		AACA2CFD28B477EE005B0FBA /* ClipboardSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardSubView.swift; sourceTree = "<group>"; };
 		AAD9A0D0288F2CA1008A1F30 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		AAF7CCD528AA97AA00FFA189 /* Cryptography.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Cryptography.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AAF7CCD628AAD18B00FFA189 /* ChatDataService_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataService_Tests.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				AA5A43E8287497BD00C47765 /* OnlineStatusView.swift */,
 				AA5A43F028750B5400C47765 /* AvatarView.swift */,
 				AA1F16D3287ED6D100842168 /* ContactsAddSheetView.swift */,
+				AACA2CFD28B477EE005B0FBA /* ClipboardSubView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				AA44B784286A65BE001691A3 /* MessageListView.swift in Sources */,
 				AA4E640328A5A55000E59455 /* PublicKeyDataService.swift in Sources */,
 				AA22B57B285D93C600E1DD29 /* Persistence.swift in Sources */,
+				AACA2CFE28B477EE005B0FBA /* ClipboardSubView.swift in Sources */,
 				AA1F16D4287ED6D100842168 /* ContactsAddSheetView.swift in Sources */,
 				AA1F16CE287E296F00842168 /* ContactsViewModel.swift in Sources */,
 				AA263CDA28B1C71A00CDFFE4 /* UIApplication.swift in Sources */,
