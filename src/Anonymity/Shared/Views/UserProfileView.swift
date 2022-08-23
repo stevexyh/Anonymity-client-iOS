@@ -56,8 +56,14 @@ struct UserProfileView: View {
             Form {
                 Section(header: Text("Personal Information")) {
                     ClipboardSubView(content: contact.uid)
-                    TextField("First Name", text: $contact.firstName)
-                    TextField("Last Name", text: $contact.lastName)
+
+                    HStack {
+                        TextField("First Name", text: $contact.firstName)
+
+                        Divider()
+
+                        TextField("Last Name", text: $contact.lastName)
+                    }
                 }
 
                 Section(header: Text("Actions")) {

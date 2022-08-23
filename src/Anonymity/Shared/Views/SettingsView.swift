@@ -16,11 +16,8 @@ import SwiftUI
 struct SettingsView: View {
     var username: String? = ""
 
-    private let clipboard = UIPasteboard.general
-
     @State private var isNotificationOn: Bool = true
     @State private var languageSelected: String = "English"
-    @State private var isClipboardCopied: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
