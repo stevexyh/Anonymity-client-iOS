@@ -68,8 +68,7 @@ extension ContactsView {
                     }
                     NavigationLink(destination: {
                         // TODO: (Steve X): REMOVE BEFORE FLIGHT: set chatID
-//                        ChatView(name: contact.fullName, chat: "")
-                        Text("Create chat with \(contact.fullName) successfully.")
+                        UserProfileView(contact: contact)
                             .onAppear {
                                 Task {
                                     guard let myID = UserAuthManager.currentUser?.uid else { return }
