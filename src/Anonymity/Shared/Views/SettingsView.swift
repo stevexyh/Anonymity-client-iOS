@@ -16,8 +16,11 @@ import SwiftUI
 struct SettingsView: View {
     var username: String? = ""
 
+    private let clipboard = UIPasteboard.general
+
     @State private var isNotificationOn: Bool = true
     @State private var languageSelected: String = "English"
+    @State private var isClipboardCopied: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -53,9 +56,33 @@ struct SettingsView: View {
             ))
 
             Form {
+                let myID = UserAuthManager.currentUser?.uid ?? ""
+
                 Section(header: Text("UID")) {
-                    Text(UserAuthManager.currentUser?.uid ?? "")
-                        .foregroundColor(.gray)
+                    HStack {
+                        Text(myID)
+                            .foregroundColor(.gray)
+
+                        Divider()
+
+                        HStack {
+                            if isClipboardCopied {
+                                CopiedSubView
+                            } else {
+                                ClipboardSubView
+                            }
+                        }
+                        .font(.system(size: 20))
+                        .padding(.leading)
+                    }
+                }
+                .onTapGesture {
+                    clipboard.string = myID
+                    isClipboardCopied = true
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        isClipboardCopied = false
+                    }
                 }
 
                 Section(header: Text("Settings")) {
@@ -121,5 +148,17 @@ struct SettingsView_Previews: PreviewProvider {
         NavigationView {
             SettingsView(username: "Steve")
         }
+    }
+}
+
+extension SettingsView {
+    private var ClipboardSubView: some View {
+        Image(systemName: "doc.on.clipboard.fill")
+            .foregroundColor(.accentColor)
+    }
+
+    private var CopiedSubView: some View {
+        Image(systemName: "checkmark.circle")
+            .foregroundColor(.green)
     }
 }
