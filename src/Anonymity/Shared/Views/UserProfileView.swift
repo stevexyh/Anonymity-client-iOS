@@ -74,21 +74,28 @@ struct UserProfileView: View {
                     }
                 }
                 .tint(.red)
-            }
 
-            Spacer()
-
-            Button(action: {
-                vm.addContact(contact: contact)
-            }) {
-                Text("Save")
-                    .fontWeight(.bold)
+                Section {
+                    VStack {
+                        Button(action: {
+                            vm.addContact(contact: contact)
+                        }) {
+                            HStack {
+                                Text("Save")
+                                    .fontWeight(.bold)
+                                Image(systemName: "person.crop.circle.badge.checkmark")
+                            }
+                        }
+                        .frame(width: 100, height: 10)
+                        .padding()
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(20)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .listRowBackground(Color.clear)
             }
-            .frame(width: 50, height: 10)
-            .padding()
-            .background(Color.accentColor)
-            .foregroundColor(.white)
-            .cornerRadius(20)
         }
     }
 }
