@@ -94,12 +94,12 @@ struct LoginView: View {
                         Image(systemName: "arrow.right.circle.fill")
                             .font(.system(size: 20))
                     }
+                    .frame(width: 200, height: 10)
+                    .padding()
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
+                    .cornerRadius(20)
                 }
-                .frame(width: 200, height: 10)
-                .padding()
-                .background(Color.accentColor)
-                .foregroundColor(.white)
-                .cornerRadius(20)
 
                 Button(action: {
                     Task {
@@ -113,12 +113,12 @@ struct LoginView: View {
                         Image(systemName: "person.circle.fill")
                             .font(.system(size: 20))
                     }
+                    .frame(width: 200, height: 10)
+                    .padding()
+                    .background(.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(20)
                 }
-                .frame(width: 200, height: 10)
-                .padding()
-                .background(.red)
-                .foregroundColor(.white)
-                .cornerRadius(20)
 
                 Spacer()
             }

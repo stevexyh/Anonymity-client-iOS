@@ -85,12 +85,13 @@ struct UserProfileView: View {
                                     .fontWeight(.bold)
                                 Image(systemName: "person.crop.circle.badge.checkmark")
                             }
+                            .frame(width: 100, height: 10)
+                            .padding()
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
                         }
-                        .frame(width: 100, height: 10)
-                        .padding()
-                        .background(Color.accentColor)
-                        .foregroundColor(.white)
-                        .cornerRadius(20)
+                        .buttonStyle(.plain)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
