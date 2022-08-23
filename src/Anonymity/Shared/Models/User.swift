@@ -14,7 +14,6 @@
 import Foundation
 
 struct User: Identifiable, Comparable {
-    // TODO: (Steve X): change uuid to hash(username)
     var id: String = UUID().uuidString
     let username: String
     let password: String
