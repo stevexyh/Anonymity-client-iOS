@@ -47,11 +47,8 @@ struct ContactsAddSheetView: View {
                 Button(action: {
                     if self.firstName.count > 0 {
                         self.showTextInvalidAlert = false
-
-                        if let myID = UserAuthManager.currentUser?.uid {
-                            self.vm.addContact(for: myID, uid: uid, firstName: firstName, lastName: lastName)
-                            self.presentation.wrappedValue.dismiss()
-                        }
+                        self.vm.addContact(uid: uid, firstName: firstName, lastName: lastName)
+                        self.presentation.wrappedValue.dismiss()
                     } else {
                         self.showTextInvalidAlert = true
                     }

@@ -25,8 +25,9 @@ class ContactDataService {
         Contact(uid: "21-ba", firstName: "Charlie", lastName: "Test"),
     ]
 
-    static func add(userID: User.ID, contact: Contact) {
-        let document = db.document(userID).collection("contacts").document(contact.id)
+    static func add(contact: Contact) {
+        guard let myID = UserAuthManager.currentUser?.uid else { return }
+        let document = db.document(myID).collection("contacts").document(contact.id)
         let data: [DicKeyManager.ContactDicKey: Any] = [
             .id: contact.id,
             .firstName: contact.firstName,
@@ -58,19 +59,21 @@ class ContactDataService {
 
                 if let query = query {
                     query.documentChanges.forEach { change in
-                        if change.type == .added {
-                            // Encode DicKeys into enum type
-                            let data = change.document.data().mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
-                            let new_contact = Contact(
-                                uid: data[.id] as? String ?? "",
-                                firstName: data[.firstName] as? String ?? "",
-                                lastName: data[.lastName] as? String ?? ""
-                            )
+                        // Encode DicKeys into enum type
+                        let data = change.document.data().mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
+                        let new_contact = Contact(
+                            uid: data[.id] as? String ?? "",
+                            firstName: data[.firstName] as? String ?? "",
+                            lastName: data[.lastName] as? String ?? ""
+                        )
 
+                        if change.type == .added {
                             vm.contacts.append(new_contact)
                         } else if change.type == .removed {
-                            let data = change.document.data().mapKeys { DicKeyManager.ContactDicKey(rawValue: $0) }
                             vm.contacts.removeAll { $0.id == data[.id] as? String }
+                        } else if change.type == .modified {
+                            vm.contacts.removeAll { $0.id == data[.id] as? String }
+                            vm.contacts.append(new_contact)
                         }
                     }
                 }

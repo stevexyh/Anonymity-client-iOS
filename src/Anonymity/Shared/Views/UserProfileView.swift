@@ -14,8 +14,9 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    @State var contact: Contact
+    @EnvironmentObject private var vm: ContactsViewModel
 
+    @State var contact: Contact
     @State private var isMuted: Bool = false
 
     var body: some View {
@@ -74,7 +75,20 @@ struct UserProfileView: View {
                 }
                 .tint(.red)
             }
+
             Spacer()
+
+            Button(action: {
+                vm.addContact(contact: contact)
+            }) {
+                Text("Save")
+                    .fontWeight(.bold)
+            }
+            .frame(width: 50, height: 10)
+            .padding()
+            .background(Color.accentColor)
+            .foregroundColor(.white)
+            .cornerRadius(20)
         }
     }
 }
