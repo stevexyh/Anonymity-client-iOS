@@ -16,8 +16,6 @@ import SwiftUI
 struct SettingsView: View {
     var username: String? = ""
 
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
     @State private var isNotificationOn: Bool = true
     @State private var languageSelected: String = "English"
 
@@ -32,10 +30,10 @@ struct SettingsView: View {
                     AvatarView(
                         avatarType: .nameCapital,
                         maxSize: 80,
-                        firstName: username ?? firstName
+                        firstName: username
                     )
 
-                    Text("\(username ?? "(null)")")
+                    Text("@\(username ?? "(null)")")
                         .font(.system(size: 40))
 
                     OnlineStatusView(
@@ -55,12 +53,9 @@ struct SettingsView: View {
             ))
 
             Form {
-                Section(header: Text("Personal Information")) {
-                    Text("ID Hash: \("qwud-hdqb-jwbd-jndq")")
+                Section(header: Text("UID")) {
+                    Text(UserAuthManager.currentUser?.uid ?? "")
                         .foregroundColor(.gray)
-
-                    TextField("First Name", text: $firstName)
-                    TextField("Last Name", text: $lastName)
                 }
 
                 Section(header: Text("Settings")) {
