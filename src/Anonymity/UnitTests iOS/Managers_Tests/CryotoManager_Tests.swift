@@ -1,7 +1,7 @@
 //
 //  File Name     : CryotoManager_Tests.swift
 //  Project Name  : Anonymity
-//  Description   : 
+//  Description   :
 //
 //  Swift Version : Using Swift 5.0
 //  macOS Version : Developed on macOS 12.5
@@ -13,8 +13,13 @@
 
 import XCTest
 
-class CryotoManager_Tests: XCTestCase {
+// Unit Test
+// Naming Structure: func test_[Unit of Work]_[State Under Test]_[Expected Behavior][_stress]()
+// Naming Structure: func test_[struct / class]_[var / func]_[Expected Result][_stress]()
+// Testing Structure: Given, When, Then
+@testable import Anonymity
 
+class CryotoManager_Tests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -33,9 +38,32 @@ class CryotoManager_Tests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
 
+    func testPerformance_CryptoManager_symKeyDerivation_ShouldReturnTrue_stress() {
+        // Given
+        let manager = CryptoManager.self
+
+        var results: [Bool] = []
+        let pubKeyB64Str: String = "evbVt3dKGFPRHZdtY+tiz82UiyWGxc0HGr40Zfrr5mM="
+        let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
+        guard let salt: Data = Data(base64Encoded: "J8iD6a1wqMylSSO+") else {
+            XCTFail()
+            return
+        }
+
+        // When
+        measure {
+            for _ in 0 ..< 10000 {
+                let status = manager.symKeyDerivation(with: pubKeyB64Str, for: chatID, salt: salt)
+                results.append(status)
+            }
+        }
+
+        // Then
+        XCTAssertTrue(results.allSatisfy { $0 == true })
+    }
 }
