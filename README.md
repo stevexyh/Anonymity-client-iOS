@@ -1,5 +1,5 @@
 # client-iOS  
-Anonymity Client side
+Anonymity iOS client side. This is an end-to-end encryption chat app for partial fulfillment of Steve's MSc Project and the degree of MSc Cyber Security.
 
 
 ## Files  
@@ -89,7 +89,11 @@ Anonymity Client side
 - `iOS 15.5`
 
 ## Usage  
-- `To be finished.`  
+- Register app on Google Firebase
+- Download `GoogleService-Info.plist`
+- Add file `GoogleService-Info.plist` in project
+- Build project using Xcode
+- Run app on a simulator
 
 
 ## Download  
@@ -97,7 +101,7 @@ Anonymity Client side
 
 
 ## Installation  
-- `To be finished.`  
+- Build & run using Xcode
 
 ---
 
