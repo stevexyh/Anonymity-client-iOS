@@ -11,6 +11,7 @@
 //  Copyright © 2022 Steve X Software. All rights reserved.
 //
 
+import CryptoKit
 import XCTest
 
 // Unit Test
@@ -59,6 +60,42 @@ class CryotoManager_Tests: XCTestCase {
         measure {
             for _ in 0 ..< 10000 {
                 let status = manager.symKeyDerivation(with: pubKeyB64Str, for: chatID, salt: salt)
+                results.append(status)
+            }
+        }
+
+        // Then
+        XCTAssertTrue(results.allSatisfy { $0 == true })
+    }
+
+    func testPerformance_CryptoManager_symEncryptForData_ShouleReturnEncryptedData_stress() {
+        // Given
+
+        func genRandomData(size: Int) -> Data? {
+            var bytes = [Int8](repeating: 0, count: size)
+            guard SecRandomCopyBytes(kSecRandomDefault, size, &bytes) == errSecSuccess else {
+                XCTFail()
+                return nil
+            }
+
+            let data: Data = Data(bytes: &bytes, count: size)
+
+            return data
+        }
+
+        let manager = CryptoManager.self
+        let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
+
+        let dataSize100M = 100_000_000
+        guard let data = genRandomData(size: dataSize100M) else { return }
+
+        var results: [Bool] = []
+        let secKey = SymmetricKey(size: .bits256)
+
+        // When
+        measure {
+            for _ in 0 ..< 100 {
+                let status = manager.symEncrypt(for: data, in: chatID, with: secKey) != nil
                 results.append(status)
             }
         }
