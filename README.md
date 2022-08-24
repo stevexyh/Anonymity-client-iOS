@@ -1,4 +1,4 @@
-# client-iOS  
+# Anonymity client-iOS
 Anonymity iOS client side. This is an end-to-end encryption chat app for partial fulfillment of Steve's MSc Project and the degree of MSc Cyber Security.
 
 
@@ -97,7 +97,7 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 
 
 ## Download  
-- `git clone --recurse-submodules https://github.com/Steve-Xyh/client-iOS.git`  
+- `git clone --recurse-submodules https://github.com/Steve-Xyh/Anonymity-client-iOS.git`  
 
 
 ## Installation  
@@ -151,4 +151,4 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 ![](./imgs/ver0.2-sketch/img_ver0.2_5.png)
 
 ---  
-**Developed by [Steve X](https://github.com/Steve-Xyh/client-iOS) © 2017 - 2022**  
+**Developed by [Steve X](https://github.com/Steve-Xyh/Anonymity-client-iOS.git) © 2017 - 2022**  
