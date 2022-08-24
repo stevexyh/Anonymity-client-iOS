@@ -121,14 +121,17 @@ class CryptoManager {
     /// - Parameters:
     ///   - data: origin Data object
     ///   - chatID: id of chat
+    ///   - key: **[dangerous, only for test cases]** specified symmetric key
     /// - Returns: Data? object of combined SealBox Data(nonce, ciphertext, tag)
-    static func symEncrypt(for data: Data, in chatID: Chat.ID) -> Data? {
-        guard let secKey = secretKeys[chatID] else {
+    static func symEncrypt(for data: Data, in chatID: Chat.ID, with key: SymmetricKey? = nil) -> Data? {
+        let secKey = key != nil ? key : secretKeys[chatID]?.key
+
+        guard let secKey = secKey else {
             print(">>> Nil SecKey")
             return nil
         }
 
-        let sealedBox = try? AES.GCM.seal(data, using: secKey.key)
+        let sealedBox = try? AES.GCM.seal(data, using: secKey)
         let combinedData = sealedBox?.combined
 
         return combinedData
