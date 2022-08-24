@@ -80,10 +80,11 @@ Anonymity Client side
     - [x] AES key distribution
     - [x] AES symmetric encryption & decryption
 - [x] file transfer
+    - [x] file encryption & decryption
 
-### Learn Next
+### Learn Next If Possible
+- [x] Unit Test
 - [ ] Dependency Injection
-- [ ] Unit Test
 
 ---
 ## Screenshots
