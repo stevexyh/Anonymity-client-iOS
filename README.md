@@ -132,6 +132,24 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 - [x] Unit Test
 - [ ] Dependency Injection
 
+### Dissertation
+- [x] Abstract
+- [ ] Statement of Originality
+- [x] Acknowledgements
+- [x] TOC
+- [ ] List of Figures
+- [x] 1. Introduction
+- [ ] 2. Literature Review
+- [ ] 3. Development Tools & Techniques
+- [ ] 4. Project Plan
+- [ ] 5. Sofeware Design
+- [ ] 6. Implementation
+- [ ] 7. Unit Tests
+- [ ] 8. Experiments & Stress Tests
+- [ ] 9. Conclusion
+- [ ] I. References
+- [ ] II. Appendix
+
 ---
 ## Screenshots
 ### Version 0.2-Sketch
