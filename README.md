@@ -141,8 +141,17 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 - [x] 1. Introduction
 - [ ] 2. Literature Review
 - [ ] 3. Development Tools & Techniques
-- [ ] 4. Project Plan
+    - [ ] 3.1 MVVM Architecture
+    - [ ] 3.2 Swift
+    - [ ] 3.3 Cryptography Algorithms
+    - [ ] 3.4 Google Firebase
+- [x] 4. Project Plan
 - [ ] 5. Sofeware Design
+    - [x] 5.1 Module Layers
+    - [ ] 5.2 Data Models
+    - [ ] 5.3 Views
+    - [ ] 5.4 Use Case Diagram
+    - [ ] 5.5 Data Flow Diagram
 - [ ] 6. Implementation
 - [ ] 7. Unit Tests
 - [ ] 8. Experiments & Stress Tests
