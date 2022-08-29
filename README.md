@@ -148,11 +148,18 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 - [x] 4. Project Plan
 - [ ] 5. Sofeware Design
     - [x] 5.1 Module Layers
-    - [ ] 5.2 Data Models
-    - [ ] 5.3 Views
+    - [x] 5.2 Data Models
+    - [x] 5.3 Views
     - [ ] 5.4 Use Case Diagram
     - [ ] 5.5 Data Flow Diagram
 - [ ] 6. Implementation
+    - [ ] 6.1 Project Structure
+    - [ ] 6.2 Database Fields
+    - [ ] 6.3 User Services
+    - [ ] 6.4 Contacts Services
+    - [ ] 6.5 Create Chats
+    - [ ] 6.6 Communications
+    - [ ] 6.7 Encryption
 - [ ] 7. Unit Tests
 - [ ] 8. Experiments & Stress Tests
 - [ ] 9. Conclusion
