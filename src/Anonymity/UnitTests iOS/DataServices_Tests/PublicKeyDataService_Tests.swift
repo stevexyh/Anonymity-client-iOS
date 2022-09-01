@@ -43,10 +43,35 @@ class PublicKeyDataServices_Tests: XCTestCase {
         }
     }
 
+    func test_PublicKeyDataService_publish_ShouldSuccess() {
+        Task {
+            // Given
+            await _ = UserAuthManager.userLogin(username: "Test1", password: "123456")
+            let ds = PublicKeyDataService.self
+            let exp = expectation(description: "Check closure status")
+            var result: Bool = false
+
+            // When
+            ds.publish { status in
+                result = status
+                exp.fulfill()
+            }
+
+            // Then
+            await waitForExpectations(timeout: 5) { error in
+                if let error = error {
+                    XCTFail(error.localizedDescription)
+                }
+
+                XCTAssertTrue(result)
+            }
+        }
+    }
+
     func test_PublicKeyDataService_fetchPubKeyB64Str_ShouldReturnB64Str_stress() async {
         // Given
         let ds = PublicKeyDataService.self
-        let userID = "Hwx4lGQp2NXnhYvuFZbCvjXnn5K2"
+        let userID = "TTeP03dzRBP6vQUVTUAfmgoZGe42"
         let loopCount = Int.random(in: 1 ..< 100)
         var keys: [String?] = []
 

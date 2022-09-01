@@ -20,7 +20,10 @@ class PublicKeyDataService {
 
     /// Publish PublicKey to Firebase FireStore automatically at real time
     static func publish(completion: @escaping (Bool) -> Void = { _ in }) {
-        guard let myID = UserAuthManager.currentUser?.uid else { return }
+        guard let myID = UserAuthManager.currentUser?.uid else {
+            print(">>> Not login!!!")
+            return
+        }
 
         let pubKeyB64Str = CryptoManager.pubKeyB64Str
         let document = db.document(myID)
