@@ -159,9 +159,9 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
     - [x] 6.4 Contacts Services
     - [x] 6.5 Communications
     - [x] 6.6 Encryption
-- [ ] 7. Unit Tests
-    - [ ] 7.1 Data Services Tests
-    - [ ] 7.2 Managers Tests
+- [x] 7. Unit Tests
+    - [x] 7.1 Data Services Tests
+    - [x] 7.2 Managers Tests
 - [ ] 8. Experiments & Stress Tests
 - [ ] 9. Conclusion
 - [ ] I. References
