@@ -78,6 +78,28 @@ class UserAuthManager {
         return result
     }
 
+    /// Login user with Firebase using completion handler
+    /// - Parameters:
+    ///   - username: Currently using email
+    ///   - password:
+    ///   - completion: completion handler
+    static func userLogin(username: String, password: String, completion: @escaping ((Bool) -> Void) = { _ in }) {
+        let hashedUsername = hashedEmail(for: username)
+
+        FirebaseManager.shared.auth.signIn(withEmail: hashedUsername, password: password) { status, error in
+            if let error = error {
+                completion(false)
+                print(error.localizedDescription)
+            }
+
+            if let status = status {
+                _loginStatus = true
+                _currentUser = status.user
+                completion(true)
+            }
+        }
+    }
+
     /// Create a new user with Firebase and return the boolean result
     /// - Parameters:
     ///   - username: Currently using email
