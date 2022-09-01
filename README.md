@@ -152,7 +152,7 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
     - [x] 5.3 Views
     - [ ] 5.4 Use Case Diagram
     - [ ] 5.5 Data Flow Diagram
-- [ ] 6. Implementation
+- [x] 6. Implementation
     - [x] 6.1 Project Structure
     - [x] 6.2 Database Fields
     - [x] 6.3 User Services
@@ -160,6 +160,8 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
     - [x] 6.5 Communications
     - [x] 6.6 Encryption
 - [ ] 7. Unit Tests
+    - [ ] 7.1 Data Services Tests
+    - [ ] 7.2 Managers Tests
 - [ ] 8. Experiments & Stress Tests
 - [ ] 9. Conclusion
 - [ ] I. References
