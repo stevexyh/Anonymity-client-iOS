@@ -19,7 +19,7 @@ class PublicKeyDataService {
     private static var listener: Firebase.ListenerRegistration?
 
     /// Publish PublicKey to Firebase FireStore automatically at real time
-    static func publish() {
+    static func publish(completion: @escaping (Bool) -> Void = { _ in }) {
         guard let myID = UserAuthManager.currentUser?.uid else { return }
 
         let pubKeyB64Str = CryptoManager.pubKeyB64Str
@@ -28,6 +28,7 @@ class PublicKeyDataService {
         listener = document.addSnapshotListener { _, error in
             if let error = error {
                 print(error)
+                completion(false)
             }
 
             // Encode DicKeys into enum type
@@ -39,6 +40,7 @@ class PublicKeyDataService {
             let decodedData = data.mapKeys { $0.rawValue }
 
             document.setData(decodedData)
+            completion(true)
         }
     }
 
