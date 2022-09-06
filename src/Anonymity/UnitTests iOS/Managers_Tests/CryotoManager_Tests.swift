@@ -44,7 +44,7 @@ class CryotoManager_Tests: XCTestCase {
         }
     }
 
-    // (Steve X) MARK: Stress Tests of Key Generation
+    // (Steve X) MARK: - Stress Tests of Key Generation
     func testPerformance_CryptoManager_ECCKeyGen_ShouldReturnKey_stress() {
         // Given
         var results: [Int] = []
@@ -89,7 +89,7 @@ class CryotoManager_Tests: XCTestCase {
         XCTAssertTrue(results.allSatisfy { $0 == true })
     }
 
-    // (Steve X) MARK: Stress Tests of Encryption & Decryption
+    // (Steve X) MARK: - Stress Tests of Encryption & Decryption for Text
     func testPerformance_CryptoManager_symEncryptForText_ShouleReturnCipherText_stress() {
         // Given
         let manager = CryptoManager.self
@@ -138,7 +138,8 @@ class CryotoManager_Tests: XCTestCase {
         XCTAssertTrue(results.allSatisfy { $0 == true })
     }
 
-    func testPerformance_CryptoManager_symEncryptForData_ShouleReturnEncryptedData_stress() {
+    // (Steve X) MARK: - Stress Tests of Encryption for Data in Different Sizes
+    func testPerformance_CryptoManager_symEncrypt_Data100M_Loop100_ShouleReturnEncryptedData_stress() {
         // Given
         func genRandomData(size: Int) -> Data? {
             var bytes = [Int8](repeating: 0, count: size)
@@ -155,15 +156,16 @@ class CryotoManager_Tests: XCTestCase {
         let manager = CryptoManager.self
         let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
 
-        let dataSize100M = 100_000_000
-        guard let data = genRandomData(size: dataSize100M) else { return }
+        let dataSize = 100_000_000
+        let loopCount = 100
+        guard let data = genRandomData(size: dataSize) else { return }
 
         var results: [Bool] = []
         let secKey = SymmetricKey(size: .bits256)
 
         // When
         measure {
-            for _ in 0 ..< 100 {
+            for _ in 0 ..< loopCount {
                 let status = manager.symEncrypt(for: data, in: chatID, with: secKey) != nil
                 results.append(status)
             }
@@ -173,7 +175,44 @@ class CryotoManager_Tests: XCTestCase {
         XCTAssertTrue(results.allSatisfy { $0 == true })
     }
 
-    func testPerformance_CryptoManager_symDecryptForData_ShouleReturnDecryptedData_stress() {
+    func testPerformance_CryptoManager_symEncrypt_Data10M_Loop1K_ShouleReturnEncryptedData_stress() {
+        // Given
+        func genRandomData(size: Int) -> Data? {
+            var bytes = [Int8](repeating: 0, count: size)
+            guard SecRandomCopyBytes(kSecRandomDefault, size, &bytes) == errSecSuccess else {
+                XCTFail()
+                return nil
+            }
+
+            let data: Data = Data(bytes: &bytes, count: size)
+
+            return data
+        }
+
+        let manager = CryptoManager.self
+        let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
+
+        let dataSize = 10_000_000
+        let loopCount = 1000
+        guard let data = genRandomData(size: dataSize) else { return }
+
+        var results: [Bool] = []
+        let secKey = SymmetricKey(size: .bits256)
+
+        // When
+        measure {
+            for _ in 0 ..< loopCount {
+                let status = manager.symEncrypt(for: data, in: chatID, with: secKey) != nil
+                results.append(status)
+            }
+        }
+
+        // Then
+        XCTAssertTrue(results.allSatisfy { $0 == true })
+    }
+
+    // (Steve X) MARK: Stress Tests of Decryption for Data in Different Sizes
+    func testPerformance_CryptoManager_symDecrypt_Data100M_Loop100_ShouleReturnDecryptedData_stress() {
         // Given
         func genRandomData(size: Int) -> Data? {
             var bytes = [Int8](repeating: 0, count: size)
@@ -192,13 +231,14 @@ class CryotoManager_Tests: XCTestCase {
         let secKey = SymmetricKey(size: .bits256)
         let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
 
-        let dataSize100M = 100_000_000
-        guard let data = genRandomData(size: dataSize100M) else { return }
+        let dataSize = 100_000_000
+        let loopCount = 100
+        guard let data = genRandomData(size: dataSize) else { return }
         guard let encryptedData = manager.symEncrypt(for: data, in: chatID, with: secKey) else { return }
 
         // When
         measure {
-            for _ in 0 ..< 100 {
+            for _ in 0 ..< loopCount {
                 let status = manager.symDecrypt(from: encryptedData, in: chatID, with: secKey) != nil
                 results.append(status)
             }
