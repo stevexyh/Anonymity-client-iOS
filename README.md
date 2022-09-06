@@ -137,7 +137,6 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 - [ ] Statement of Originality
 - [x] Acknowledgements
 - [x] TOC
-- [ ] List of Figures
 - [x] 1. Introduction
 - [x] 2. Literature Review & Techniques
     - [x] 2.1 MVVM Architecture
