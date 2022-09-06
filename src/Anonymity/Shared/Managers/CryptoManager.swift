@@ -144,9 +144,12 @@ class CryptoManager {
     /// - Parameters:
     ///   - combinedB64Str: Base64 string of cipher text
     ///   - chatID: id of chat
+    ///   - key: **[dangerous, only for test cases]** specified symmetric key
     /// - Returns: decrypted message in plain text
-    static func symDecrypt(from combinedB64Str: String, in chatID: Chat.ID) -> String? {
-        guard let secKey = secretKeys[chatID] else {
+    static func symDecrypt(from combinedB64Str: String, in chatID: Chat.ID, with key: SymmetricKey? = nil) -> String? {
+        let secKey = key != nil ? key : secretKeys[chatID]?.key
+
+        guard let secKey = secKey else {
             print(">>> Nil SecKey")
             return nil
         }
@@ -161,7 +164,7 @@ class CryptoManager {
             return nil
         }
 
-        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey.key) else {
+        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey) else {
             print(">>> Nil Decrypted Data")
             return nil
         }
@@ -175,9 +178,12 @@ class CryptoManager {
     /// - Parameters:
     ///   - combinedData: Data? object of combined SealBox Data(nonce, ciphertext, tag)
     ///   - chatID: id of chat
+    ///   - key: **[dangerous, only for test cases]** specified symmetric key
     /// - Returns: decrypted Data object
-    static func symDecrypt(from combinedData: Data, in chatID: Chat.ID) -> Data? {
-        guard let secKey = secretKeys[chatID] else {
+    static func symDecrypt(from combinedData: Data, in chatID: Chat.ID, with key: SymmetricKey? = nil) -> Data? {
+        let secKey = key != nil ? key : secretKeys[chatID]?.key
+
+        guard let secKey = secKey else {
             print(">>> Nil SecKey")
             return nil
         }
@@ -187,7 +193,7 @@ class CryptoManager {
             return nil
         }
 
-        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey.key) else {
+        guard let decryptedData = try? AES.GCM.open(sealedBox, using: secKey) else {
             print(">>> Nil Decrypted Data")
             return nil
         }
