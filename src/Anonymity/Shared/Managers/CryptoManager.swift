@@ -99,9 +99,12 @@ class CryptoManager {
     /// - Parameters:
     ///   - plainText: message in plain text
     ///   - chatID: id of chat
+    ///   - key: **[dangerous, only for test cases]** specified symmetric key
     /// - Returns: Base64 string of combined SealBox Data(nonce, ciphertext, tag)
-    static func symEncrypt(for plainText: String, in chatID: Chat.ID) -> String? {
-        guard let secKey = secretKeys[chatID] else {
+    static func symEncrypt(for plainText: String, in chatID: Chat.ID, with key: SymmetricKey? = nil) -> String? {
+        let secKey = key != nil ? key : secretKeys[chatID]?.key
+
+        guard let secKey = secKey else {
             print(">>> Nil SecKey")
             return nil
         }
@@ -111,7 +114,7 @@ class CryptoManager {
             return nil
         }
 
-        let sealedBox = try? AES.GCM.seal(plainTextData, using: secKey.key)
+        let sealedBox = try? AES.GCM.seal(plainTextData, using: secKey)
         let combinedB64Str = sealedBox?.combined?.base64EncodedString()
 
         return combinedB64Str

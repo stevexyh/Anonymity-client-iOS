@@ -44,6 +44,7 @@ class CryotoManager_Tests: XCTestCase {
         }
     }
 
+    // (Steve X) MARK: Stress Tests of Key Generation
     func testPerformance_CryptoManager_ECCKeyGen_ShouldReturnKey_stress() {
         // Given
         var results: [Int] = []
@@ -88,9 +89,31 @@ class CryotoManager_Tests: XCTestCase {
         XCTAssertTrue(results.allSatisfy { $0 == true })
     }
 
+    // (Steve X) MARK: Stress Tests of Encryption & Decryption
+    func testPerformance_CryptoManager_symEncryptForText_ShouleReturnCipherText_stress() {
+        // Given
+        let manager = CryptoManager.self
+        let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
+        let plainText: String = chatID
+
+        var results: [Bool] = []
+        let secKey = SymmetricKey(size: .bits256)
+        let loopCount1M = 1_000_000
+
+        // When
+        measure {
+            for _ in 0 ..< loopCount1M {
+                let status = manager.symEncrypt(for: plainText, in: chatID, with: secKey) != nil
+                results.append(status)
+            }
+        }
+
+        // Then
+        XCTAssertTrue(results.allSatisfy { $0 == true })
+    }
+
     func testPerformance_CryptoManager_symEncryptForData_ShouleReturnEncryptedData_stress() {
         // Given
-
         func genRandomData(size: Int) -> Data? {
             var bytes = [Int8](repeating: 0, count: size)
             guard SecRandomCopyBytes(kSecRandomDefault, size, &bytes) == errSecSuccess else {
