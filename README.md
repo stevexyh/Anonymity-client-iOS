@@ -139,11 +139,11 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 - [x] TOC
 - [ ] List of Figures
 - [x] 1. Introduction
-- [ ] 2. Literature Review & Techniques
-    - [ ] 2.1 MVVM Architecture
-    - [ ] 2.2 Swift
-    - [ ] 2.3 Cryptography Algorithms
-    - [ ] 2.4 Google Firebase
+- [x] 2. Literature Review & Techniques
+    - [x] 2.1 MVVM Architecture
+    - [x] 2.2 Swift
+    - [x] 2.3 Cryptography Algorithms
+    - [x] 2.4 Google Firebase
 - [x] 3. Project Plan
 - [ ] 4. Sofeware Design
     - [x] 4.1 Module Layers
