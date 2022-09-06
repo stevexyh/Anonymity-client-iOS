@@ -172,4 +172,39 @@ class CryotoManager_Tests: XCTestCase {
         // Then
         XCTAssertTrue(results.allSatisfy { $0 == true })
     }
+
+    func testPerformance_CryptoManager_symDecryptForData_ShouleReturnDecryptedData_stress() {
+        // Given
+        func genRandomData(size: Int) -> Data? {
+            var bytes = [Int8](repeating: 0, count: size)
+            guard SecRandomCopyBytes(kSecRandomDefault, size, &bytes) == errSecSuccess else {
+                XCTFail()
+                return nil
+            }
+
+            let data: Data = Data(bytes: &bytes, count: size)
+
+            return data
+        }
+
+        let manager = CryptoManager.self
+        var results: [Bool] = []
+        let secKey = SymmetricKey(size: .bits256)
+        let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
+
+        let dataSize100M = 100_000_000
+        guard let data = genRandomData(size: dataSize100M) else { return }
+        guard let encryptedData = manager.symEncrypt(for: data, in: chatID, with: secKey) else { return }
+
+        // When
+        measure {
+            for _ in 0 ..< 100 {
+                let status = manager.symDecrypt(from: encryptedData, in: chatID, with: secKey) != nil
+                results.append(status)
+            }
+        }
+
+        // Then
+        XCTAssertTrue(results.allSatisfy { $0 == true })
+    }
 }
