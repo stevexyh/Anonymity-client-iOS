@@ -44,6 +44,26 @@ class CryotoManager_Tests: XCTestCase {
         }
     }
 
+    func testPerformance_CryptoManager_ECCKeyGen_ShouldReturnKey_stress() {
+        // Given
+        var results: [Int] = []
+        let loopCount = 10000
+
+        // When
+        measure {
+            var tmpCnt = 0
+            for _ in 0 ..< loopCount {
+                _ = Curve25519.KeyAgreement.PrivateKey().publicKey
+                tmpCnt += 1
+            }
+
+            results.append(tmpCnt)
+        }
+
+        // Then
+        XCTAssertTrue(results.allSatisfy { $0 == loopCount })
+    }
+
     func testPerformance_CryptoManager_symKeyDerivation_ShouldReturnTrue_stress() {
         // Given
         let manager = CryptoManager.self
@@ -86,7 +106,7 @@ class CryotoManager_Tests: XCTestCase {
         let manager = CryptoManager.self
         let chatID: Chat.ID = "VQK7fMLhXcYv90LC6008GRmo48X2Wb3vtmtChGMJ94AULgvPh1ZxLY22"
 
-        let dataSize100M = 100_000_000
+        let dataSize100M = 100000000
         guard let data = genRandomData(size: dataSize100M) else { return }
 
         var results: [Bool] = []
