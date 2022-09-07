@@ -134,7 +134,7 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 
 ### Dissertation
 - [x] Abstract
-- [ ] Statement of Originality
+- [x] Statement of Originality
 - [x] Acknowledgements
 - [x] TOC
 - [x] 1. Introduction
@@ -144,12 +144,12 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
     - [x] 2.3 Cryptography Algorithms
     - [x] 2.4 Google Firebase
 - [x] 3. Project Plan
-- [ ] 4. Sofeware Design
+- [x] 4. Sofeware Design
     - [x] 4.1 Module Layers
     - [x] 4.2 Data Models
     - [x] 4.3 Views
-    - [ ] 4.4 Use Case Diagram
-    - [ ] 4.5 Data Flow Diagram
+    <!-- - [ ] 4.4 Use Case Diagram -->
+    <!-- - [ ] 4.5 Data Flow Diagram -->
 - [x] 5. Implementation
     - [x] 5.1 Project Structure
     - [x] 5.2 Database Fields
@@ -166,8 +166,8 @@ Anonymity iOS client side. This is an end-to-end encryption chat app for partial
 - [x] 8. Conclusion
     - [x] 8.1 Functions implemented
     - [x] 8.2 Project Deficiencies & Future Improvements
-- [ ] I. References
-- [ ] II. Appendix
+- [x] I. References
+- [x] II. Appendix
 
 ---
 ## Screenshots
