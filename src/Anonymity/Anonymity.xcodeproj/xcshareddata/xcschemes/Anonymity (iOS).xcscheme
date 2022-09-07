@@ -47,6 +47,29 @@
                BlueprintName = "UnitTests iOS"
                ReferencedContainer = "container:Anonymity.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ChatDataService_Tests/testExample()">
+               </Test>
+               <Test
+                  Identifier = "ChatDataService_Tests/testPerformanceExample()">
+               </Test>
+               <Test
+                  Identifier = "CryotoManager_Tests/testExample()">
+               </Test>
+               <Test
+                  Identifier = "CryotoManager_Tests/testPerformanceExample()">
+               </Test>
+               <Test
+                  Identifier = "PublicKeyDataServices_Tests/testExample()">
+               </Test>
+               <Test
+                  Identifier = "PublicKeyDataServices_Tests/testPerformanceExample()">
+               </Test>
+               <Test
+                  Identifier = "UnitTests_iOS">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
